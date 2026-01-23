@@ -119,7 +119,7 @@ export default function HeroSection() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Ask AOKI anything about DX & AI Strategy..."
+              placeholder="Ask Blue Monkey anything..."
               className="flex-1 bg-transparent text-white placeholder-gray-400 text-sm sm:text-base outline-none"
               disabled={isLoading}
             />
@@ -145,7 +145,7 @@ export default function HeroSection() {
 
       {/* Tagline */}
       <p className="text-sm sm:text-base md:text-lg text-gray-300 text-center max-w-xl px-4">
-        年商1億円を目指す、経営者・リーダーのための<span className="text-[#00d4ff]">AI戦略顧問</span>。
+        人とAIと共に進化する企業へ
       </p>
     </section>
   );
