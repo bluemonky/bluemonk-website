@@ -18,8 +18,13 @@
   --color-primary-dark: var(--primary-dark);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
+  /* 本文: Geist(latin) → Noto Sans JP/ヒラギノ角ゴ等(あれば) → system sans。 */
+  --font-sans: var(--font-geist-sans), "Noto Sans JP", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
+  /* 大見出し用の明朝（白抜き）。OS 標準の明朝にフォールバック。 */
+  --font-serif: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho",
+    "YuMincho", "Noto Serif JP", "Shippori Mincho", serif;
 }
 
 * {
@@ -29,8 +34,25 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   min-height: 100vh;
+}
+
+/* 大見出し（明朝） */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* 一貫したシアンの選択・フォーカス表現（発光する禅: 光は一点） */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* Circuit pattern background */
@@ -134,4 +156,66 @@ html {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* =========================================================================
+ * 発光する禅: スクロールリビール（ゆっくりフェードイン・派手なバウンス禁止）
+ *  .reveal を初期状態、.is-visible で表示。JS(ScrollReveal)が is-visible を付与。
+ * ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================================
+ * 単点グロー（全面発光させない。余白の中の「一点」だけを光らせる）
+ * ========================================================================= */
+.glow-spot {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.18) 0%,
+    rgba(0, 212, 255, 0.06) 35%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* 明朝見出しの白抜き + 控えめなシアングロー */
+.serif-display {
+  font-family: var(--font-serif);
+  color: #ffffff;
+  text-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+}
+
+/* prefers-reduced-motion: モーションを無効化（アクセシビリティ必須対応） */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

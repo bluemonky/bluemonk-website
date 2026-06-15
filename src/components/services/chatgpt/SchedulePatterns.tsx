@@ -9,6 +9,8 @@ type Props = {
 };
 
 export default function SchedulePatterns({ patterns, lectures }: Props) {
+  // patterns はレベル切り替えで差し替わるため、先頭パターンを既定にする。
+  // 選択中の id が現在の patterns に無い場合（レベル切替直後など）は先頭にフォールバック。
   const [activeId, setActiveId] = useState(patterns[0].id);
   const active = patterns.find((p) => p.id === activeId) ?? patterns[0];
 

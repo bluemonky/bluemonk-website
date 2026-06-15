@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
-import SchedulePatterns from '@/components/services/chatgpt/SchedulePatterns';
+import CurriculumByLevel from '@/components/services/chatgpt/CurriculumByLevel';
 import {
   hero,
   challenges,
   challengesTagline,
   about,
   target,
-  lectures,
-  schedulePatterns,
+  beginnerLectures,
+  intermediateLectures,
+  beginnerSchedulePatterns,
+  intermediateSchedulePatterns,
   features,
   caseStudies,
   flowSteps,
@@ -162,7 +164,7 @@ export default function ChatGPTTrainingPage() {
         </section>
 
         {/* ================================================================== */}
-        {/* CURRICULUM                                                          */}
+        {/* CURRICULUM & SCHEDULE (初級編 / 中級編 切り替え)                     */}
         {/* ================================================================== */}
         <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="max-w-5xl mx-auto">
@@ -170,52 +172,30 @@ export default function ChatGPTTrainingPage() {
               Curriculum
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-              9講義のカリキュラム
+              カリキュラムと時間割
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-              {lectures.map((l) => (
-                <div
-                  key={l.number}
-                  className="group relative bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 flex items-start gap-4 hover:border-[#00d4ff]/60 hover:shadow-md transition-all"
-                >
-                  <div className="shrink-0 flex flex-col items-center">
-                    <span className="text-[10px] font-bold tracking-wider text-slate-400 uppercase">
-                      Lec
-                    </span>
-                    <span className="text-3xl sm:text-4xl font-black text-[#00d4ff] leading-none">
-                      {String(l.number).padStart(2, '0')}
-                    </span>
-                  </div>
-                  <div className="flex-1 pt-1">
-                    <p className="text-sm sm:text-base font-semibold text-slate-900 leading-relaxed">
-                      {l.title}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================================================================== */}
-        {/* SCHEDULE PATTERNS                                                   */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-slate-50">
-          <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
-              Schedule
+            <p className="text-sm sm:text-base text-slate-600 text-center max-w-2xl mx-auto mb-12">
+              レベルを選んで、講義内容と時間割パターンをご確認いただけます。
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-              選べる4つの時間割パターン
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 text-center max-w-2xl mx-auto mb-4">
-              貴社のスケジュールに合わせて、4つの時間割パターンから選択いただけます。
-            </p>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
 
-            <SchedulePatterns patterns={schedulePatterns} lectures={lectures} />
+            <CurriculumByLevel
+              levels={[
+                {
+                  level: 'beginner',
+                  label: '初級編',
+                  lectures: beginnerLectures,
+                  schedulePatterns: beginnerSchedulePatterns,
+                  patternCount: beginnerSchedulePatterns.length,
+                },
+                {
+                  level: 'intermediate',
+                  label: '中級編',
+                  lectures: intermediateLectures,
+                  schedulePatterns: intermediateSchedulePatterns,
+                  patternCount: intermediateSchedulePatterns.length,
+                },
+              ]}
+            />
           </div>
         </section>
 

@@ -14,7 +14,7 @@ export default function ServiceCard({ href, eyebrow, title, description, weight 
   return (
     <Link
       href={href}
-      className={`group glass-card p-6 sm:p-8 flex flex-col transition-all hover:border-[#00d4ff]/60 hover:-translate-y-1 ${
+      className={`group glass-card w-full p-6 sm:p-8 flex flex-col transition-all hover:border-[#00d4ff]/60 hover:-translate-y-1 ${
         isPrimary ? 'md:col-span-2 lg:col-span-2' : ''
       }`}
     >

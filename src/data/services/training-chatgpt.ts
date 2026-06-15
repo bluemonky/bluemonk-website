@@ -13,12 +13,19 @@ export type Challenge = {
   text: string;
 };
 
+/** 研修レベル: 初級編 / 中級編 */
+export type Level = 'beginner' | 'intermediate';
+
 export type Lecture = {
+  level: Level;
   number: number;
   title: string;
+  /** 中級編は移行元に詳細記載がないため DRAFT 叩き台。初級編は未設定。 */
+  description?: string;
 };
 
 export type SchedulePattern = {
+  level: Level;
   id: string;
   label: string;
   totalDays: number;
@@ -100,28 +107,107 @@ export const target = {
 };
 
 // ==========================================================================
-// カリキュラム (9講義)
+// カリキュラム (初級編 9講義)
 // ==========================================================================
 
-export const lectures: Lecture[] = [
-  { number: 1, title: '生成AIの概要' },
-  { number: 2, title: 'ChatGPTの基本操作とビジネス活用ケース Ⅰ' },
-  { number: 3, title: 'ChatGPTのビジネス活用ケース Ⅱ' },
-  { number: 4, title: 'ChatGPTのビジネス活用ケース Ⅲ' },
-  { number: 5, title: 'ChatGPTのビジネス活用ケース Ⅳ' },
-  { number: 6, title: '業務別課題解決ワークショップ' },
-  { number: 7, title: 'マネジメント力の強化、チームマネジメントにChatGPTを活用する方法' },
-  { number: 8, title: 'ChatGPT活用のための社内運用ルールとガイドライン策定' },
-  { number: 9, title: '成果発表とフィードバックセッション' },
+export const beginnerLectures: Lecture[] = [
+  { level: 'beginner', number: 1, title: '生成AIの概要' },
+  { level: 'beginner', number: 2, title: 'ChatGPTの基本操作とビジネス活用ケース Ⅰ' },
+  { level: 'beginner', number: 3, title: 'ChatGPTのビジネス活用ケース Ⅱ' },
+  { level: 'beginner', number: 4, title: 'ChatGPTのビジネス活用ケース Ⅲ' },
+  { level: 'beginner', number: 5, title: 'ChatGPTのビジネス活用ケース Ⅳ' },
+  { level: 'beginner', number: 6, title: '業務別課題解決ワークショップ' },
+  { level: 'beginner', number: 7, title: 'マネジメント力の強化、チームマネジメントにChatGPTを活用する方法' },
+  { level: 'beginner', number: 8, title: 'ChatGPT活用のための社内運用ルールとガイドライン策定' },
+  { level: 'beginner', number: 9, title: '成果発表とフィードバックセッション' },
 ];
 
 // ==========================================================================
-// 時間割パターン (4パターン)
+// カリキュラム (中級編 9講義)
+// タイトルは移行元 (https://dxseminar.hp.peraichi.com/chatgpt) のまま。
+// description は移行元に詳細記載がないため DRAFT 叩き台。確定 or 修正してください。
 // ==========================================================================
 
-export const schedulePatterns: SchedulePattern[] = [
+export const intermediateLectures: Lecture[] = [
   {
-    id: '3d-4h',
+    level: 'intermediate',
+    number: 1,
+    title: '業務プロセスの可視化と分析',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '現状の業務フローを洗い出し、ボトルネックやAI化できる工程を特定します。',
+  },
+  {
+    level: 'intermediate',
+    number: 2,
+    title: '社内データの整理とAI活用基盤の構築',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '散在する社内データを整理・構造化し、AIで活用するための土台を整えます。',
+  },
+  {
+    level: 'intermediate',
+    number: 3,
+    title: '社内データを活用した業務専用AIの構築',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '自社の業務知識を学習させた専用AIを構築し、現場の問い合わせに応えます。',
+  },
+  {
+    level: 'intermediate',
+    number: 4,
+    title: '業務システム・データ連携によるAI活用',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '既存の業務システムやデータソースとAIを連携し、活用範囲を広げます。',
+  },
+  {
+    level: 'intermediate',
+    number: 5,
+    title: '定型業務の自動化',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '繰り返し発生する定型作業をAIで自動化し、工数とミスを削減します。',
+  },
+  {
+    level: 'intermediate',
+    number: 6,
+    title: 'AIエージェントの活用と運用設計',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '自律的に動くAIエージェントを業務に組み込み、運用ルールを設計します。',
+  },
+  {
+    level: 'intermediate',
+    number: 7,
+    title: '業務改善ツールのプロトタイプ制作',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '自社課題を解決する業務改善ツールの試作品を作り、効果を検証します。',
+  },
+  {
+    level: 'intermediate',
+    number: 8,
+    title: '成果物のドキュメント化と可視化',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '作成したツールや成果を文書化・可視化し、社内へ展開できる形にします。',
+  },
+  {
+    level: 'intermediate',
+    number: 9,
+    title: '成果発表とフィードバックセッション',
+    // DRAFT: 要確認(移行元に詳細記載なし)
+    description: '各自の成果を発表し、相互フィードバックを通じて次の改善につなげます。',
+  },
+];
+
+/**
+ * 後方互換: 既存参照向けの初級編エイリアス。
+ * 新規実装は beginnerLectures / intermediateLectures を直接参照してください。
+ */
+export const lectures: Lecture[] = beginnerLectures;
+
+// ==========================================================================
+// 時間割パターン - 初級編 (4パターン)
+// ==========================================================================
+
+export const beginnerSchedulePatterns: SchedulePattern[] = [
+  {
+    level: 'beginner',
+    id: 'beginner-3d-4h',
     label: '3日 × 4時間',
     totalDays: 3,
     totalHours: 12,
@@ -153,7 +239,8 @@ export const schedulePatterns: SchedulePattern[] = [
     ],
   },
   {
-    id: '4d-3h',
+    level: 'beginner',
+    id: 'beginner-4d-3h',
     label: '4日 × 3時間',
     totalDays: 4,
     totalHours: 12,
@@ -190,7 +277,8 @@ export const schedulePatterns: SchedulePattern[] = [
     ],
   },
   {
-    id: '5d-2h',
+    level: 'beginner',
+    id: 'beginner-5d-2h',
     label: '5日 × 2時間',
     totalDays: 5,
     totalHours: 10,
@@ -230,7 +318,8 @@ export const schedulePatterns: SchedulePattern[] = [
     ],
   },
   {
-    id: '2d-5h',
+    level: 'beginner',
+    id: 'beginner-2d-5h',
     label: '2日 × 5時間',
     totalDays: 2,
     totalHours: 10,
@@ -257,6 +346,133 @@ export const schedulePatterns: SchedulePattern[] = [
     ],
   },
 ];
+
+// ==========================================================================
+// 時間割パターン - 中級編 (3パターン)
+// 配分は移行元 (https://dxseminar.hp.peraichi.com/chatgpt) のとおり。
+// ※中級編に「2日 × 5時間」は無い。
+// ==========================================================================
+
+export const intermediateSchedulePatterns: SchedulePattern[] = [
+  {
+    level: 'intermediate',
+    id: 'intermediate-3d-4h',
+    label: '3日 × 4時間',
+    totalDays: 3,
+    totalHours: 12,
+    days: [
+      {
+        day: 1,
+        sessions: [
+          { lectureNumber: 1, durationHours: 1 },
+          { lectureNumber: 2, durationHours: 1.5 },
+          { lectureNumber: 3, durationHours: 1.5 },
+        ],
+      },
+      {
+        day: 2,
+        sessions: [
+          { lectureNumber: 4, durationHours: 1.5 },
+          { lectureNumber: 5, durationHours: 1.5 },
+          { lectureNumber: 6, durationHours: 1 },
+        ],
+      },
+      {
+        day: 3,
+        sessions: [
+          { lectureNumber: 7, durationHours: 2 },
+          { lectureNumber: 8, durationHours: 1 },
+          { lectureNumber: 9, durationHours: 1 },
+        ],
+      },
+    ],
+  },
+  {
+    level: 'intermediate',
+    id: 'intermediate-4d-3h',
+    label: '4日 × 3時間',
+    totalDays: 4,
+    totalHours: 12,
+    days: [
+      {
+        day: 1,
+        sessions: [
+          { lectureNumber: 1, durationHours: 1 },
+          { lectureNumber: 2, durationHours: 2 },
+        ],
+      },
+      {
+        day: 2,
+        sessions: [
+          { lectureNumber: 3, durationHours: 1.5 },
+          { lectureNumber: 4, durationHours: 1.5 },
+        ],
+      },
+      {
+        day: 3,
+        sessions: [
+          { lectureNumber: 5, durationHours: 1.5 },
+          { lectureNumber: 6, durationHours: 1.5 },
+        ],
+      },
+      {
+        day: 4,
+        sessions: [
+          { lectureNumber: 7, durationHours: 2 },
+          { lectureNumber: 8, durationHours: 0.5 },
+          { lectureNumber: 9, durationHours: 0.5 },
+        ],
+      },
+    ],
+  },
+  {
+    level: 'intermediate',
+    id: 'intermediate-5d-2h',
+    label: '5日 × 2時間',
+    totalDays: 5,
+    totalHours: 10,
+    days: [
+      {
+        day: 1,
+        sessions: [
+          { lectureNumber: 1, durationHours: 1 },
+          { lectureNumber: 2, durationHours: 1 },
+        ],
+      },
+      {
+        day: 2,
+        sessions: [
+          { lectureNumber: 3, durationHours: 1 },
+          { lectureNumber: 4, durationHours: 1 },
+        ],
+      },
+      {
+        day: 3,
+        sessions: [
+          { lectureNumber: 5, durationHours: 1 },
+          { lectureNumber: 6, durationHours: 1 },
+        ],
+      },
+      {
+        day: 4,
+        sessions: [{ lectureNumber: 7, durationHours: 2 }],
+      },
+      {
+        day: 5,
+        sessions: [
+          { lectureNumber: 8, durationHours: 1 },
+          { lectureNumber: 9, durationHours: 1 },
+        ],
+      },
+    ],
+  },
+];
+
+/**
+ * 後方互換: 既存参照向けの初級編エイリアス。
+ * 新規実装は beginnerSchedulePatterns / intermediateSchedulePatterns を直接参照してください。
+ */
+export const schedulePatterns: SchedulePattern[] = beginnerSchedulePatterns;
 
 // ==========================================================================
 // Features (3項目)
@@ -349,6 +565,7 @@ export const instructor = {
     { year: '2004年', description: 'フリーランスとして独立' },
     { year: '2007年', description: '株式会社ラジカルオプティを設立 代表取締役に就任' },
     { year: '2013年', description: 'グロービス経営大学院を成績優秀者として修了' },
+    // 要確認: 移行元では2024年表記
     { year: '2025年', description: 'AI活用DXコンサルティングファーム 株式会社ブルーモンクコンサルティングを設立' },
   ],
   weapon: {
