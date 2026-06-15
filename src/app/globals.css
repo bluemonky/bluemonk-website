@@ -14,6 +14,12 @@
      背景の微グラデや面の差に使う。 */
   --ink-900: #02080f; /* 最も深い闇 */
   --ink-700: #04122b; /* わずかに藍が立つ階調 */
+  /* 立体感トークン: 背景より一段明るい「持ち上げた面」と落ち影。
+     カードや一部セクションに使い、面の差と影で奥行きを出す（全面発光はしない）。 */
+  --surface-1: #0b1b34; /* 持ち上げた面（カード地） */
+  --surface-2: #0f2546; /* さらに上の面（カード上辺・ハイライト側） */
+  --elev-1: 0 10px 24px -10px rgba(0, 0, 0, 0.55);
+  --elev-2: 0 22px 48px -16px rgba(0, 0, 0, 0.6);
   /* フォントスタック（runtime var として参照できるよう :root に実体定義する。
      @theme inline は :root へ変数を出力しないため、body / .serif-display 等の
      hand-written な var(--font-serif)/var(--font-sans) はここを解決先にする） */
@@ -41,15 +47,22 @@
 }
 
 body {
-  /* #030b1a 基調 + 上方にごく微かな藍グラデ（全面発光させない・固定背景なし）。
-     深みは闇側の藍階調で出し、光は各セクションの一点グローに委ねる。 */
+  /* 立体感: 上方に柔らかなアンビエント光源（一点）を置き、下に向かって深い闇へ落とす。
+     光源 + 縦の階調 + 闇側の沈み込みで「空間の奥行き」を作る（全面発光はしない・固定背景なし）。 */
   background-color: var(--background);
-  background-image: linear-gradient(
-    180deg,
-    var(--ink-700) 0%,
-    var(--background) 32%,
-    var(--ink-900) 100%
-  );
+  background-image:
+    radial-gradient(
+      120% 75% at 50% -8%,
+      rgba(0, 92, 150, 0.22) 0%,
+      rgba(0, 92, 150, 0.08) 32%,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      var(--ink-700) 0%,
+      var(--background) 40%,
+      var(--ink-900) 100%
+    );
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -101,12 +114,17 @@ body {
   top: 1rem;
 }
 
-/* Glass morphism card */
+/* Glass morphism card — 「上から光が当たった、浮いた面」として立体的に見せる。
+   背景より明るい面 + 上辺ハイライト + 内側ハイライト + 落ち影で奥行きを出す。 */
 .glass-card {
-  background: var(--card-bg);
+  background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface-1) 100%);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.16); /* 上辺に光が当たる */
   border-radius: 12px;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06), /* 内側の上ハイライト */
+    var(--elev-1); /* 落ち影で面を持ち上げる */
 }
 
 /* Smooth scrolling */
