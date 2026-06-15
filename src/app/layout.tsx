@@ -72,6 +72,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased circuit-bg`}
       >
+        {/* JS 無効時はスクロール演出要素を常に表示（コンテンツが隠れないように） */}
+        <noscript>
+          <style>{`.reveal{opacity:1!important;transform:none!important;filter:none!important}`}</style>
+        </noscript>
         {children}
       </body>
     </html>

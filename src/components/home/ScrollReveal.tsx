@@ -25,14 +25,19 @@ export default function ScrollReveal({
   as = 'div',
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
-  // IntersectionObserver 非対応の環境では初期から表示（フォールバック）。
-  const [visible, setVisible] = useState(
-    () => typeof IntersectionObserver === 'undefined',
-  );
+  // SSR とクライアント初期描画を一致させるため、初期値は常に false（hydration 不整合回避）。
+  // IntersectionObserver 非対応や JS 無効時のフォールバックは下記 effect / noscript 側で担保。
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || typeof IntersectionObserver === 'undefined') return;
+    if (!el) return;
+    // IntersectionObserver 非対応環境では即時表示（state ではなく DOM へ直接付与し
+    // effect 内の同期 setState を避ける。発生はごく稀＝旧ブラウザのみ）。
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('is-visible');
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
