@@ -1,0 +1,17 @@
+---
+description: Blue Monk Consulting サイトのプロジェクト規約
+alwaysApply: true
+---
+
+# Blue Monk Consulting — Cursor ルール
+
+規約の唯一の正は **リポジトリ直下の `AGENTS.md`**。作業前に必ず読むこと。
+あわせて `docs/PROJECT-STATUS.md` / `docs/site-design.md` / `docs/tasks.md` を確認する。
+
+要点（詳細は AGENTS.md）:
+
+- コード変更前に必ずユーザー確認。UI / テキスト変更は事前承認が必須。
+- コンテンツは TSX 直書きせず `src/data/` に分離。
+- CTA は「思想 → 実績 → 提供物」の順。ブランディング最優先。
+- TypeScript strict / 関数コンポーネント + hooks / 2 スペース / PascalCase。
+- 作業開始時 `git pull`、終了時 `docs/PROJECT-STATUS.md` 更新 → commit → push。依存は `npm ci`。

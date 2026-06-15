@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# reference material（権利不明・引用画像。本番非使用・git 非追跡）
+docs/references/images/
