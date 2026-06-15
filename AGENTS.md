@@ -20,6 +20,28 @@
 - 依存導入は `npm install` ではなく **`npm ci`**（lockfile 尊重・環境差防止）。
 - `main` = 本番（Vercel 自動デプロイ）。push は即デプロイされる前提で扱う。
 
+### 新しい Mac / 環境の初回セットアップ
+リポジトリは **SSH 接続**で運用する（HTTPS URL に Personal Access Token を埋め込まない）。
+新しい Mac では初回のみ次を行う:
+
+1. SSH 鍵を生成（マシンごとに 1 つ）:
+   ```bash
+   ssh-keygen -t ed25519 -C "aoki@bluemonk.co.jp (マシン名)" -f ~/.ssh/id_ed25519 -N ""
+   ```
+2. 公開鍵 `~/.ssh/id_ed25519.pub` を GitHub に登録: https://github.com/settings/ssh/new
+   - **Title**: そのMacが分かる名前（例 `aoki-macbookpro-m3`）
+   - **Key type**: Authentication Key
+3. 接続確認: `ssh -T git@github.com` →「Hi bluemonky! …」が出れば OK
+4. remote が SSH か確認（違えば設定）:
+   ```bash
+   git remote -v   # → git@github.com:bluemonky/bluemonk-website.git であること
+   git remote set-url origin git@github.com:bluemonky/bluemonk-website.git
+   ```
+5. `npm ci` で依存をインストール
+
+> セキュリティ: PAT を `.git/config` の URL に平文で埋め込まない。漏れたトークンは
+> GitHub（Settings → Developer settings → Personal access tokens）で即失効する。
+
 ## 2. 変更前の確認（重要）
 - コードを変更する前に、必ずユーザーに確認を取る。
 - 特に **UI / テキストの変更は事前承認が必須**。
