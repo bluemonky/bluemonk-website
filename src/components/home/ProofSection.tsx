@@ -12,12 +12,12 @@ export default function ProofSection() {
   return (
     <section
       id="proof"
-      className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 border-t border-[rgba(0,212,255,0.08)]"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]"
     >
       <div className="max-w-5xl mx-auto">
         <SectionHeading eyebrow={proof.eyebrow} title={proof.title} />
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
           {proof.stats.map((stat, i) => (
             <ScrollReveal key={stat.label} delay={i * 120} className="text-center">
               {/* DRAFT: 要確認 — 実績数字（確定値に差し替え） */}

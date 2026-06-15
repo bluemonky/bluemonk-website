@@ -12,19 +12,19 @@ export default function PhilosophySection() {
   return (
     <section
       id="philosophy"
-      className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20"
     >
       <div className="max-w-5xl mx-auto">
         <SectionHeading eyebrow={philosophy.eyebrow} title={philosophy.lead} />
 
-        <ScrollReveal className="mt-10 max-w-2xl mx-auto text-center" delay={120}>
+        <ScrollReveal className="mt-8 max-w-2xl mx-auto text-center" delay={120}>
           <p className="text-base sm:text-lg text-gray-300 leading-loose">
             {philosophy.body}
           </p>
         </ScrollReveal>
 
         {/* 3キーワード（論理 / 内省 / 共進化） */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
           {philosophy.keywords.map((kw, i) => (
             <ScrollReveal
               key={kw.reading}
@@ -43,7 +43,7 @@ export default function PhilosophySection() {
           ))}
         </div>
 
-        <ScrollReveal className="mt-16 text-center" delay={120}>
+        <ScrollReveal className="mt-12 text-center" delay={120}>
           <SectionCta href={philosophy.cta.href} label={philosophy.cta.label} />
         </ScrollReveal>
       </div>

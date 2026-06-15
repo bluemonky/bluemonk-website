@@ -16,6 +16,7 @@ import {
   caseStudies,
   flowSteps,
   instructor,
+  closingCta,
 } from '@/data/services/training-chatgpt';
 
 export const metadata: Metadata = {
@@ -27,70 +28,86 @@ export const metadata: Metadata = {
 export default function ChatGPTTrainingPage() {
   return (
     <PageLayout>
-      {/* Light theme wrapper - extends edge-to-edge behind fixed header */}
-      <div className="bg-white text-slate-900 -mt-16 sm:-mt-20 pt-16 sm:pt-20">
-        {/* ================================================================== */}
-        {/* HERO                                                                */}
-        {/* ================================================================== */}
-        <section className="relative overflow-hidden">
-          {/* Soft gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-white to-cyan-50" />
-          {/* Decorative grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
-              backgroundSize: '48px 48px',
-            }}
-          />
-          {/* Decorative blur blobs */}
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-cyan-200/40 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-sky-200/40 rounded-full blur-3xl" />
+      {/* ================================================================== */}
+      {/* HERO — ダーク「発光する禅」（TOPトーン: #030b1a / 明朝白抜き / 単点グロー）*/}
+      {/* edge-to-edge で固定ヘッダー背後まで伸ばす                            */}
+      {/* ================================================================== */}
+      <section className="relative overflow-hidden bg-[#030b1a] text-[#e0e7f1] -mt-16 sm:-mt-20 pt-16 sm:pt-20">
+        {/* 単点グロー（全面発光させない。中央上に一点だけ） */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <div className="glow-spot left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[clamp(280px,42vw,560px)] h-[clamp(280px,42vw,560px)]" />
+        </div>
+        {/* 控えめな回路パターン（うっすら） */}
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          aria-hidden="true"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(0,212,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.6) 1px, transparent 1px)',
+            backgroundSize: '56px 56px',
+            maskImage: 'radial-gradient(circle at 50% 40%, #000 0%, transparent 75%)',
+            WebkitMaskImage: 'radial-gradient(circle at 50% 40%, #000 0%, transparent 75%)',
+          }}
+        />
 
-          <div className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
-            <div className="max-w-5xl mx-auto text-center">
-              <p className="inline-block text-xs sm:text-sm font-bold tracking-[0.3em] text-[#0099cc] mb-6 uppercase border border-[#00d4ff]/40 rounded-full px-4 py-1.5 bg-white/60 backdrop-blur-sm">
-                {hero.eyebrow}
-              </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-tight whitespace-pre-line">
-                {hero.title}
-              </h1>
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-                {hero.subtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#00d4ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#00b8e6] hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
-                >
-                  {hero.cta}
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-              </div>
+        <div className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="inline-block text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-6">
+              {hero.eyebrow}
+            </p>
+            <h1 className="serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6 leading-[1.3] whitespace-pre-line">
+              {hero.title}
+            </h1>
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-4 leading-relaxed">
+              {hero.subtitle}
+            </p>
+            {/* 助成金訴求（控えめなシアンの一点） */}
+            <p className="inline-flex items-center gap-2 text-sm text-[#7fdfff]/90 border border-[#00d4ff]/30 rounded-full px-4 py-1.5 mb-10 bg-[#00d4ff]/[0.06]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00ffcc]" aria-hidden="true" />
+              {hero.subsidy}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-4 rounded-full hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
+              >
+                {hero.cta}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* ================================================================== */}
-        {/* CHALLENGES                                                          */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-slate-50">
+        {/* ダーク → ライトへの境界をなめらかに */}
+        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-b from-transparent to-white pointer-events-none" aria-hidden="true" />
+      </section>
+
+      {/* ================================================================== */}
+      {/* 本文 — 可読性最優先のライト基調（見出しは明朝+シアンeyebrowで格上げ）  */}
+      {/* ================================================================== */}
+      <div className="bg-white text-slate-900">
+        {/* ================================================================ */}
+        {/* CHALLENGES                                                        */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+              Challenges
+            </p>
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               こんな困りごと・課題はありませんか?
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-8">
               {challenges.map((c, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 flex items-start gap-4 hover:border-[#00d4ff]/60 hover:shadow-md transition-all"
+                  className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 flex items-start gap-4 hover:border-[#00d4ff]/60 hover:shadow-[0_8px_24px_-14px_rgba(0,212,255,0.45)] transition-all"
                 >
-                  <div className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] flex items-center justify-center text-sm font-bold">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#0099cc] flex items-center justify-center text-sm font-bold">
                     ?
                   </div>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed">{c.text}</p>
@@ -99,12 +116,13 @@ export default function ChatGPTTrainingPage() {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-gradient-to-r from-cyan-50 to-sky-50 border border-[#00d4ff]/30 rounded-2xl px-8 py-6">
+              <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-gradient-to-r from-cyan-50 to-sky-50 border border-[#00d4ff]/30 rounded-2xl px-6 sm:px-8 py-5">
                 <svg
-                  className="w-8 h-8 text-[#00d4ff] shrink-0"
+                  className="w-7 h-7 text-[#00d4ff] shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
@@ -114,20 +132,20 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* ABOUT                                                               */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        {/* ================================================================ */}
+        {/* ABOUT                                                             */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               About
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               {about.title}
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 shadow-sm">
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 sm:p-10 shadow-sm">
               <div className="prose prose-slate max-w-none">
                 {about.body.split('\n\n').map((para, i) => (
                   <p key={i} className="text-base sm:text-lg text-slate-700 leading-loose mb-4 last:mb-0">
@@ -139,21 +157,21 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* TARGET                                                              */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-slate-50">
+        {/* ================================================================ */}
+        {/* TARGET                                                            */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               Target
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               {target.title}
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
-            <div className="bg-gradient-to-br from-white to-cyan-50/50 border border-[#00d4ff]/30 rounded-2xl p-8 sm:p-12 text-center">
-              <p className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 leading-snug">
+            <div className="bg-gradient-to-br from-white to-cyan-50/50 border border-[#00d4ff]/30 rounded-2xl p-7 sm:p-10 text-center">
+              <p className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 leading-snug">
                 {target.audience}
               </p>
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -163,18 +181,18 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* CURRICULUM & SCHEDULE (初級編 / 中級編 切り替え)                     */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        {/* ================================================================ */}
+        {/* CURRICULUM & SCHEDULE (初級編 / 中級編 切り替え)                   */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               Curriculum
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               カリキュラムと時間割
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 text-center max-w-2xl mx-auto mb-12">
+            <p className="text-sm sm:text-base text-slate-600 text-center max-w-2xl mx-auto mb-9">
               レベルを選んで、講義内容と時間割パターンをご確認いただけます。
             </p>
 
@@ -199,29 +217,29 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* FEATURES                                                            */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        {/* ================================================================ */}
+        {/* FEATURES                                                          */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-6xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               Features
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               BLUE MONK の研修の特徴
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
               {features.map((f, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 hover:border-[#00d4ff]/60 hover:shadow-lg hover:-translate-y-1 transition-all"
+                  className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 hover:border-[#00d4ff]/60 hover:shadow-[0_12px_32px_-16px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-sky-500 flex items-center justify-center text-white font-black text-lg mb-6 shadow-md shadow-cyan-200">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-sky-500 flex items-center justify-center text-white font-black text-lg mb-5 shadow-md shadow-cyan-200">
                     {String(i + 1).padStart(2, '0')}
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 leading-snug">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 leading-snug">
                     {f.title}
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">{f.description}</p>
@@ -231,32 +249,32 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* CASE STUDIES                                                        */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-slate-50">
+        {/* ================================================================ */}
+        {/* CASE STUDIES                                                      */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               Case Study
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               研修実績
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               {caseStudies.map((cs, i) => (
                 <div
                   key={i}
-                  className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 hover:border-[#00d4ff]/60 hover:shadow-md transition-all"
+                  className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 hover:border-[#00d4ff]/60 hover:shadow-[0_8px_24px_-14px_rgba(0,212,255,0.45)] transition-all"
                 >
-                  <div className="flex items-baseline justify-between mb-5 pb-4 border-b border-slate-200">
+                  <div className="flex items-baseline justify-between mb-4 pb-4 border-b border-slate-200">
                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900">{cs.client}</h3>
-                    <span className="text-xs font-medium text-[#00d4ff] tracking-wider uppercase">
+                    <span className="text-xs font-medium text-[#0099cc] tracking-wider uppercase">
                       Case {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
-                  <dl className="grid grid-cols-3 gap-3 mb-5 text-sm">
+                  <dl className="grid grid-cols-3 gap-3 mb-4 text-sm">
                     <div>
                       <dt className="text-xs text-slate-500 mb-1">所在地</dt>
                       <dd className="font-semibold text-slate-900">{cs.location}</dd>
@@ -277,18 +295,18 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* FLOW                                                                */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        {/* ================================================================ */}
+        {/* FLOW                                                              */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               Flow
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               サービス導入の流れ
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
             <div className="relative">
               {/* Vertical connector line */}
@@ -297,7 +315,7 @@ export default function ChatGPTTrainingPage() {
                 aria-hidden="true"
               />
 
-              <div className="space-y-6 md:space-y-10">
+              <div className="space-y-5 md:space-y-8">
                 {flowSteps.map((step, i) => (
                   <div
                     key={step.number}
@@ -307,8 +325,8 @@ export default function ChatGPTTrainingPage() {
                   >
                     {/* Step number badge */}
                     <div className="relative md:w-1/2 flex md:justify-center">
-                      <div className="flex items-center gap-4 bg-white border-2 border-[#00d4ff] rounded-2xl px-6 py-4 shadow-md">
-                        <span className="text-xs font-bold tracking-widest text-[#00d4ff] uppercase">
+                      <div className="flex items-center gap-4 bg-white border-2 border-[#00d4ff] rounded-2xl px-6 py-3.5 shadow-md">
+                        <span className="text-xs font-bold tracking-widest text-[#0099cc] uppercase">
                           Step
                         </span>
                         <span className="text-4xl sm:text-5xl font-black text-[#00d4ff] leading-none">
@@ -319,7 +337,7 @@ export default function ChatGPTTrainingPage() {
 
                     {/* Step content */}
                     <div className="md:w-1/2 bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm">
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2.5">
                         {step.title}
                       </h3>
                       <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
@@ -331,38 +349,38 @@ export default function ChatGPTTrainingPage() {
           </div>
         </section>
 
-        {/* ================================================================== */}
-        {/* INSTRUCTOR                                                          */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-slate-50">
+        {/* ================================================================ */}
+        {/* INSTRUCTOR                                                        */}
+        {/* ================================================================ */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-4 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
               Instructor
             </p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
               講師紹介
             </h2>
-            <div className="w-16 h-1 bg-[#00d4ff] mx-auto mb-12 rounded-full" />
+            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 shadow-sm">
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 sm:p-10 shadow-sm">
               {/* Name block */}
-              <div className="text-center mb-10 pb-10 border-b border-slate-200">
+              <div className="text-center mb-8 pb-8 border-b border-slate-200">
                 <p className="text-sm text-slate-500 mb-3 leading-relaxed">{instructor.title}</p>
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
                   {instructor.name}
                 </h3>
-                <p className="text-sm tracking-[0.2em] text-[#00d4ff]">{instructor.nameEn}</p>
+                <p className="text-sm tracking-[0.2em] text-[#0099cc]">{instructor.nameEn}</p>
               </div>
 
               {/* Career */}
-              <div className="mb-10">
+              <div className="mb-8">
                 <h4 className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase mb-5">
                   Career
                 </h4>
                 <ul className="space-y-4">
                   {instructor.career.map((c, i) => (
                     <li key={i} className="flex gap-4 sm:gap-6">
-                      <span className="shrink-0 w-20 sm:w-24 text-sm font-bold text-[#00d4ff]">
+                      <span className="shrink-0 w-20 sm:w-24 text-sm font-bold text-[#0099cc]">
                         {c.year}
                       </span>
                       <span className="text-sm text-slate-700 leading-relaxed flex-1">
@@ -374,8 +392,8 @@ export default function ChatGPTTrainingPage() {
               </div>
 
               {/* Weapon */}
-              <div className="bg-gradient-to-br from-cyan-50 to-sky-50 border border-[#00d4ff]/30 rounded-2xl p-6 sm:p-8 text-center">
-                <p className="text-xs font-bold tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
+              <div className="bg-gradient-to-br from-cyan-50 to-sky-50 border border-[#00d4ff]/30 rounded-2xl p-6 sm:p-7 text-center">
+                <p className="text-xs font-bold tracking-[0.3em] text-[#0099cc] uppercase mb-3">
                   {instructor.weapon.label}
                 </p>
                 <p className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
@@ -386,39 +404,48 @@ export default function ChatGPTTrainingPage() {
             </div>
           </div>
         </section>
+      </div>
 
-        {/* ================================================================== */}
-        {/* CTA                                                                 */}
-        {/* ================================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-gradient-to-br from-cyan-50 via-white to-sky-50">
+      {/* ================================================================== */}
+      {/* CTA — ダーク「発光する禅」（HEROと対のブックエンド）                  */}
+      {/* ================================================================== */}
+      <section className="relative overflow-hidden bg-[#030b1a] text-[#e0e7f1]">
+        {/* 単点グロー */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <div className="glow-spot left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[clamp(280px,38vw,520px)] h-[clamp(280px,38vw,520px)]" />
+        </div>
+
+        <div className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
-              まずはお気軽にご相談ください
+            <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-4">
+              {closingCta.eyebrow}
+            </p>
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold mb-5 leading-[1.3] whitespace-pre-line">
+              {closingCta.title}
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 mb-10 leading-relaxed">
-              研修の詳細・助成金の活用方法・カリキュラムのカスタマイズなど、<br className="hidden sm:inline" />
-              貴社の状況に合わせてご提案します。初回相談は無料です。
+            <p className="text-base sm:text-lg text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto">
+              {closingCta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#00d4ff] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#00b8e6] hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
+                href={closingCta.primary.href}
+                className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-4 rounded-full hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
               >
-                無料相談はこちら
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {closingCta.primary.label}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </Link>
               <Link
-                href="/services/training"
-                className="inline-flex items-center gap-2 text-slate-700 font-semibold px-8 py-4 rounded-full border border-slate-300 hover:border-[#00d4ff] hover:text-[#00d4ff] transition-all"
+                href={closingCta.secondary.href}
+                className="inline-flex items-center gap-2 text-gray-200 font-semibold px-8 py-4 rounded-full border border-white/20 hover:border-[#00d4ff] hover:text-[#00d4ff] transition-all"
               >
-                他の研修プログラムを見る
+                {closingCta.secondary.label}
               </Link>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </PageLayout>
   );
 }

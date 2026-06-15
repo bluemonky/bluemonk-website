@@ -15,7 +15,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 border-t border-[rgba(0,212,255,0.08)]"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]"
     >
       <div className="max-w-6xl mx-auto">
         <SectionHeading
@@ -24,7 +24,7 @@ export default function ServicesSection() {
           subtitle={servicesSection.subtitle}
         />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <ScrollReveal
               key={service.slug}
@@ -44,7 +44,7 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        <ScrollReveal className="mt-16 text-center" delay={120}>
+        <ScrollReveal className="mt-12 text-center" delay={120}>
           <SectionCta href={servicesSection.cta.href} label={servicesSection.cta.label} />
         </ScrollReveal>
       </div>

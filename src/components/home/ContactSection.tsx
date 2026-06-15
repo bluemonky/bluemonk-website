@@ -11,7 +11,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative px-4 sm:px-6 lg:px-8 py-24 sm:py-32 border-t border-[rgba(0,212,255,0.08)]"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]"
     >
       <div className="max-w-3xl mx-auto text-center">
         <SectionHeading
@@ -20,7 +20,7 @@ export default function ContactSection() {
           subtitle={contact.description}
         />
 
-        <ScrollReveal className="mt-12 flex flex-col items-center gap-4" delay={120}>
+        <ScrollReveal className="mt-8 flex flex-col items-center gap-4" delay={120}>
           {/* 主導線: mailto（控えめなアウトラインボタン） */}
           <a
             href={`mailto:${contact.email}`}

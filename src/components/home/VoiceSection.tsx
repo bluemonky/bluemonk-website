@@ -1,5 +1,4 @@
 import { voice } from '@/data/home';
-import BlueMonkey from '@/components/BlueMonkey';
 import ScrollReveal from './ScrollReveal';
 
 /**
@@ -12,7 +11,7 @@ export default function VoiceSection() {
   return (
     <section
       id="voice"
-      className="relative px-4 sm:px-6 lg:px-8 py-28 sm:py-36 border-t border-[rgba(0,212,255,0.08)] overflow-hidden"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)] overflow-hidden"
     >
       {/* 単点グロー（マスコット背後の一点だけ光らせる） */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -21,16 +20,12 @@ export default function VoiceSection() {
 
       <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
         <ScrollReveal>
-          <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-8">
+          <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-6">
             {voice.eyebrow}
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={120}>
-          <BlueMonkey pose="welcome" size={180} className="mx-auto mb-10" />
-        </ScrollReveal>
-
-        <ScrollReveal delay={200}>
           {/* DRAFT: 要確認 — マスコットのメッセージ */}
           <blockquote className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug">
             「{voice.message}」

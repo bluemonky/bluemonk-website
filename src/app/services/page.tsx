@@ -19,7 +19,7 @@ export default function ServicesPage() {
         subtitle="研修・コンサルティング・開発支援。経営判断から実装まで、BLUE MONK は企業のAI活用を一気通貫で支えます。"
       />
 
-      <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+      <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-20">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <ServiceCard
@@ -33,7 +33,10 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        <div className="max-w-3xl mx-auto text-center mt-16 sm:mt-20">
+        <div className="max-w-3xl mx-auto text-center mt-12 sm:mt-16">
+          <p className="text-sm sm:text-base text-gray-400 mb-3">
+            各サービスの実績・導入事例は、それぞれの詳細ページの中でご紹介しています。
+          </p>
           <p className="text-sm sm:text-base text-gray-400 mb-4">
             どのサービスが合うか迷ったら
           </p>

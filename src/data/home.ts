@@ -53,7 +53,7 @@ export const proof = {
     { value: '000', unit: '名', label: '累計受講者', note: '/* DRAFT: 要確認 */' },
     { value: '00', unit: '年', label: '経営×技術の実務歴', note: '/* DRAFT: 要確認 */' },
   ],
-  cta: { label: '事例を見る', href: '/works' },
+  cta: { label: '事例を見る', href: '/services' },
 } as const;
 
 /* =========================================================================

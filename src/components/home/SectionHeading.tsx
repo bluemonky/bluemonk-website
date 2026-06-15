@@ -23,7 +23,7 @@ export default function SectionHeading({
 
   return (
     <ScrollReveal className={isCenter ? 'text-center' : 'text-left'}>
-      <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-4">
+      <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
         {eyebrow}
       </p>
       <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug">
