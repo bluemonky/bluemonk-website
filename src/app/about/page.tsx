@@ -14,11 +14,37 @@ export const metadata: Metadata = {
   title: 'ABOUT | BLUE MONK CONSULTING',
   description:
     '株式会社ブルーモンクコンサルティングと代表者プロフィール。経営者×エンジニア×MBA の視点で、企業のAI活用を支えます。',
+  alternates: { canonical: '/about' },
+};
+
+/**
+ * 代表者の Person JSON-LD。確定事実のみ（捏造なし）:
+ *   氏名・役職(CEO/CTO)・所属会社・URL・専門領域。
+ * 設立年や所在地など未確定の事実は出さない（about.ts の `// 要確認` 参照）。
+ */
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: '青木 紘史',
+  alternateName: 'Hirofumi AOKI',
+  jobTitle: ['CEO', 'CTO'],
+  email: 'aoki@bluemonk.co.jp',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'BLUE MONK CONSULTING',
+    legalName: '株式会社ブルーモンクコンサルティング',
+    url: 'https://www.bluemonk.co.jp/',
+  },
+  knowsAbout: ['AI活用', 'DX', '生成AI', 'コンサルティング'],
 };
 
 export default function AboutPage() {
   return (
     <PageLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       {/* 単点グロー（全面発光させない。HERO 背後に一点だけ） */}
       <div
         className="absolute inset-x-0 top-0 h-[520px] overflow-hidden pointer-events-none"
@@ -61,7 +87,7 @@ export default function AboutPage() {
                 </dt>
                 <dd className="flex-1 text-sm sm:text-base text-gray-200 leading-relaxed break-words">
                   {item.value ?? (
-                    <span className="text-gray-500 italic">準備中</span>
+                    <span className="text-gray-400 italic">準備中</span>
                   )}
                 </dd>
               </div>
@@ -99,7 +125,7 @@ export default function AboutPage() {
                     className="w-full h-full rounded-full object-cover"
                   />
                 ) : (
-                  <span className="text-[0.65rem] tracking-widest text-gray-500 uppercase text-center px-2">
+                  <span className="text-[0.65rem] tracking-widest text-gray-400 uppercase text-center px-2">
                     Photo
                     <br />
                     準備中

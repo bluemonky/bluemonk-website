@@ -76,6 +76,8 @@ export default function BlueMonkey({ size = 200, className = '' }: BlueMonkeyPro
         alt="瞑想する Bluemonky — BLUE MONK CONSULTING のマスコット"
         width={size}
         height={size}
+        // 表示は固定 px。レンダリング幅をブラウザに明示し最適な候補を選ばせる軽微最適化（配置・サイズは不変）。
+        sizes={`${size}px`}
         priority
         draggable={false}
         className="relative object-contain select-none"

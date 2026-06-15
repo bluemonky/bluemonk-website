@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: '研修 | BLUE MONK CONSULTING',
   description:
     'ビジネスリーダーのためのAI活用研修。ChatGPTを中心に、経営判断とチームマネジメントに使える実践的なカリキュラムを提供します。',
+  alternates: { canonical: '/services/training' },
 };
 
 const programs = [
@@ -66,7 +67,7 @@ export default function TrainingPage() {
 
             {/* Future programs placeholder */}
             <div className="glass-card p-6 sm:p-8 border-dashed opacity-60">
-              <p className="text-xs font-medium tracking-[0.2em] text-gray-500 uppercase mb-2">
+              <p className="text-xs font-medium tracking-[0.2em] text-gray-400 uppercase mb-2">
                 More Programs Coming
               </p>
               <p className="text-sm text-gray-400">

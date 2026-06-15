@@ -1,5 +1,6 @@
 import { voice } from '@/data/home';
 import ScrollReveal from './ScrollReveal';
+import SectionCta from './SectionCta';
 
 /**
  * 5. VOICE OF BLUE MONK — マスコットからのメッセージ。
@@ -33,6 +34,11 @@ export default function VoiceSection() {
           <p className="mt-6 text-sm sm:text-base text-gray-400 leading-relaxed">
             {voice.caption}
           </p>
+        </ScrollReveal>
+
+        {/* 行き止まり回避の「次の一歩」CTA（静かにサービスへ） */}
+        <ScrollReveal className="mt-10" delay={240}>
+          <SectionCta href={voice.cta.href} label={voice.cta.label} />
         </ScrollReveal>
       </div>
     </section>

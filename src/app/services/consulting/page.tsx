@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   title: 'コンサルティング | BLUE MONK CONSULTING',
   description:
     'AI活用DX・戦略伴走コンサルティング。経営課題から逆算し、AIをどこにどう使うかを一緒に設計し、実行まで伴走します。',
+  alternates: { canonical: '/services/consulting' },
 };
 
 export default function ConsultingPage() {

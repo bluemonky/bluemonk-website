@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'INSIGHTS | BLUE MONK CONSULTING',
   description:
     'BLUE MONK CONSULTING の思想発信。AI活用・DX・経営に関する記事や動画をお届けします。',
+  alternates: { canonical: '/insights' },
 };
 
 export default function InsightsPage() {

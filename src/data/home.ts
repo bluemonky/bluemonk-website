@@ -41,19 +41,44 @@ export const philosophy = {
 
 /* =========================================================================
  * 3. PROOF（信頼の根拠）
- *  実績数字は実情報が未確定。すべて DRAFT プレースホルダ。
+ *  ダミー数字（00社/000名/00年）は出さない。確定している事実のみで構成する。
+ *  - 事例は src/data/services/training-chatgpt.ts の caseStudies を一次情報とする
+ *    （ここでは TOP 用に短い抜粋へ要約。捏造しない）。
+ *  - facts は確定済みの提供条件・差別化のみ（数値の積み上げはしない）。
  * ========================================================================= */
 export const proof = {
   eyebrow: 'PROOF',
-  // DRAFT: 要確認 — セクション見出し
-  title: '実績が、言葉より雄弁に。',
-  // DRAFT: 要確認 — 実績数字（研修実施社数 / 受講者数 等）。確定値に差し替え。
-  stats: [
-    { value: '00', unit: '社', label: '研修・支援実績', note: '/* DRAFT: 要確認 */' },
-    { value: '000', unit: '名', label: '累計受講者', note: '/* DRAFT: 要確認 */' },
-    { value: '00', unit: '年', label: '経営×技術の実務歴', note: '/* DRAFT: 要確認 */' },
+  // 確定事実ベースの見出し（数値訴求はしない）
+  title: '言葉より、実際の現場で。',
+  lead: '生成AI・ChatGPTの業務活用研修を、実際の中小企業の現場で実施しています。',
+  // 実在事例（training-chatgpt.ts の caseStudies からの抜粋。詳細は研修ページ参照）
+  cases: [
+    {
+      client: '工務店様',
+      location: '兵庫',
+      industry: '建築業',
+      // caseStudies[0] の要約（捏造しない範囲で短縮）
+      summary:
+        '品質管理と社内コミュニケーションの効率化を目的に、生成AI・ChatGPTの業務活用研修を実施。業務プロセスの効率化と社内連携の強化につながりました。',
+      href: '/services/training/chatgpt',
+    },
+    {
+      client: '旅行代理店様',
+      location: '大阪',
+      industry: '旅行関連業',
+      // caseStudies[1] の要約（捏造しない範囲で短縮）
+      summary:
+        'カスタマーサポートの効率化と社内ナレッジ共有を目的に、生成AI・ChatGPTの業務活用研修を実施。応答品質の向上と業務効率化につながりました。',
+      href: '/services/training/chatgpt',
+    },
   ],
-  cta: { label: '事例を見る', href: '/services' },
+  // 確定ファクトのバッジ（数値ではなく、確定している提供条件・差別化）
+  facts: [
+    { label: '助成金活用可', note: '要件を満たせば研修費用に助成金を活用できます' },
+    { label: '初回相談無料', note: '課題整理から、まずはお気軽に' },
+    { label: '経営者 × ITエンジニア × MBA', note: '判断・技術・経営の3視点で伴走' },
+  ],
+  cta: { label: 'フラッグシップ研修を見る', href: '/services/training/chatgpt' },
 } as const;
 
 /* =========================================================================
@@ -65,6 +90,8 @@ export const servicesSection = {
   title: '提供する3つの価値',
   subtitle: '研修を軸に、コンサルティングと開発支援で経営判断から実装までを支えます。',
   cta: { label: 'サービス詳細', href: '/services' },
+  // 研修(primary) カード内の補助CTA。ハブ経由せず1クリックでフラッグシップ研修へ直行。
+  trainingCta: { label: 'フラッグシップ研修を見る', href: '/services/training/chatgpt' },
 } as const;
 
 /* =========================================================================
@@ -76,6 +103,8 @@ export const voice = {
   message: '迷ったら、まず聞いてください。',
   // DRAFT: 要確認 — 補足の一文
   caption: '答えを急がず、問いを一緒に整理するところから。',
+  // 行き止まり回避の「次の一歩」CTA（静かにサービスへ）。
+  cta: { label: 'サービスを見る', href: '/services' },
 } as const;
 
 /* =========================================================================

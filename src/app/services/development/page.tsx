@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   title: '開発支援 | BLUE MONK CONSULTING',
   description:
     'MCP・RAG・生成AIアプリケーションの実装支援。現場の課題に合わせた独自のAIソリューションを、アーキテクチャ設計から運用まで一気通貫で提供します。',
+  alternates: { canonical: '/services/development' },
 };
 
 export default function DevelopmentPage() {

@@ -9,7 +9,7 @@ export default function PageLayout({ children }: Props) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 pt-16 sm:pt-20">{children}</main>
+      <main id="main" className="flex-1 pt-16 sm:pt-20">{children}</main>
       <Footer />
     </div>
   );

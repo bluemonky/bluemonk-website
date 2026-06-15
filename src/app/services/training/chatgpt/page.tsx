@@ -23,11 +23,37 @@ export const metadata: Metadata = {
   title: 'ChatGPT活用研修 | BLUE MONK CONSULTING',
   description:
     '中小企業向け ビジネスリーダーのためのChatGPT活用セミナー。注目の生成系AI ChatGPTの研修を助成金を活用して実施します。経営者×ITエンジニア×MBAの講師が指導する実践的カリキュラム。',
+  alternates: { canonical: '/services/training/chatgpt' },
+};
+
+/**
+ * ChatGPT活用研修の Course JSON-LD。確定情報のみ（捏造なし）:
+ *   研修名・提供元(会社)・言語・確定済みの概要文。
+ * 料金・受講者数・日数などの数値や未確定事実は出さない（offers/hasCourseInstance は付けない）。
+ */
+const courseJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'ChatGPT活用研修',
+  description:
+    '中小企業のビジネスリーダー向けのChatGPT活用セミナー。生成AIの基礎から業務活用・チームマネジメントまでを実践的に学ぶ研修プログラム。',
+  inLanguage: 'ja',
+  url: 'https://www.bluemonk.co.jp/services/training/chatgpt',
+  provider: {
+    '@type': 'Organization',
+    name: 'BLUE MONK CONSULTING',
+    legalName: '株式会社ブルーモンクコンサルティング',
+    url: 'https://www.bluemonk.co.jp/',
+  },
 };
 
 export default function ChatGPTTrainingPage() {
   return (
     <PageLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
       {/* ================================================================== */}
       {/* HERO — ダーク「発光する禅」（TOPトーン: #030b1a / 明朝白抜き / 単点グロー）*/}
       {/* edge-to-edge で固定ヘッダー背後まで伸ばす                            */}
@@ -108,7 +134,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Challenges
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -122,7 +148,7 @@ export default function ChatGPTTrainingPage() {
                   key={i}
                   className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 flex items-start gap-4 hover:border-[#00d4ff]/60 hover:shadow-[0_8px_24px_-14px_rgba(0,212,255,0.45)] transition-all"
                 >
-                  <div className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#0099cc] flex items-center justify-center text-sm font-bold">
+                  <div className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#007399] flex items-center justify-center text-sm font-bold">
                     ?
                   </div>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed">{c.text}</p>
@@ -152,7 +178,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               About
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -177,7 +203,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Target
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -201,7 +227,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Curriculum
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -237,7 +263,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-6xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Features
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -269,7 +295,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Case Study
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -285,7 +311,7 @@ export default function ChatGPTTrainingPage() {
                 >
                   <div className="flex items-baseline justify-between mb-4 pb-4 border-b border-slate-200">
                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900">{cs.client}</h3>
-                    <span className="text-xs font-medium text-[#0099cc] tracking-wider uppercase">
+                    <span className="text-xs font-medium text-[#007399] tracking-wider uppercase">
                       Case {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
@@ -315,7 +341,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-slate-50">
           <div className="max-w-5xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Flow
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -341,7 +367,7 @@ export default function ChatGPTTrainingPage() {
                     {/* Step number badge */}
                     <div className="relative md:w-1/2 flex md:justify-center">
                       <div className="flex items-center gap-4 bg-white border-2 border-[#00d4ff] rounded-2xl px-6 py-3.5 shadow-md">
-                        <span className="text-xs font-bold tracking-widest text-[#0099cc] uppercase">
+                        <span className="text-xs font-bold tracking-widest text-[#007399] uppercase">
                           Step
                         </span>
                         <span className="text-4xl sm:text-5xl font-black text-[#00d4ff] leading-none">
@@ -369,7 +395,7 @@ export default function ChatGPTTrainingPage() {
         {/* ================================================================ */}
         <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-medium tracking-[0.3em] text-[#0099cc] uppercase mb-3 text-center">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#007399] uppercase mb-3 text-center">
               Instructor
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
@@ -384,7 +410,7 @@ export default function ChatGPTTrainingPage() {
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
                   {instructor.name}
                 </h3>
-                <p className="text-sm tracking-[0.2em] text-[#0099cc]">{instructor.nameEn}</p>
+                <p className="text-sm tracking-[0.2em] text-[#007399]">{instructor.nameEn}</p>
               </div>
 
               {/* Career */}
@@ -395,7 +421,7 @@ export default function ChatGPTTrainingPage() {
                 <ul className="space-y-4">
                   {instructor.career.map((c, i) => (
                     <li key={i} className="flex gap-4 sm:gap-6">
-                      <span className="shrink-0 w-20 sm:w-24 text-sm font-bold text-[#0099cc]">
+                      <span className="shrink-0 w-20 sm:w-24 text-sm font-bold text-[#007399]">
                         {c.year}
                       </span>
                       <span className="text-sm text-slate-700 leading-relaxed flex-1">
@@ -408,7 +434,7 @@ export default function ChatGPTTrainingPage() {
 
               {/* Weapon */}
               <div className="bg-gradient-to-br from-cyan-50 to-sky-50 border border-[#00d4ff]/30 rounded-2xl p-6 sm:p-7 text-center">
-                <p className="text-xs font-bold tracking-[0.3em] text-[#0099cc] uppercase mb-3">
+                <p className="text-xs font-bold tracking-[0.3em] text-[#007399] uppercase mb-3">
                   {instructor.weapon.label}
                 </p>
                 <p className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">

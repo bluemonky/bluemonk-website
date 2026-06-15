@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'CONTACT | BLUE MONK CONSULTING',
   description:
     'BLUE MONK CONSULTING へのお問い合わせ。研修・コンサルティング・開発支援に関するご相談はこちらから。',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {

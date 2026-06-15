@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: 'PHILOSOPHY | BLUE MONK CONSULTING',
   description:
     'BLUE MONK CONSULTING の思想。経営者×ITエンジニア×MBAの視点で、論理・内省・共進化を軸に、人とAIが共に進化する世界を描きます。',
+  alternates: { canonical: '/philosophy' },
 };
 
 /**

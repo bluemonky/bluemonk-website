@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'SERVICES | BLUE MONK CONSULTING',
   description:
     'BLUE MONK CONSULTING が提供する3つのサービス - 研修・AI活用DXコンサルティング・開発支援。経営者×エンジニア×MBAの視点で、AIと共に進化する企業をサポートします。',
+  alternates: { canonical: '/services' },
 };
 
 export default function ServicesPage() {

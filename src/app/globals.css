@@ -6,9 +6,22 @@
   --primary: #00d4ff;
   --primary-dark: #0099cc;
   --secondary: #1a3a5c;
+  /* ミント: 「共進化」を示す限定アクセント（多用しない） */
   --accent: #00ffcc;
   --card-bg: rgba(10, 30, 60, 0.8);
   --border-glow: rgba(0, 212, 255, 0.3);
+  /* 闇側の藍階調（深みのトークン）。基調は --background(#030b1a)。
+     背景の微グラデや面の差に使う。 */
+  --ink-900: #02080f; /* 最も深い闇 */
+  --ink-700: #04122b; /* わずかに藍が立つ階調 */
+  /* フォントスタック（runtime var として参照できるよう :root に実体定義する。
+     @theme inline は :root へ変数を出力しないため、body / .serif-display 等の
+     hand-written な var(--font-serif)/var(--font-sans) はここを解決先にする） */
+  --font-sans: var(--font-geist-sans), "Noto Sans JP", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-noto-serif-jp), "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro", "Yu Mincho", "YuMincho", "Shippori Mincho", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 @theme inline {
@@ -18,13 +31,9 @@
   --color-primary-dark: var(--primary-dark);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  /* 本文: Geist(latin) → Noto Sans JP/ヒラギノ角ゴ等(あれば) → system sans。 */
-  --font-sans: var(--font-geist-sans), "Noto Sans JP", "Hiragino Sans",
-    "Hiragino Kaku Gothic ProN", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono);
-  /* 大見出し用の明朝（白抜き）。OS 標準の明朝にフォールバック。 */
-  --font-serif: "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Yu Mincho",
-    "YuMincho", "Noto Serif JP", "Shippori Mincho", serif;
+  /* フォント(--font-sans/serif/mono)は :root に実体定義する。@theme inline には置かない
+     （inline は :root へ変数を出力せず、また自己参照 var(--font-serif) は循環で空になり、
+     body/.serif-display の var(--font-serif) が解決できず sans に落ちるため）。 */
 }
 
 * {
@@ -32,7 +41,15 @@
 }
 
 body {
-  background: var(--background);
+  /* #030b1a 基調 + 上方にごく微かな藍グラデ（全面発光させない・固定背景なし）。
+     深みは闇側の藍階調で出し、光は各セクションの一点グローに委ねる。 */
+  background-color: var(--background);
+  background-image: linear-gradient(
+    180deg,
+    var(--ink-700) 0%,
+    var(--background) 32%,
+    var(--ink-900) 100%
+  );
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
@@ -41,6 +58,11 @@ body {
 /* 大見出し（明朝） */
 .font-serif {
   font-family: var(--font-serif);
+}
+
+/* monospace（@theme から外したぶんを補完。:root の --font-mono を解決） */
+.font-mono {
+  font-family: var(--font-mono);
 }
 
 /* 一貫したシアンの選択・フォーカス表現（発光する禅: 光は一点） */
@@ -55,48 +77,28 @@ body {
   border-radius: 2px;
 }
 
-/* Circuit pattern background */
-.circuit-bg {
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(0, 255, 204, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(0, 150, 255, 0.05) 0%, transparent 70%);
-  background-attachment: fixed;
-}
-
-/* Glowing border effect */
-.glow-border {
+/* =========================================================================
+ * スキップリンク: 通常は視覚的に隠し、キーボードフォーカスで可視化。
+ *  body 直下に <a href="#main"> を置く（#main の付与は本文側の担当）。
+ * ========================================================================= */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--ink-700);
+  color: var(--foreground);
   border: 1px solid var(--border-glow);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  /* フォーカス時に上から滑り込む（reduced-motion 時は下部 @media で即時化） */
+  transition: top 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-/* Primary button style */
-.btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border: 1px solid var(--primary);
-  color: #030b1a;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Cyan glow text */
-.glow-text {
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+.skip-link:focus {
+  top: 1rem;
 }
 
 /* Glass morphism card */
@@ -105,18 +107,6 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 212, 255, 0.2);
   border-radius: 12px;
-}
-
-/* Animation for typing effect */
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.cursor-blink::after {
-  content: '|';
-  animation: blink 1s infinite;
-  color: var(--primary);
 }
 
 /* Smooth scrolling */

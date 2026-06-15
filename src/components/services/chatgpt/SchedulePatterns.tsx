@@ -63,7 +63,7 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
               className={`px-5 sm:px-6 py-2.5 rounded-full text-sm font-semibold transition-all border ${
                 isActive
                   ? 'bg-[#00d4ff] text-white border-[#00d4ff] shadow-md shadow-[#00d4ff]/30'
-                  : 'bg-white text-slate-600 border-slate-300 hover:border-[#00d4ff] hover:text-[#0099cc]'
+                  : 'bg-white text-slate-600 border-slate-300 hover:border-[#00d4ff] hover:text-[#007399]'
               }`}
             >
               {p.label}
@@ -81,7 +81,7 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
         className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-[0_1px_3px_rgba(15,23,42,0.06),0_0_0_1px_rgba(0,212,255,0.04)]"
       >
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 mb-6 pb-4 border-b border-slate-200">
-          <span className="text-xs font-semibold tracking-[0.2em] text-[#0099cc] uppercase">
+          <span className="text-xs font-semibold tracking-[0.2em] text-[#007399] uppercase">
             Schedule
           </span>
           <span className="text-lg sm:text-xl font-bold text-slate-900">{active.label}</span>
@@ -112,7 +112,7 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
                     key={s.lectureNumber}
                     className="flex items-start gap-3 sm:gap-4 py-2.5 px-3 sm:px-4 rounded-lg odd:bg-slate-50/70 hover:bg-cyan-50/60 transition-colors"
                   >
-                    <span className="shrink-0 inline-flex items-center justify-center text-xs font-bold text-[#0099cc] bg-[#00d4ff]/10 rounded-md px-2 py-0.5 mt-0.5 min-w-[44px] tabular-nums">
+                    <span className="shrink-0 inline-flex items-center justify-center text-xs font-bold text-[#007399] bg-[#00d4ff]/10 rounded-md px-2 py-0.5 mt-0.5 min-w-[44px] tabular-nums">
                       第{s.lectureNumber}講
                     </span>
                     <span className="flex-1 text-sm text-slate-800 leading-snug">
