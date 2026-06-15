@@ -119,7 +119,7 @@ export default function HeroSection() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Ask Blue Monkey anything..."
+              placeholder="Ask AOKI anything about DX & AI Strategy"
               className="flex-1 bg-transparent text-white placeholder-gray-400 text-sm sm:text-base outline-none"
               disabled={isLoading}
             />

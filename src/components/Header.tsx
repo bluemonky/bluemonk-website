@@ -1,12 +1,15 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
 const navItems = [
+  { label: 'SERVICES', href: '/services' },
   { label: 'WORKS', href: '/works' },
-  { label: 'ABOUT AOKI', href: '/about' },
-  { label: 'AI DEMO', href: '/demo' },
+  { label: 'ABOUT', href: '/about' },
+  { label: 'INSIGHTS', href: '/insights' },
+  { label: 'PHILOSOPHY', href: '/philosophy' },
 ];
 
 export default function Header() {
@@ -17,23 +20,23 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#00d4ff] flex items-center justify-center bg-[#030b1a] group-hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-shadow">
-              <svg viewBox="0 0 40 40" className="w-6 h-6 sm:w-8 sm:h-8">
-                <circle cx="20" cy="12" r="6" fill="#00d4ff" opacity="0.8"/>
-                <ellipse cx="20" cy="28" rx="12" ry="8" fill="none" stroke="#00d4ff" strokeWidth="2"/>
-                <circle cx="16" cy="10" r="1.5" fill="#030b1a"/>
-                <circle cx="24" cy="10" r="1.5" fill="#030b1a"/>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-bold text-white tracking-wider">BLUE MONK</span>
+          <Link href="/" className="flex items-center gap-3 group" aria-label="BLUE MONK CONSULTING">
+            <Image
+              src="/images/logo/bluemonk-mark.png"
+              alt=""
+              width={516}
+              height={330}
+              priority
+              className="h-10 sm:h-12 w-auto group-hover:drop-shadow-[0_0_12px_rgba(0,212,255,0.6)] transition-all"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="text-base sm:text-lg font-bold text-white tracking-wider">BLUE MONK</span>
               <span className="text-[10px] sm:text-xs text-[#00d4ff] tracking-[0.2em]">CONSULTING</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -46,15 +49,15 @@ export default function Header() {
             ))}
             <Link
               href="/contact"
-              className="btn-primary text-sm"
+              className="text-sm font-medium text-[#00d4ff] border border-[#00d4ff]/50 rounded-full px-4 py-1.5 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
             >
-              CONSULTATION
+              相談する
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-300 hover:text-[#00d4ff] transition-colors"
+            className="lg:hidden p-2 text-gray-300 hover:text-[#00d4ff] transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -70,7 +73,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-[rgba(0,212,255,0.1)]">
+          <nav className="lg:hidden py-4 border-t border-[rgba(0,212,255,0.1)]">
             <div className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
@@ -84,10 +87,10 @@ export default function Header() {
               ))}
               <Link
                 href="/contact"
-                className="btn-primary text-sm text-center mt-2"
+                className="text-sm font-medium text-[#00d4ff] border border-[#00d4ff]/50 rounded-full px-4 py-2 text-center hover:bg-[#00d4ff]/10 transition-all mt-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                CONSULTATION
+                相談する
               </Link>
             </div>
           </nav>
