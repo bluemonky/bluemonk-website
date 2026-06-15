@@ -226,7 +226,7 @@ export default function ChatGPTTrainingPage() {
               Features
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              BLUE MONK の研修の特徴
+              Blue Monk Consulting の研修の特徴
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 

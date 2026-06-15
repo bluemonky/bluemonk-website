@@ -16,7 +16,7 @@ export const hero = {
   // サブ（細字＋シアンの極薄アクセント）
   subhead: '– 共創が生み出す変革と未来 –',
   // 対話UI 入力プレースホルダ（日本語）
-  chatPlaceholder: 'AI活用やDXの悩みを、BLUE MONK に聞いてみる',
+  chatPlaceholder: 'AI活用やDXの悩みを、Bluemonky に聞いてみる',
 } as const;
 
 /* =========================================================================
@@ -29,7 +29,7 @@ export const philosophy = {
   lead: '不確実な時代に、ぶれない判断軸を。',
   // DRAFT: 要確認 — 思想本文の抜粋（/philosophy 確定後に差し替え）
   body:
-    'テクノロジーは目的ではなく、手段にすぎません。BLUE MONK は、論理で課題の本質を見極め、内省で揺るがない軸を持ち、人とAIが共に進化していく道筋を描きます。',
+    'テクノロジーは目的ではなく、手段にすぎません。Blue Monk Consulting は、論理で課題の本質を見極め、内省で揺るがない軸を持ち、人とAIが共に進化していく道筋を描きます。',
   // DRAFT: 要確認 — 思想を象徴する3キーワード（U4 で確定）
   keywords: [
     { term: '論理', reading: 'LOGIC', note: '感情ではなく構造で本質を捉える' },
@@ -71,7 +71,7 @@ export const servicesSection = {
  * 5. VOICE OF BLUE MONK（マスコットからのメッセージ）
  * ========================================================================= */
 export const voice = {
-  eyebrow: 'VOICE OF BLUE MONK',
+  eyebrow: 'VOICE OF Bluemonky',
   // DRAFT: 要確認 — マスコットのメッセージ（トーン確定後に差し替え可）
   message: '迷ったら、まず聞いてください。',
   // DRAFT: 要確認 — 補足の一文

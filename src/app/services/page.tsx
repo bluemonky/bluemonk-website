@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="SERVICES"
         title="3つのサービスで、AIと共に進化する"
-        subtitle="研修・コンサルティング・開発支援。経営判断から実装まで、BLUE MONK は企業のAI活用を一気通貫で支えます。"
+        subtitle="研修・コンサルティング・開発支援。経営判断から実装まで、Blue Monk Consulting は企業のAI活用を一気通貫で支えます。"
       />
 
       <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-20">
@@ -41,7 +41,7 @@ export default function ServicesPage() {
             どのサービスが合うか迷ったら
           </p>
           <p className="text-lg sm:text-xl text-gray-200 mb-6">
-            まずは <span className="text-[#00d4ff]">BLUE MONK</span> に聞いてください。
+            まずは <span className="text-[#00d4ff]">Bluemonky</span> に聞いてください。
           </p>
         </div>
       </section>

@@ -16,6 +16,8 @@
 6. **ChatGPT研修に中級編を移行**（9講義＋時間割3パターン、初級/中級タブ切替）。研修ページは HERO/CTA をダーク化（TOP寄せ）、本文は可読ライト維持。
 7. 全体の**縦余白を圧縮**（py-24/32 → py-12〜20）。TOPと研修ページで密度統一。
 8. **チャットは将来、Mac Mini のローカル Qwen3(Ollama) を Tailscale Funnel 経由で接続**予定（OpenAI互換API・合言葉トークンで保護・コンテンツ注入方式）。現状は Phase1 ダミー応答。
+9. **表記の使い分け**: マスコット = **Bluemonky** / 会社 = **Blue Monk Consulting**（正式名・ロゴ・フッターの `BLUE MONK CONSULTING` は維持）。単独「BLUE MONK」は使わない。
+10. **HERO背景**に `public/images/hero/site-bg.webp`（ダーク・回路＋下部グロー、元 `Webサイト_背景.png` を最適化）を反映。
 
 ## 実装状況
 | ページ | 状態 |

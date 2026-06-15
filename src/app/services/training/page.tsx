@@ -27,7 +27,7 @@ export default function TrainingPage() {
       <PageHero
         eyebrow="TRAINING"
         title="現場で使えるAIスキルを、体系的に。"
-        subtitle="研修は BLUE MONK の主力サービス。経営判断から現場オペレーションまで、AIを使いこなす組織を育てます。"
+        subtitle="研修は Blue Monk Consulting の主力サービス。経営判断から現場オペレーションまで、AIを使いこなす組織を育てます。"
       />
 
       <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">

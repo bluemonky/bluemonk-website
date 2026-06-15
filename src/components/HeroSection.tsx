@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import ChatBubble from './ChatBubble';
 import BlueMonkey, { MonkeyPose } from './BlueMonkey';
 import { hero } from '@/data/home';
@@ -48,9 +49,18 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-28 pb-20"
     >
-      {/* 背景: 光は「一点」。マスコット背後にだけ単点グローを置く（全面発光させない）。 */}
+      {/* 背景: 最適化済み背景画像（下部グロー＋側面回路を内包）。glow-spot は二重発光回避のため廃止。 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="glow-spot left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2 w-[clamp(280px,40vw,560px)] h-[clamp(280px,40vw,560px)]" />
+        <Image
+          src="/images/hero/site-bg.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* 見出し・対話UI・フォームの可読性確保のためのごく薄い暗色オーバーレイ */}
+        <div className="absolute inset-0 bg-[#030b1a]/30" />
       </div>
 
       {/* 主見出し（特大・明朝・白抜き） */}
@@ -92,7 +102,7 @@ export default function HeroSection() {
               />
             </svg>
             <label htmlFor="bluemonk-chat" className="sr-only">
-              BLUE MONK への質問
+              Bluemonky への質問
             </label>
             <input
               id="bluemonk-chat"

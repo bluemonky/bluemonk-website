@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "BLUE MONK CONSULTING | 人とAIと共に進化する企業へ",
   description:
     "人とAIと共に進化する企業へ。共創が生み出す変革と未来。経営者×ITエンジニア×MBAの視点で、研修・コンサルティング・開発支援を通じて企業のAI活用を支えます。",
-  keywords: ["AI活用", "DX", "生成AI研修", "コンサルティング", "BLUE MONK", "共創"],
+  keywords: ["AI活用", "DX", "生成AI研修", "コンサルティング", "Bluemonky", "共創"],
   authors: [{ name: "BLUE MONK CONSULTING" }],
   openGraph: {
     title: "BLUE MONK CONSULTING | 人とAIと共に進化する企業へ",

@@ -15,7 +15,7 @@ export default function InsightsPage() {
       <PageHero
         eyebrow="INSIGHTS"
         title="AI時代の経営を、言葉で。"
-        subtitle="BLUE MONK が発信する AI活用・DX・経営の視点。"
+        subtitle="Blue Monk Consulting が発信する AI活用・DX・経営の視点。"
       />
       <ComingSoon message="記事・動画・Note等の思想発信ページは現在準備中です。" />
     </PageLayout>

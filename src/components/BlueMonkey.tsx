@@ -35,7 +35,7 @@ export default function BlueMonkey({ size = 200, className = '' }: BlueMonkeyPro
       />
       <Image
         src="/images/bluemonkey/blue-monk-zen.webp"
-        alt="瞑想する Blue Monk — BLUE MONK CONSULTING のマスコット"
+        alt="瞑想する Bluemonky — BLUE MONK CONSULTING のマスコット"
         width={size}
         height={size}
         priority
