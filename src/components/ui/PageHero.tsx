@@ -13,7 +13,7 @@ export default function PageHero({ eyebrow, title, subtitle }: Props) {
             {eyebrow}
           </p>
         )}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight gradient-text glow-text mb-6">
+        <h1 className="serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-snug mb-6">
           {title}
         </h1>
         {subtitle && (

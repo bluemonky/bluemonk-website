@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type { SchedulePattern, Lecture } from '@/data/services/training-chatgpt';
 
 type Props = {
@@ -13,9 +13,29 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
   // 選択中の id が現在の patterns に無い場合（レベル切替直後など）は先頭にフォールバック。
   const [activeId, setActiveId] = useState(patterns[0].id);
   const active = patterns.find((p) => p.id === activeId) ?? patterns[0];
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const getLectureTitle = (num: number) =>
     lectures.find((l) => l.number === num)?.title ?? '';
+
+  // WAI-ARIA Tabs: 左右矢印 / Home / End でタブ間をフォーカス移動し選択を切替（roving tabindex）。
+  const handleTabKeyDown = (e: React.KeyboardEvent, index: number) => {
+    let next = index;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      next = (index + 1) % patterns.length;
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      next = (index - 1 + patterns.length) % patterns.length;
+    } else if (e.key === 'Home') {
+      next = 0;
+    } else if (e.key === 'End') {
+      next = patterns.length - 1;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    setActiveId(patterns[next].id);
+    tabRefs.current[next]?.focus();
+  };
 
   return (
     <div>
@@ -23,17 +43,23 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
       <div
         role="tablist"
         aria-label="時間割パターン"
+        aria-orientation="horizontal"
         className="flex flex-wrap gap-2 sm:gap-3 mb-8 justify-center"
       >
-        {patterns.map((p) => {
+        {patterns.map((p, index) => {
           const isActive = p.id === activeId;
           return (
             <button
               key={p.id}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
               role="tab"
               aria-selected={isActive}
               aria-controls="schedule-panel"
+              tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveId(p.id)}
+              onKeyDown={(e) => handleTabKeyDown(e, index)}
               className={`px-5 sm:px-6 py-2.5 rounded-full text-sm font-semibold transition-all border ${
                 isActive
                   ? 'bg-[#00d4ff] text-white border-[#00d4ff] shadow-md shadow-[#00d4ff]/30'
@@ -50,6 +76,8 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
       <div
         id="schedule-panel"
         role="tabpanel"
+        aria-label={`時間割: ${active.label}`}
+        tabIndex={0}
         className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-[0_1px_3px_rgba(15,23,42,0.06),0_0_0_1px_rgba(0,212,255,0.04)]"
       >
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2 mb-6 pb-4 border-b border-slate-200">

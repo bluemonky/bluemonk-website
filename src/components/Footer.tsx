@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[rgba(0,212,255,0.1)] bg-[#030b1a]/50 backdrop-blur-sm">
+    <footer className="relative border-t border-[rgba(0,212,255,0.1)] bg-[#030b1a]/50 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Copyright */}
@@ -25,7 +25,7 @@ export default function Footer() {
       </div>
 
       {/* Decorative star */}
-      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8">
+      <div className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8" aria-hidden="true">
         <svg className="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21 8 14l-6-4.6h7.6z"/>
         </svg>

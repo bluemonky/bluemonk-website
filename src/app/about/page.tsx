@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
-import ComingSoon from '@/components/ui/ComingSoon';
+import {
+  companyIntro,
+  companyInfo,
+  profile,
+  philosophyLink,
+} from '@/data/about';
 
 export const metadata: Metadata = {
   title: 'ABOUT | BLUE MONK CONSULTING',
@@ -17,7 +23,176 @@ export default function AboutPage() {
         title="株式会社ブルーモンクコンサルティング"
         subtitle="経営者 × ITエンジニア × MBA — 3つの経験が生み出す実行力で、企業のAI活用を支えます。"
       />
-      <ComingSoon message="会社情報と代表者プロフィールの詳細ページは現在準備中です。" />
+
+      {/* ========================================================== */}
+      {/* 会社概要 */}
+      {/* ========================================================== */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
+            {companyIntro.eyebrow}
+          </p>
+          <h2 className="serif-display text-2xl sm:text-3xl font-semibold text-white mb-6 flex items-center gap-3">
+            <span className="w-8 h-px bg-[#00d4ff]" aria-hidden="true" />
+            {companyIntro.heading}
+          </h2>
+          <p className="text-base text-gray-300 leading-relaxed mb-10">
+            {companyIntro.lead}
+          </p>
+
+          <dl className="glass-card divide-y divide-white/10">
+            {companyInfo.map((item) => (
+              <div
+                key={item.label}
+                className="flex flex-col sm:flex-row gap-1 sm:gap-6 px-5 sm:px-7 py-4"
+              >
+                <dt className="sm:w-40 sm:flex-shrink-0 text-sm font-medium text-[#00d4ff] tracking-wide">
+                  {item.label}
+                </dt>
+                <dd className="flex-1 text-sm sm:text-base text-gray-200 leading-relaxed break-words">
+                  {item.value ?? (
+                    <span className="text-gray-500 italic">準備中</span>
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* ========================================================== */}
+      {/* 代表プロフィール */}
+      {/* ========================================================== */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
+            {profile.eyebrow}
+          </p>
+          <h2 className="serif-display text-2xl sm:text-3xl font-semibold text-white mb-8 flex items-center gap-3">
+            <span className="w-8 h-px bg-[#00d4ff]" aria-hidden="true" />
+            {profile.heading}
+          </h2>
+
+          <div className="glass-card p-6 sm:p-8 lg:p-10">
+            {/* 名前 + 写真 */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+              {/* 顔写真プレースホルダ枠（未配置） */}
+              <div
+                className="w-28 h-28 sm:w-32 sm:h-32 flex-shrink-0 rounded-full border border-[#00d4ff]/30 bg-[#00d4ff]/5 flex items-center justify-center"
+                aria-label="代表写真（準備中）"
+              >
+                {profile.photo.src ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={profile.photo.src}
+                    alt={profile.photo.alt}
+                    className="w-full h-full rounded-full object-cover"
+                  />
+                ) : (
+                  <span className="text-[0.65rem] tracking-widest text-gray-500 uppercase text-center px-2">
+                    Photo
+                    <br />
+                    準備中
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                  {profile.name}
+                </h3>
+                <p className="text-sm tracking-[0.2em] text-gray-400 uppercase mt-1">
+                  {profile.nameEn}
+                </p>
+                <p className="text-sm text-[#00d4ff] mt-3 leading-relaxed">
+                  {profile.title}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-base text-gray-300 leading-relaxed mb-10">
+              {profile.lead}
+            </p>
+
+            {/* 武器: 経営者 × ITエンジニア × MBA */}
+            <div className="mb-10">
+              <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-3">
+                {profile.weapon.label}
+              </p>
+              <p className="text-xl sm:text-2xl font-bold text-white leading-snug">
+                {profile.weapon.headline}
+              </p>
+              <p className="text-sm text-gray-400 mt-1 mb-6">
+                {profile.weapon.description}
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {profile.weapon.pillars.map((pillar) => (
+                  <div
+                    key={pillar.title}
+                    className="rounded-lg border border-white/10 bg-white/[0.02] p-4"
+                  >
+                    <p className="text-sm font-semibold text-[#00d4ff] mb-2">
+                      {pillar.title}
+                    </p>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 経歴年表 */}
+            <div>
+              <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-5">
+                Career
+              </p>
+              <ol className="relative border-l border-white/10 ml-2">
+                {profile.career.map((item) => (
+                  <li key={item.year} className="relative pl-6 pb-6 last:pb-0">
+                    <span
+                      className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#00d4ff]"
+                      aria-hidden="true"
+                    />
+                    <p className="text-sm font-semibold text-white">{item.year}</p>
+                    <p className="text-sm text-gray-400 leading-relaxed mt-0.5">
+                      {item.description}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================== */}
+      {/* 思想への導線 */}
+      {/* ========================================================== */}
+      <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+        <div className="max-w-3xl mx-auto">
+          <Link
+            href={philosophyLink.cta.href}
+            className="group glass-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-4 transition-all hover:border-[#00d4ff]/60 hover:-translate-y-1"
+          >
+            <div className="flex-1">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                {philosophyLink.heading}
+              </h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                {philosophyLink.description}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-[#00d4ff] group-hover:gap-3 transition-all sm:flex-shrink-0">
+              <span>{philosophyLink.cta.label}</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </Link>
+        </div>
+      </section>
     </PageLayout>
   );
 }

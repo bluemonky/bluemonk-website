@@ -21,13 +21,15 @@ export default function ContactSection() {
         />
 
         <ScrollReveal className="mt-8 flex flex-col items-center gap-4" delay={120}>
-          {/* 主導線: mailto（控えめなアウトラインボタン） */}
+          {/* 主導線: mailto（控えめなアウトラインボタン）。
+              メールアドレス全文は出さず「メールで相談する」ラベルにし、モバイルでの折返し崩れを防ぐ。 */}
           <a
             href={`mailto:${contact.email}`}
-            className="inline-flex items-center gap-2 text-sm sm:text-base text-[#00d4ff] border border-[#00d4ff]/40 rounded-full px-6 py-2.5 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
+            aria-label={`メールで相談する（${contact.email}）`}
+            className="inline-flex items-center justify-center gap-2 text-sm sm:text-base text-[#00d4ff] border border-[#00d4ff]/40 rounded-full px-6 py-2.5 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
           >
             <svg
-              className="w-4 h-4"
+              className="w-4 h-4 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -40,7 +42,7 @@ export default function ContactSection() {
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
               />
             </svg>
-            {contact.email}
+            メールで相談する
           </a>
 
           {/* 副導線: 問い合わせページへの静かなリンク */}

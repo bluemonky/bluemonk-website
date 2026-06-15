@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 
 const navItems = [
   { label: 'SERVICES', href: '/services' },
@@ -12,8 +13,37 @@ const navItems = [
   { label: 'PHILOSOPHY', href: '/philosophy' },
 ];
 
+/** 現在地判定: 完全一致、または下層ページ（href 配下）を現在地とみなす。 */
+function isActivePath(pathname: string, href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname() ?? '';
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  // Esc で閉じる（開いているときのみ）。
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
+
+  // 開いたら最初のリンクへフォーカスを移す。
+  useEffect(() => {
+    if (isMenuOpen) firstMenuLinkRef.current?.focus();
+  }, [isMenuOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#030b1a]/80 backdrop-blur-md border-b border-[rgba(0,212,255,0.1)]">
@@ -36,19 +66,30 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-gray-300 hover:text-[#00d4ff] transition-colors relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00d4ff] group-hover:w-full transition-all duration-300" />
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-6" aria-label="メインナビゲーション">
+            {navItems.map((item) => {
+              const active = isActivePath(pathname, item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={`text-sm font-medium transition-colors relative group ${
+                    active ? 'text-[#00d4ff]' : 'text-gray-300 hover:text-[#00d4ff]'
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-[#00d4ff] transition-all duration-300 ${
+                      active ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
+                </Link>
+              );
+            })}
             <Link
               href="/contact"
+              aria-current={isActivePath(pathname, '/contact') ? 'page' : undefined}
               className="text-sm font-medium text-[#00d4ff] border border-[#00d4ff]/50 rounded-full px-4 py-1.5 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
             >
               相談する
@@ -57,9 +98,12 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
             className="lg:hidden p-2 text-gray-300 hover:text-[#00d4ff] transition-colors"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMenuOpen ? (
@@ -73,22 +117,34 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-[rgba(0,212,255,0.1)]">
+          <nav
+            id="mobile-nav"
+            className="lg:hidden py-4 border-t border-[rgba(0,212,255,0.1)]"
+            aria-label="メインナビゲーション"
+          >
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm font-medium text-gray-300 hover:text-[#00d4ff] transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item, index) => {
+                const active = isActivePath(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    ref={index === 0 ? firstMenuLinkRef : undefined}
+                    href={item.href}
+                    aria-current={active ? 'page' : undefined}
+                    className={`text-sm font-medium transition-colors py-2 ${
+                      active ? 'text-[#00d4ff]' : 'text-gray-300 hover:text-[#00d4ff]'
+                    }`}
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
               <Link
                 href="/contact"
+                aria-current={isActivePath(pathname, '/contact') ? 'page' : undefined}
                 className="text-sm font-medium text-[#00d4ff] border border-[#00d4ff]/50 rounded-full px-4 py-2 text-center hover:bg-[#00d4ff]/10 transition-all mt-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 相談する
               </Link>
