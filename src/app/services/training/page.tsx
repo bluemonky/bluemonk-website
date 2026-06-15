@@ -32,8 +32,8 @@ export default function TrainingPage() {
 
       <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl sm:text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <span className="w-8 h-px bg-[#00d4ff]" />
+          <h2 className="serif-display text-xl sm:text-2xl font-semibold mb-8 flex items-center gap-3">
+            <span className="w-8 h-px bg-[#00d4ff]" aria-hidden="true" />
             研修プログラム一覧
           </h2>
 
@@ -42,22 +42,24 @@ export default function TrainingPage() {
               <Link
                 key={p.slug}
                 href={p.href}
-                className="group glass-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6 transition-all hover:border-[#00d4ff]/60 hover:-translate-y-1"
+                className="group card-interactive glass-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6"
               >
-                <div className="flex-1">
-                  <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-2">
-                    {p.eyebrow}
-                  </p>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{p.title}</h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    {p.description}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-[#00d4ff] group-hover:gap-3 transition-all sm:flex-shrink-0">
-                  <span>詳細を見る</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 w-full">
+                  <div className="flex-1">
+                    <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-2">
+                      {p.eyebrow}
+                    </p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{p.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                      {p.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-[#00d4ff] group-hover:gap-3 transition-all sm:flex-shrink-0">
+                    <span>詳細を見る</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
                 </div>
               </Link>
             ))}

@@ -49,7 +49,7 @@ export default function ConsultingPage() {
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               {intro.eyebrow}
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-white text-center mb-8 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl font-semibold text-center mb-8 leading-snug">
               {intro.title}
             </h2>
             <div className="glass-card p-7 sm:p-9">
@@ -68,12 +68,12 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* CHALLENGES                                                      */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
           <div className="max-w-5xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Challenges
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center mb-3 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {challengesTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-10 rounded-full" />
@@ -82,7 +82,7 @@ export default function ConsultingPage() {
               {challenges.map((c, i) => (
                 <div
                   key={i}
-                  className="glass-card p-5 sm:p-6 flex items-start gap-4 transition-all hover:border-[#00d4ff]/60"
+                  className="glass-card p-5 sm:p-6 flex items-start gap-4 transition-all duration-300 hover:border-[#00d4ff]/55 hover:shadow-[0_10px_30px_-18px_rgba(0,212,255,0.5)]"
                 >
                   <span
                     className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] flex items-center justify-center text-sm font-bold border border-[#00d4ff]/30"
@@ -107,31 +107,30 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* VALUE PROPOSITIONS                                              */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
           <div className="max-w-6xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Value
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center mb-3 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {valuePropsTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-10 rounded-full" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               {valueProps.map((v, i) => (
-                <div
-                  key={i}
-                  className="glass-card p-6 sm:p-7 transition-all hover:border-[#00d4ff]/60 hover:-translate-y-1"
-                >
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/30 text-[#00d4ff] font-black text-base mb-5">
-                    {String(i + 1).padStart(2, '0')}
+                <div key={i} className="card-interactive glass-card p-6 sm:p-7">
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#00d4ff]/10 border border-[#00d4ff]/30 text-[#00d4ff] font-black text-base mb-5">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-snug">
+                      {v.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                      {v.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3 leading-snug">
-                    {v.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    {v.description}
-                  </p>
                 </div>
               ))}
             </div>
@@ -141,12 +140,12 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* PROCESS                                                         */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
           <div className="max-w-4xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Process
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center mb-3 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {processTitle}
             </h2>
             <p className="text-sm sm:text-base text-gray-400 text-center max-w-2xl mx-auto mb-10">
@@ -181,12 +180,12 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* OUTPUTS                                                         */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
           <div className="max-w-5xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Output
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center mb-3 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {outputsTitle}
             </h2>
             <p className="text-sm sm:text-base text-gray-400 text-center max-w-2xl mx-auto mb-10">
@@ -225,12 +224,12 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* TARGET                                                          */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
           <div className="max-w-3xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Target
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-white text-center mb-3 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {targetTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-10 rounded-full" />
@@ -254,7 +253,7 @@ export default function ConsultingPage() {
             <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-4">
               {closingCta.eyebrow}
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-white mb-4 leading-snug">
+            <h2 className="serif-display text-2xl sm:text-3xl font-semibold mb-4 leading-snug">
               {closingCta.title}
             </h2>
             <p className="text-base text-gray-300 mb-9 leading-relaxed max-w-xl mx-auto">

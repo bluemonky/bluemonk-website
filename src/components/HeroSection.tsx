@@ -1,10 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import ChatBubble from './ChatBubble';
 import BlueMonkey, { MonkeyPose } from './BlueMonkey';
 import { hero } from '@/data/home';
+
+/**
+ * 対話UIのサジェスト（質問例）。クリックで入力欄に挿入するだけのダミー導線。
+ * バックエンドは変えず Phase1 のダミー応答を維持する（送信は利用者操作に委ねる）。
+ */
+const SUGGESTIONS = [
+  '研修とコンサルの違いは？',
+  'ChatGPT研修の進め方は？',
+  '何から始めればいい？',
+] as const;
 
 /**
  * 対話UIの状態。Phase2 で API 連携に差し替える際、この型を軸に
@@ -30,8 +40,16 @@ export default function HeroSection() {
   const [status, setStatus] = useState<ChatStatus>('idle');
   const [response, setResponse] = useState<string | null>(null);
   const [monkeyPose, setMonkeyPose] = useState<MonkeyPose>('meditate');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const isLoading = status === 'loading';
+
+  // サジェストチップ: 質問例を入力欄に挿入してフォーカスを戻す（送信は利用者に委ねる）。
+  const handleSuggestion = (text: string) => {
+    if (isLoading) return;
+    setQuery(text);
+    inputRef.current?.focus();
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,11 +105,15 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#030b1a]/55 via-[#030b1a]/35 to-[#030b1a]/60" />
       </div>
 
-      {/* 主見出し（特大・明朝・白抜き）。明部でのコントラスト確保に暗色影を重ねる。 */}
+      {/* 主見出し（特大・明朝・白抜き）。明部でのコントラスト確保に暗色影を重ねる。
+          LCP 対象のテキスト見出し。入場は opacity/transform のみで内容描画を妨げない。 */}
       <h1 className="relative text-center mb-3 sm:mb-4 tracking-tight">
         <span
-          className="serif-display block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.25]"
-          style={{ textShadow: '0 2px 24px rgba(3,11,26,0.8), 0 0 30px rgba(0,212,255,0.25)' }}
+          className="serif-display hero-in block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.28] tracking-[0.01em]"
+          style={{
+            textShadow: '0 2px 24px rgba(3,11,26,0.8), 0 0 30px rgba(0,212,255,0.25)',
+            ['--hero-delay' as string]: '80ms',
+          }}
         >
           {hero.headline}
         </span>
@@ -99,14 +121,20 @@ export default function HeroSection() {
 
       {/* サブ（細字 + シアンの極薄アクセント。明部でも読めるよう影を付与） */}
       <p
-        className="relative font-serif text-sm sm:text-base md:text-lg font-normal tracking-[0.25em] text-[#aee9ff] text-center mb-12 sm:mb-16"
-        style={{ textShadow: '0 1px 12px rgba(3,11,26,0.85)' }}
+        className="hero-in relative font-serif text-sm sm:text-base md:text-lg font-normal tracking-[0.28em] text-[#aee9ff] text-center mb-12 sm:mb-16"
+        style={{
+          textShadow: '0 1px 12px rgba(3,11,26,0.85)',
+          ['--hero-delay' as string]: '320ms',
+        }}
       >
         {hero.subhead}
       </p>
 
       {/* BLUE MONK 対話UI（マスコット）。狭幅では応答を縦にスタック。 */}
-      <div className="relative mb-10 flex flex-col sm:flex-row items-center justify-center">
+      <div
+        className="hero-in relative mb-10 flex flex-col sm:flex-row items-center justify-center"
+        style={{ ['--hero-delay' as string]: '520ms' }}
+      >
         <BlueMonkey pose={monkeyPose} size={260} className="sm:scale-100 scale-90" />
 
         {/* 応答があるときだけチャットバブルを表示 */}
@@ -114,8 +142,12 @@ export default function HeroSection() {
       </div>
 
       {/* 入力バー（マスコットと一体の対話UI） */}
-      <form onSubmit={handleSubmit} className="relative w-full max-w-2xl px-4">
-        <div className="relative glow-border rounded-full bg-[#0a1e3c]/70 backdrop-blur-sm">
+      <form
+        onSubmit={handleSubmit}
+        className="hero-in relative w-full max-w-2xl px-4"
+        style={{ ['--hero-delay' as string]: '720ms' }}
+      >
+        <div className="chat-shell relative rounded-full bg-[#0a1e3c]/70 backdrop-blur-sm">
           <div className="flex items-center px-4 sm:px-6 py-3 sm:py-4">
             <svg
               className="w-5 h-5 sm:w-6 sm:h-6 text-[#00d4ff] mr-3 flex-shrink-0"
@@ -135,6 +167,7 @@ export default function HeroSection() {
               Bluemonky への質問
             </label>
             <input
+              ref={inputRef}
               id="bluemonk-chat"
               type="text"
               value={query}
@@ -169,6 +202,23 @@ export default function HeroSection() {
           </div>
         </div>
 
+        {/* サジェストチップ（質問例）— クリックで入力欄に挿入するダミー導線。
+            応答が出ている間／読み込み中は隠して、対話の邪魔をしない。 */}
+        {status === 'idle' && !response && (
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+            {SUGGESTIONS.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => handleSuggestion(s)}
+                className="chat-chip rounded-full px-3.5 py-1.5 text-xs sm:text-[13px]"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/*
           対話UIの状態スロット（loading / error / complete）。
           Phase2 の API 差し替え時もこの領域に状態を出し分ける構造を維持する。
@@ -182,7 +232,15 @@ export default function HeroSection() {
           className="mt-3 min-h-[1.5rem] text-center text-sm"
         >
           {status === 'loading' && (
-            <span className="text-[#7fdfff]">Bluemonky が考えています…</span>
+            <span className="inline-flex items-center gap-2 text-[#7fdfff]">
+              Bluemonky が考えています
+              {/* 上質な「考え中」のドット（reduced-motion 時は globals の上書きで静止） */}
+              <span className="inline-flex gap-1" aria-hidden="true">
+                <span className="h-1 w-1 rounded-full bg-[#7fdfff] animate-pulse [animation-delay:0ms]" />
+                <span className="h-1 w-1 rounded-full bg-[#7fdfff] animate-pulse [animation-delay:200ms]" />
+                <span className="h-1 w-1 rounded-full bg-[#7fdfff] animate-pulse [animation-delay:400ms]" />
+              </span>
+            </span>
           )}
           {status === 'error' && (
             <span className="inline-flex items-center gap-2 text-red-300">
@@ -198,13 +256,17 @@ export default function HeroSection() {
           )}
         </div>
 
-        {/* スクロール誘導（控えめ・明部でも読めるよう影を付与） */}
-        <p
-          className="mt-6 text-center text-xs tracking-[0.3em] text-gray-300 uppercase"
-          style={{ textShadow: '0 1px 8px rgba(3,11,26,0.85)' }}
-        >
-          Scroll
-        </p>
+        {/* スクロール誘導（控えめ・明部でも読めるよう影を付与）。
+            一筋の光が静かに降りるキューを添える（reduced-motion 時は静止）。 */}
+        <div className="mt-8 flex flex-col items-center gap-2" aria-hidden="true">
+          <span
+            className="text-xs tracking-[0.3em] text-gray-300 uppercase"
+            style={{ textShadow: '0 1px 8px rgba(3,11,26,0.85)' }}
+          >
+            Scroll
+          </span>
+          <span className="scroll-cue-line" />
+        </div>
       </form>
     </section>
   );

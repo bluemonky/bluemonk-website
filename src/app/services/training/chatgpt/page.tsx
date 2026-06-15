@@ -52,21 +52,36 @@ export default function ChatGPTTrainingPage() {
 
         <div className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="inline-block text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-6">
+            <p
+              className="hero-in inline-block text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-6"
+              style={{ '--hero-delay': '60ms' } as React.CSSProperties}
+            >
               {hero.eyebrow}
             </p>
-            <h1 className="serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6 leading-[1.3] whitespace-pre-line">
+            <h1
+              className="hero-in serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-6 leading-[1.3] whitespace-pre-line"
+              style={{ '--hero-delay': '160ms' } as React.CSSProperties}
+            >
               {hero.title}
             </h1>
-            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-4 leading-relaxed">
+            <p
+              className="hero-in text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-4 leading-relaxed"
+              style={{ '--hero-delay': '300ms' } as React.CSSProperties}
+            >
               {hero.subtitle}
             </p>
             {/* 助成金訴求（控えめなシアンの一点） */}
-            <p className="inline-flex items-center gap-2 text-sm text-[#7fdfff]/90 border border-[#00d4ff]/30 rounded-full px-4 py-1.5 mb-10 bg-[#00d4ff]/[0.06]">
+            <p
+              className="hero-in inline-flex items-center gap-2 text-sm text-[#7fdfff]/90 border border-[#00d4ff]/30 rounded-full px-4 py-1.5 mb-10 bg-[#00d4ff]/[0.06]"
+              style={{ '--hero-delay': '420ms' } as React.CSSProperties}
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-[#00ffcc]" aria-hidden="true" />
               {hero.subsidy}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div
+              className="hero-in flex flex-col sm:flex-row gap-4 justify-center items-center"
+              style={{ '--hero-delay': '520ms' } as React.CSSProperties}
+            >
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-4 rounded-full hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
@@ -80,8 +95,8 @@ export default function ChatGPTTrainingPage() {
           </div>
         </div>
 
-        {/* ダーク → ライトへの境界をなめらかに */}
-        <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-b from-transparent to-white pointer-events-none" aria-hidden="true" />
+        {/* ダーク → ライト(slate-50)への境界をなめらかに（最初の本文セクションの地色に着地） */}
+        <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-b from-transparent to-slate-50 pointer-events-none" aria-hidden="true" />
       </section>
 
       {/* ================================================================== */}
@@ -410,6 +425,8 @@ export default function ChatGPTTrainingPage() {
       {/* CTA — ダーク「発光する禅」（HEROと対のブックエンド）                  */}
       {/* ================================================================== */}
       <section className="relative overflow-hidden bg-[#030b1a] text-[#e0e7f1]">
+        {/* 上端に一筋のシアンのヘアライン（ライト本文 → ダーク CTA の品位ある境界） */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00d4ff]/40 to-transparent pointer-events-none" aria-hidden="true" />
         {/* 単点グロー */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
           <div className="glow-spot left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[clamp(280px,38vw,520px)] h-[clamp(280px,38vw,520px)]" />

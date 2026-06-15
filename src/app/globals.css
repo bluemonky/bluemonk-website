@@ -161,19 +161,29 @@ html {
 /* =========================================================================
  * 発光する禅: スクロールリビール（ゆっくりフェードイン・派手なバウンス禁止）
  *  .reveal を初期状態、.is-visible で表示。JS(ScrollReveal)が is-visible を付与。
+ *  上質さの核は「方向 + 微ブラー(2px→0) + 上品なイージング」。バウンスはしない。
  * ========================================================================= */
 .reveal {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(22px);
+  filter: blur(2px);
+  /* 余白で語る上質なイージング（行末で静かに着地） */
   transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-  will-change: opacity, transform;
+    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform, filter;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  filter: blur(0);
+}
+
+/* will-change の常駐コストを抑える: 着地後はブラウザに最適化解除を許可 */
+.reveal.is-visible {
+  will-change: auto;
 }
 
 /* =========================================================================
@@ -199,16 +209,182 @@ html {
   text-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
 }
 
-/* prefers-reduced-motion: モーションを無効化（アクセシビリティ必須対応） */
+/* =========================================================================
+ * HERO 入場の振り付け（初回のみ・短時間・上品なイージング）
+ *  各要素に .hero-in と --hero-delay を付け、fade-up + 微ブラーで順次着地。
+ *  「光は一点」: 派手に動かさず、静けさの中で要素が立ち上がる。
+ *  reduced-motion 時は下部の @media で即時表示に上書き。
+ * ========================================================================= */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-in {
+  opacity: 0;
+  animation: hero-rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--hero-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+/* =========================================================================
+ * 入力バー（対話UI）— 生きている質感: フォーカスでシアンが内側から灯る
+ *  通常は控えめ、フォーカス時のみ「一点の光」を強める。
+ * ========================================================================= */
+.chat-shell {
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  box-shadow:
+    0 0 0 0 rgba(0, 212, 255, 0),
+    0 8px 30px rgba(0, 0, 0, 0.35),
+    inset 0 0 18px rgba(0, 212, 255, 0.04);
+  transition:
+    border-color 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* :focus-within で入力中の発光を一段強める（フォーカスリングは別途 a11y で担保） */
+.chat-shell:focus-within {
+  border-color: rgba(0, 212, 255, 0.7);
+  box-shadow:
+    0 0 26px rgba(0, 212, 255, 0.28),
+    0 8px 34px rgba(0, 0, 0, 0.4),
+    inset 0 0 22px rgba(0, 212, 255, 0.08);
+}
+
+/* サジェストチップ（質問例）— 触れると枠が静かに灯る */
+.chat-chip {
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  color: #aee9ff;
+  background: rgba(10, 30, 60, 0.4);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.chat-chip:hover {
+  border-color: rgba(0, 212, 255, 0.6);
+  color: #ffffff;
+  background: rgba(0, 212, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* =========================================================================
+ * マイクロインタラクション: ガラスカードの hover
+ *  数px lift + 枠のシアン微グロー + 内側ハイライトの一筋 sweep（一回・控えめ）。
+ *  全面発光させない。光は縁と内側の一点に絞る。
+ * ========================================================================= */
+.card-interactive {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* 内側ハイライトの sweep（疑似要素・通常は不可視。hover で一筋だけ流れる） */
+.card-interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(0, 212, 255, 0.07) 48%,
+    rgba(0, 255, 204, 0.05) 52%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.55);
+  box-shadow:
+    0 0 24px rgba(0, 212, 255, 0.18),
+    0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.card-interactive:hover::after,
+.card-interactive:focus-visible::after {
+  opacity: 1;
+  transform: translateX(120%);
+}
+
+/* スクロールキュー: 静かに上下する一筋の光（控えめ・常駐） */
+@keyframes scroll-cue {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.scroll-cue-line {
+  display: inline-block;
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 212, 255, 0.7) 50%,
+    transparent
+  );
+  animation: scroll-cue 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+/* prefers-reduced-motion: 全アニメを無効/即時表示（アクセシビリティ必須対応） */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
+  /* スクロールリビールは即時表示（ブラーも無効） */
   .reveal {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
+  }
+
+  /* HERO 入場の振り付けを無効化し、最初から定位置・不透明で表示 */
+  .hero-in {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+
+  /* スクロールキューの常駐アニメを停止（静止表示） */
+  .scroll-cue-line {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  /* カード hover の sweep は出さない（lift 等の transition も即時化） */
+  .card-interactive::after {
+    display: none;
   }
 
   *,

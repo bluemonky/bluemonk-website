@@ -18,6 +18,8 @@
 8. チャットは将来 Mac Mini ローカル **Qwen3(Ollama)＋Tailscale Funnel**（合言葉＋コンテンツ注入）。現状ダミー応答。
 9. **自律仕上げパス(2026-06-16)**: 空ページを全実装（about=実経歴流用／philosophy・consulting・development=たたき台／legal=ひな型／insights=予告体裁）。技術/SEO/a11y強化（metadataBase・robots.ts・sitemap.ts・themeColor・OG画像・Header現在地表示・モバイルメニューa11y・チャットaria-live＋モバイル配置修正・マスコット微アニメ・PageHero明朝統一）。
 
+10. **クラフト向上パス(2026-06-16)**: 「妥協なく最高」へ。HERO入場の振り付け・上質なスクロール演出(translateY+blur)・カードのマイクロインタラクション(縁グロー＋lift＋sweep)・対話UIの発光＋サジェストチップ・タイポ/余白の精緻化を、品位優先（過剰演出禁止・reduced-motion厳守）で全ページに適用。
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|

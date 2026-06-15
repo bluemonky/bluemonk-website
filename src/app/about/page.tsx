@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
+import ScrollReveal from '@/components/home/ScrollReveal';
 import {
   companyIntro,
   companyInfo,
@@ -18,21 +19,30 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <PageLayout>
-      <PageHero
-        eyebrow="ABOUT"
-        title="株式会社ブルーモンクコンサルティング"
-        subtitle="経営者 × ITエンジニア × MBA — 3つの経験が生み出す実行力で、企業のAI活用を支えます。"
-      />
+      {/* 単点グロー（全面発光させない。HERO 背後に一点だけ） */}
+      <div
+        className="absolute inset-x-0 top-0 h-[520px] overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="glow-spot left-1/2 top-[34%] -translate-x-1/2 -translate-y-1/2 w-[clamp(280px,42vw,560px)] h-[clamp(280px,42vw,560px)]" />
+      </div>
 
-      {/* ========================================================== */}
-      {/* 会社概要 */}
-      {/* ========================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
-        <div className="max-w-3xl mx-auto">
+      <div className="relative">
+        <PageHero
+          eyebrow="ABOUT"
+          title="株式会社ブルーモンクコンサルティング"
+          subtitle="経営者 × ITエンジニア × MBA — 3つの経験が生み出す実行力で、企業のAI活用を支えます。"
+        />
+
+        {/* ========================================================== */}
+        {/* 会社概要 */}
+        {/* ========================================================== */}
+        <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
+        <ScrollReveal className="max-w-3xl mx-auto" as="div">
           <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
             {companyIntro.eyebrow}
           </p>
-          <h2 className="serif-display text-2xl sm:text-3xl font-semibold text-white mb-6 flex items-center gap-3">
+          <h2 className="serif-display text-2xl sm:text-3xl font-semibold mb-6 flex items-center gap-3">
             <span className="w-8 h-px bg-[#00d4ff]" aria-hidden="true" />
             {companyIntro.heading}
           </h2>
@@ -57,18 +67,18 @@ export default function AboutPage() {
               </div>
             ))}
           </dl>
-        </div>
-      </section>
+        </ScrollReveal>
+        </section>
 
-      {/* ========================================================== */}
-      {/* 代表プロフィール */}
-      {/* ========================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
-        <div className="max-w-4xl mx-auto">
+        {/* ========================================================== */}
+        {/* 代表プロフィール */}
+        {/* ========================================================== */}
+        <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 border-t border-[rgba(0,212,255,0.08)] pt-16 lg:pt-24">
+        <ScrollReveal className="max-w-4xl mx-auto" as="div">
           <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
             {profile.eyebrow}
           </p>
-          <h2 className="serif-display text-2xl sm:text-3xl font-semibold text-white mb-8 flex items-center gap-3">
+          <h2 className="serif-display text-2xl sm:text-3xl font-semibold mb-8 flex items-center gap-3">
             <span className="w-8 h-px bg-[#00d4ff]" aria-hidden="true" />
             {profile.heading}
           </h2>
@@ -164,35 +174,38 @@ export default function AboutPage() {
               </ol>
             </div>
           </div>
-        </div>
-      </section>
+        </ScrollReveal>
+        </section>
 
-      {/* ========================================================== */}
-      {/* 思想への導線 */}
-      {/* ========================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
-        <div className="max-w-3xl mx-auto">
+        {/* ========================================================== */}
+        {/* 思想への導線 */}
+        {/* ========================================================== */}
+        <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 border-t border-[rgba(0,212,255,0.08)] pt-16 lg:pt-24">
+        <ScrollReveal className="max-w-3xl mx-auto" as="div">
           <Link
             href={philosophyLink.cta.href}
-            className="group glass-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-4 transition-all hover:border-[#00d4ff]/60 hover:-translate-y-1"
+            className="group card-interactive glass-card p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-4"
           >
-            <div className="flex-1">
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                {philosophyLink.heading}
-              </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                {philosophyLink.description}
-              </p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-[#00d4ff] group-hover:gap-3 transition-all sm:flex-shrink-0">
-              <span>{philosophyLink.cta.label}</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+            <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-4 w-full">
+              <div className="flex-1">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
+                  {philosophyLink.heading}
+                </h3>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  {philosophyLink.description}
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-[#00d4ff] group-hover:gap-3 transition-all sm:flex-shrink-0">
+                <span>{philosophyLink.cta.label}</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
             </div>
           </Link>
-        </div>
-      </section>
+        </ScrollReveal>
+        </section>
+      </div>
     </PageLayout>
   );
 }
