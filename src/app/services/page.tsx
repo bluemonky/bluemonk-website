@@ -23,16 +23,11 @@ export default function ServicesPage() {
       />
 
       <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* ハブ一覧は3枚を等幅に揃える（中身が少なくフル幅だと横長で空くため）。
+            研修の主役性は「MAIN SERVICE」ラベルで示す。 */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, i) => (
-            <ScrollReveal
-              key={service.slug}
-              delay={i * 120}
-              className={`flex ${
-                // 研修(主役)は上段フル幅、コンサル/開発は下段で等幅2枚（TOPと統一・右下の空白なし）。
-                service.weight === 'primary' ? 'md:col-span-2' : ''
-              }`}
-            >
+            <ScrollReveal key={service.slug} delay={i * 120} className="flex">
               <ServiceCard
                 href={service.href}
                 eyebrow={service.eyebrow}
