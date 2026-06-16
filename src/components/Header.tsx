@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 const navItems = [
-  { label: 'FDE', href: '/fde' },
   { label: 'SERVICES', href: '/services' },
+  { label: 'FDE', href: '/fde' },
   { label: 'ChatGPT研修', href: '/services/training/chatgpt' },
   { label: 'ABOUT', href: '/about' },
   { label: 'INSIGHTS', href: '/insights' },
