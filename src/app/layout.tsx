@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Noto_Serif_JP } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 // 本番（Vercel production）のみ index を許可。プレビュー／開発は noindex。
@@ -17,14 +18,17 @@ const geistMono = Geist_Mono({
 });
 
 // 日本語の大見出し明朝（「発光する禅」の核）を Web フォント化。
-// Noto Serif JP weight 500/600 を next/font/google でセルフホスト配信し、
-// display:'swap' で FOIT を避ける。CSS 変数 --font-noto-serif-jp を
-// globals.css の --font-serif 先頭に据え、全環境で見出しが明朝になるようにする。
-// 既存 OS フォント（ヒラギノ明朝 等）はフォールバックとして温存。
-const notoSerifJp = Noto_Serif_JP({
+// ビルド時に Google Fonts へフェッチする next/font/google は、Vercel ビルド環境で
+// 取得が失敗するとデプロイごと失敗する不安定要因になり得るため、woff2 を
+// リポジトリ同梱して next/font/local でセルフホストする（ビルド時の外部依存ゼロ）。
+// weight 500/600（日本語サブセット）。display:'swap' で FOIT 回避。
+// CSS 変数 --font-noto-serif-jp を globals.css の --font-serif 先頭に据える。
+const notoSerifJp = localFont({
+  src: [
+    { path: "./fonts/noto-serif-jp-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/noto-serif-jp-600.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-noto-serif-jp",
-  // 日本語グリフは subsets ではなく weight 指定でセルフホスト（latin も含む）。
-  weight: ["500", "600"],
   display: "swap",
 });
 
