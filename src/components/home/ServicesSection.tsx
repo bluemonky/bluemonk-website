@@ -15,7 +15,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-28 border-t border-[rgba(0,212,255,0.08)]"
+      className="relative px-4 sm:px-6 lg:px-8 py-20 sm:py-28 section-rule"
     >
       <div className="max-w-6xl mx-auto">
         <SectionHeading

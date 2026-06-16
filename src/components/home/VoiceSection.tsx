@@ -12,7 +12,7 @@ export default function VoiceSection() {
   return (
     <section
       id="voice"
-      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)] overflow-hidden"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule section-plane overflow-hidden"
     >
       {/* 単点グロー（マスコット背後の一点だけ光らせる） */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">

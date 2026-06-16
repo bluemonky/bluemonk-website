@@ -12,7 +12,7 @@ export default function InsightsSection() {
   return (
     <section
       id="insights"
-      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule"
     >
       <div className="max-w-5xl mx-auto">
         <SectionHeading

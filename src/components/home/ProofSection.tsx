@@ -16,7 +16,7 @@ export default function ProofSection() {
   return (
     <section
       id="proof"
-      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]"
+      className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule section-plane"
     >
       <div className="max-w-5xl mx-auto">
         <SectionHeading eyebrow={proof.eyebrow} title={proof.title} subtitle={proof.lead} />
@@ -45,7 +45,7 @@ export default function ProofSection() {
                   <div className="mt-6 flex items-center gap-2 text-sm text-[#00d4ff]">
                     <span>研修の詳細を見る</span>
                     <svg
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                      className="w-4 h-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-[#ff8a3c]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ export default function ProofSection() {
                 title={fact.note}
               >
                 <span
-                  className="h-1.5 w-1.5 rounded-full bg-[#ff8a3c] shadow-[0_0_8px_rgba(255,138,60,0.7)]"
+                  className="h-1.5 w-1.5 rounded-full bg-[#ff8a3c] shadow-[0_0_6px_rgba(255,138,60,0.5)]"
                   aria-hidden="true"
                 />
                 {fact.label}
