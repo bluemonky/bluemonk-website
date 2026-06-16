@@ -110,7 +110,7 @@ export default function ChatGPTTrainingPage() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-4 rounded-full hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
+                className="btn-ember inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-full"
               >
                 {hero.cta}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -472,7 +472,7 @@ export default function ChatGPTTrainingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href={closingCta.primary.href}
-                className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-4 rounded-full hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
+                className="btn-ember inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-full"
               >
                 {closingCta.primary.label}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

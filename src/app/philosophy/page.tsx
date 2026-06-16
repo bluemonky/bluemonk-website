@@ -71,16 +71,16 @@ export default function PhilosophyPage() {
       {/* ================================================================== */}
       {/* NARRATIVE — 思想本文（数セクションの読み物。左寄せ・余白広め）        */}
       {/* ================================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
         <div className="max-w-3xl mx-auto space-y-16 sm:space-y-24">
           {narrative.map((block) => (
             <ScrollReveal key={block.eyebrow} as="article">
               <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-4">
                 {block.eyebrow}
               </p>
-              <h3 className="serif-display text-xl sm:text-2xl md:text-3xl font-semibold leading-snug mb-7">
+              <h2 className="serif-display text-xl sm:text-2xl md:text-3xl font-semibold leading-snug mb-7">
                 {block.title}
-              </h3>
+              </h2>
               <div className="space-y-6">
                 {block.paragraphs.map((p, i) => (
                   <p
@@ -99,7 +99,7 @@ export default function PhilosophyPage() {
       {/* ================================================================== */}
       {/* KEYWORDS — 思想を象徴する3キーワード（論理 / 内省 / 共進化）詳細      */}
       {/* ================================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal className="text-center">
             <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
@@ -118,7 +118,7 @@ export default function PhilosophyPage() {
                 delay={i * 120}
                 className="text-center"
               >
-                <p className="text-[11px] tracking-[0.3em] text-[#00d4ff]/70 uppercase mb-4">
+                <p className="text-xs tracking-[0.3em] text-[#00d4ff] uppercase mb-4">
                   {kw.reading}
                 </p>
                 <p className="serif-display text-3xl sm:text-4xl font-semibold mb-4">
@@ -137,24 +137,26 @@ export default function PhilosophyPage() {
       {/* ================================================================== */}
       {/* MISSION / VISION（たたき台）                                        */}
       {/* ================================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {missionVision.map((mv, i) => (
             <ScrollReveal
               key={mv.label}
               as="article"
               delay={i * 120}
-              className="glass-card p-7 sm:p-9"
+              className="card-interactive glass-card p-7 sm:p-9"
             >
-              <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-5">
-                {mv.label}
-              </p>
-              <p className="serif-display text-lg sm:text-xl md:text-2xl font-semibold leading-snug mb-5">
-                {mv.statement}
-              </p>
-              <p className="text-sm sm:text-base text-gray-400 leading-loose">
-                {mv.description}
-              </p>
+              <div className="relative z-10">
+                <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-5">
+                  {mv.label}
+                </p>
+                <p className="serif-display text-lg sm:text-xl md:text-2xl font-semibold leading-snug mb-5">
+                  {mv.statement}
+                </p>
+                <p className="text-sm sm:text-base text-gray-400 leading-loose">
+                  {mv.description}
+                </p>
+              </div>
             </ScrollReveal>
           ))}
         </div>
@@ -163,7 +165,7 @@ export default function PhilosophyPage() {
       {/* ================================================================== */}
       {/* THE NAME — BLUE MONK（青い修行僧）の由来。本人確定まで控えめに伏せる  */}
       {/* ================================================================== */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
         <div className="max-w-3xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
@@ -177,7 +179,7 @@ export default function PhilosophyPage() {
           <ScrollReveal className="mt-8" delay={120}>
             <p className="inline-flex items-center gap-2 text-sm sm:text-base text-gray-400 border border-[#00d4ff]/20 rounded-full px-5 py-2.5">
               <span
-                className="w-1.5 h-1.5 rounded-full bg-[#00ffcc]"
+                className="w-1.5 h-1.5 rounded-full bg-[#00d4ff]/40"
                 aria-hidden="true"
               />
               {nameOrigin.placeholder}
@@ -189,7 +191,7 @@ export default function PhilosophyPage() {
       {/* ================================================================== */}
       {/* CLOSING — 思想 → 提供物 / 対話への静かな導線（問い合わせ最優先にしない）*/}
       {/* ================================================================== */}
-      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[rgba(0,212,255,0.08)]">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-16 sm:py-24 section-rule">
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
           aria-hidden="true"
@@ -216,7 +218,7 @@ export default function PhilosophyPage() {
           >
             <Link
               href={closing.primary.href}
-              className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-4 rounded-full hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5 transition-all"
+              className="btn-ember inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-full"
             >
               {closing.primary.label}
               <svg

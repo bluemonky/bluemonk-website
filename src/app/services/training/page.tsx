@@ -66,14 +66,37 @@ export default function TrainingPage() {
             ))}
 
             {/* Future programs placeholder */}
-            <div className="glass-card p-6 sm:p-8 border-dashed opacity-60">
+            <div className="glass-card p-6 sm:p-8 border-dashed">
               <p className="text-xs font-medium tracking-[0.2em] text-gray-400 uppercase mb-2">
                 More Programs Coming
               </p>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-300">
                 今後、Claude活用研修・Copilot活用研修・生成AIリテラシー研修などを順次追加予定です。
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 次の一歩（行き止まり回避・静かなゴースト導線） */}
+      <section className="section-rule px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
+            自社に合う進め方は、一緒に整理するところから始められます。
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/contact"
+              className="btn-ember inline-flex items-center justify-center gap-2 font-semibold rounded-full px-8 py-3.5"
+            >
+              相談する
+            </Link>
+            <Link
+              href="/services"
+              className="btn-ember inline-flex items-center justify-center gap-2 font-semibold rounded-full px-8 py-3.5"
+            >
+              他のサービスを見る
+            </Link>
           </div>
         </div>
       </section>

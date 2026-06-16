@@ -39,17 +39,16 @@ export default function InsightsPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-3">
               {insightsComingSoon.plannedTopics.map((topic) => (
-                <div
-                  key={topic.title}
-                  className="glass-card p-6 flex flex-col h-full opacity-90"
-                >
-                  <span className="text-[10px] font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-3">
-                    {topic.tag}
-                  </span>
-                  <h3 className="text-base font-semibold text-white leading-snug mb-2">
-                    {topic.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{topic.note}</p>
+                <div key={topic.title} className="card-interactive glass-card p-6">
+                  <div className="relative z-10 flex flex-col h-full">
+                    <span className="text-[10px] font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-3">
+                      {topic.tag}
+                    </span>
+                    <h3 className="text-base font-semibold text-white leading-snug mb-2">
+                      {topic.title}
+                    </h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">{topic.note}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -73,11 +72,26 @@ export default function InsightsPage() {
           </div>
 
           <div className="text-center">
+            {/* 次の一歩（行き止まり回避） */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <Link
+                href="/philosophy"
+                className="btn-ember inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+              >
+                思想を読む
+              </Link>
+              <Link
+                href="/services"
+                className="btn-ember inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+              >
+                提供できること
+              </Link>
+            </div>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-sm text-[#00d4ff] hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-[#00d4ff] hover:gap-3 transition-all"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

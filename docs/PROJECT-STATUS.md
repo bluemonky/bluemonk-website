@@ -30,6 +30,8 @@
 
 15. **立体感の深化＝“彫り込み”(2026-06-16)**: 「もう少し立体感を」への対応（上品さは後退させない方針／多方向案→批判パネル→統合のワークフローで決定）。彩度・グロー・動きを増やさず**距離の手がかりだけ**を足す: (a) **マスコット接地**=足元に接地影＋静止の寒色ペデスタル光（宙吊り解消・明滅なし）、(b) **極微グレイン `.bm-grain`**（彩度0・opacity .03・本文背面 -z-10）で暗部バンディングを均し闇に厚み、(c) **主役カード内部の地グラデ**（上明・下沈み＋内ハイライト青寄り／color-mix フォールバック付・`.card-interactive.glass-card` 限定）、(d) **HERO見出しの3層影**（HERO inline 限定・グロー総量据置）、(e) **chat-shell の前景化**（落ち影深化＋上辺inset）、(f) **section-plane の縦ビネット**（背景レイヤに畳み込み・端64pxのみ・中央可読域は無加工）。固定全面レイヤは ambient+grain の2枚に限定。reduced-motion 追記不要（全て静的）。**実画面検証・本番ビルドOK。**
 
+16. **サブページ全体の整合パス(2026-06-16)**: TOP以外の全11ページを「発光する禅」の設計言語へ統一（多方向監査→統合のワークフローで決定）。**(a) 共通 PageHero 見出しに3層影 `.page-hero-title`**（globals共通 .serif-display は壊さず全サブに一括）。**(b) ベタ塗りCTAを廃し `.btn-ember` ゴーストに統一**（philosophy/consulting/development/chatgpt HERO・最終）。**(c) 区切りを `.section-rule`（ember節）に統一**（about/philosophy/consulting/development）。**(d) 主役カードを `.card-interactive.glass-card` 化**（philosophy MissionVision／consulting・development Challenges／insights テーマ／contact）＝上辺リム＋深い影。**(e) 行き止まり解消**（services/training/insights/contact に btn-ember 導線、contactメールもゴーストCTA化）。**(f) a11y**（legal最終改定日 gray-400・メールmailtoリンク化・draftNotice ember線・ul role、training placeholder可読化、chatgpt ライトタブのアクティブを深ティール #0e7490 でAA確保、philosophy KEYWORDS可読化）。**(g) services ハブのタイルも TOP と同じ均整化**。意図的差異（chatgpt本文ライトbookend／bareカードの静けさ／DRAFT）は維持。サブHEROへの暖色glow追加・床planeは過剰回避で見送り。**主要ページ実画面検証・本番ビルドOK。**
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|

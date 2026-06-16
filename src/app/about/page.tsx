@@ -99,7 +99,7 @@ export default function AboutPage() {
         {/* ========================================================== */}
         {/* 代表プロフィール */}
         {/* ========================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 border-t border-[rgba(0,212,255,0.08)] pt-16 lg:pt-24">
+        <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24 section-rule pt-16 lg:pt-24">
         <ScrollReveal className="max-w-4xl mx-auto" as="div">
           <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
             {profile.eyebrow}
@@ -134,7 +134,7 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white">
+                <h3 className="serif-display text-2xl sm:text-3xl font-semibold text-white">
                   {profile.name}
                 </h3>
                 <p className="text-sm tracking-[0.2em] text-gray-400 uppercase mt-1">
@@ -184,7 +184,7 @@ export default function AboutPage() {
               <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-5">
                 Career
               </p>
-              <ol className="relative border-l border-white/10 ml-2">
+              <ol className="relative border-l border-white/10 ml-2" aria-label="代表者の経歴">
                 {profile.career.map((item) => (
                   <li key={item.year} className="relative pl-6 pb-6 last:pb-0">
                     <span
@@ -206,7 +206,7 @@ export default function AboutPage() {
         {/* ========================================================== */}
         {/* 思想への導線 */}
         {/* ========================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 border-t border-[rgba(0,212,255,0.08)] pt-16 lg:pt-24">
+        <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 section-rule pt-16 lg:pt-24">
         <ScrollReveal className="max-w-3xl mx-auto" as="div">
           <Link
             href={philosophyLink.cta.href}

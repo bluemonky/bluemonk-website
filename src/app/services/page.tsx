@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
+import Link from 'next/link';
 import ServiceCard from '@/components/services/ServiceCard';
 import ScrollReveal from '@/components/home/ScrollReveal';
 import { services } from '@/data/services';
@@ -22,13 +23,14 @@ export default function ServicesPage() {
       />
 
       <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (
             <ScrollReveal
               key={service.slug}
               delay={i * 120}
               className={`flex ${
-                service.weight === 'primary' ? 'md:col-span-2 lg:col-span-2' : ''
+                // 研修(主役)は上段フル幅、コンサル/開発は下段で等幅2枚（TOPと統一・右下の空白なし）。
+                service.weight === 'primary' ? 'md:col-span-2' : ''
               }`}
             >
               <ServiceCard
@@ -52,6 +54,15 @@ export default function ServicesPage() {
           <p className="text-lg sm:text-xl text-gray-200 mb-6">
             まずは <span className="text-[#00d4ff]">Bluemonky</span> に聞いてください。
           </p>
+          <Link
+            href="/"
+            className="btn-ember inline-flex items-center justify-center gap-2 text-sm sm:text-base font-semibold rounded-full px-6 py-2.5"
+          >
+            Bluemonky に聞いてみる
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </Link>
         </ScrollReveal>
       </section>
     </PageLayout>

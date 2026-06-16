@@ -62,7 +62,7 @@ export default function SchedulePatterns({ patterns, lectures }: Props) {
               onKeyDown={(e) => handleTabKeyDown(e, index)}
               className={`px-5 sm:px-6 py-2.5 rounded-full text-sm font-semibold transition-all border ${
                 isActive
-                  ? 'bg-[#00d4ff] text-white border-[#00d4ff] shadow-md shadow-[#00d4ff]/30'
+                  ? 'bg-[#0e7490] text-white border-[#0e7490] shadow-md shadow-[#00d4ff]/25'
                   : 'bg-white text-slate-600 border-slate-300 hover:border-[#00d4ff] hover:text-[#007399]'
               }`}
             >

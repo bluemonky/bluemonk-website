@@ -69,7 +69,7 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* CHALLENGES                                                      */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
           <div className="max-w-5xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Challenges
@@ -77,21 +77,20 @@ export default function ConsultingPage() {
             <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {challengesTitle}
             </h2>
-            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-10 rounded-full" />
+            <div className="w-10 h-px bg-gradient-to-r from-[#ff8a3c] to-transparent mx-auto mb-10" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-8">
               {challenges.map((c, i) => (
-                <div
-                  key={i}
-                  className="glass-card p-5 sm:p-6 flex items-start gap-4 transition-all duration-300 hover:border-[#00d4ff]/55 hover:shadow-[0_10px_30px_-18px_rgba(0,212,255,0.5)]"
-                >
-                  <span
-                    className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] flex items-center justify-center text-sm font-bold border border-[#00d4ff]/30"
-                    aria-hidden="true"
-                  >
-                    ?
-                  </span>
-                  <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{c.text}</p>
+                <div key={i} className="card-interactive glass-card p-5 sm:p-6">
+                  <div className="relative z-10 flex items-start gap-4">
+                    <span
+                      className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] flex items-center justify-center text-sm font-bold border border-[#00d4ff]/30"
+                      aria-hidden="true"
+                    >
+                      ?
+                    </span>
+                    <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{c.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -108,7 +107,7 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* VALUE PROPOSITIONS                                              */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
           <div className="max-w-6xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Value
@@ -116,7 +115,7 @@ export default function ConsultingPage() {
             <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {valuePropsTitle}
             </h2>
-            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-10 rounded-full" />
+            <div className="w-10 h-px bg-gradient-to-r from-[#ff8a3c] to-transparent mx-auto mb-10" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               {valueProps.map((v, i) => (
@@ -141,7 +140,7 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* PROCESS                                                         */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
           <div className="max-w-4xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Process
@@ -181,7 +180,7 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* OUTPUTS                                                         */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
           <div className="max-w-5xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Output
@@ -225,7 +224,7 @@ export default function ConsultingPage() {
         {/* ============================================================== */}
         {/* TARGET                                                          */}
         {/* ============================================================== */}
-        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 border-t border-[rgba(0,212,255,0.08)]">
+        <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule">
           <div className="max-w-3xl mx-auto">
             <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
               Target
@@ -233,7 +232,7 @@ export default function ConsultingPage() {
             <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
               {targetTitle}
             </h2>
-            <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-10 rounded-full" />
+            <div className="w-10 h-px bg-gradient-to-r from-[#ff8a3c] to-transparent mx-auto mb-10" />
 
             <ul className="space-y-3">
               {targets.map((t, i) => (
@@ -263,7 +262,7 @@ export default function ConsultingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
                 href={closingCta.primary.href}
-                className="inline-flex items-center gap-2 bg-[#00d4ff] text-[#030b1a] font-semibold px-8 py-3.5 rounded-full transition-all hover:bg-white hover:shadow-lg hover:shadow-[#00d4ff]/40 hover:-translate-y-0.5"
+                className="btn-ember inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full"
               >
                 {closingCta.primary.label}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

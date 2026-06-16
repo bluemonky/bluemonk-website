@@ -25,7 +25,7 @@ export default function PageHero({ eyebrow, title, subtitle }: Props) {
           </p>
         )}
         <h1
-          className="hero-in serif-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.25] mb-6"
+          className="hero-in serif-display page-hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.25] mb-6"
           style={{ '--hero-delay': '160ms' } as React.CSSProperties}
         >
           {title}

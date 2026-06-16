@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
         <div className="max-w-3xl mx-auto">
           {/* 整備中の注記（軽め） */}
-          <p className="mb-8 text-xs text-gray-400 leading-relaxed border-l-2 border-[#00d4ff]/40 pl-3">
+          <p className="mb-8 text-xs text-gray-400 leading-relaxed border-l-2 border-[#ff8a3c]/55 pl-3">
             {draftNotice}
           </p>
 
@@ -31,16 +31,31 @@ export default function PrivacyPage() {
                   <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
                     {section.heading}
                   </h2>
-                  {section.paragraphs?.map((paragraph, i) => (
-                    <p
-                      key={i}
-                      className="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 last:mb-0"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+                  {section.paragraphs?.map((paragraph, i) => {
+                    const mail = paragraph.match(/^メール：(.+)$/);
+                    return (
+                      <p
+                        key={i}
+                        className="text-sm sm:text-base text-gray-300 leading-relaxed mb-3 last:mb-0"
+                      >
+                        {mail ? (
+                          <>
+                            メール：
+                            <a
+                              href={`mailto:${mail[1]}`}
+                              className="text-[#00d4ff] underline underline-offset-4 decoration-[#00d4ff]/40 hover:decoration-[#00d4ff] transition-colors"
+                            >
+                              {mail[1]}
+                            </a>
+                          </>
+                        ) : (
+                          paragraph
+                        )}
+                      </p>
+                    );
+                  })}
                   {section.items && (
-                    <ul className="mt-3 space-y-2">
+                    <ul role="list" className="mt-3 space-y-2">
                       {section.items.map((item, i) => (
                         <li
                           key={i}
@@ -56,7 +71,7 @@ export default function PrivacyPage() {
               ))}
             </div>
 
-            <p className="mt-12 text-xs text-gray-500">最終改定日：{revisedAt}</p>
+            <p className="mt-12 text-xs text-gray-400">最終改定日：{revisedAt}</p>
           </div>
         </div>
       </section>

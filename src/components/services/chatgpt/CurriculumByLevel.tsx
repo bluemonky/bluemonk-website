@@ -72,7 +72,7 @@ export default function CurriculumByLevel({ levels }: Props) {
               onKeyDown={(e) => handleTabKeyDown(e, index)}
               className={`flex-1 flex items-center justify-center gap-2.5 px-5 sm:px-8 py-4 rounded-2xl text-base font-bold transition-all border-2 ${
                 isActive
-                  ? 'bg-gradient-to-br from-[#00d4ff] to-[#0099cc] text-white border-[#00d4ff] shadow-lg shadow-[#00d4ff]/30 sm:-translate-y-0.5'
+                  ? 'bg-gradient-to-br from-[#0e7490] to-[#0b6079] text-white border-[#0e7490] shadow-lg shadow-[#00d4ff]/25 sm:-translate-y-0.5'
                   : 'bg-white text-slate-500 border-slate-200 hover:border-[#00d4ff]/60 hover:text-[#007399] hover:shadow-sm'
               }`}
             >
@@ -86,7 +86,7 @@ export default function CurriculumByLevel({ levels }: Props) {
               </span>
               {l.label}
               <span
-                className={`text-xs font-medium ${isActive ? 'text-white/85' : 'text-slate-400'}`}
+                className={`text-xs font-medium ${isActive ? 'text-white' : 'text-slate-400'}`}
               >
                 全{l.lectures.length}講義
               </span>
