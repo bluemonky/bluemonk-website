@@ -24,13 +24,15 @@ export default function ServicesSection() {
           subtitle={servicesSection.subtitle}
         />
 
-        <div className="mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (
             <ScrollReveal
               key={service.slug}
               delay={i * 120}
               className={`flex ${
-                service.weight === 'primary' ? 'md:col-span-2 lg:col-span-2' : ''
+                // 研修(主役)は上段フル幅の大タイル、コンサル/開発は下段で等幅2枚。
+                // 空白の穴をなくし、サイズ差を保ったまま均整の取れた構成にする。
+                service.weight === 'primary' ? 'md:col-span-2' : ''
               }`}
             >
               <ServiceCard
