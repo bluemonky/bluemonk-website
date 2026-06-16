@@ -90,7 +90,7 @@ export default function Header() {
             <Link
               href="/contact"
               aria-current={isActivePath(pathname, '/contact') ? 'page' : undefined}
-              className="text-sm font-medium text-[#00d4ff] border border-[#00d4ff]/50 rounded-full px-4 py-1.5 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
+              className="btn-ember text-sm font-semibold rounded-full px-5 py-1.5"
             >
               相談する
             </Link>
@@ -143,7 +143,7 @@ export default function Header() {
               <Link
                 href="/contact"
                 aria-current={isActivePath(pathname, '/contact') ? 'page' : undefined}
-                className="text-sm font-medium text-[#00d4ff] border border-[#00d4ff]/50 rounded-full px-4 py-2 text-center hover:bg-[#00d4ff]/10 transition-all mt-2"
+                className="btn-ember text-sm font-semibold rounded-full px-4 py-2 text-center mt-2"
                 onClick={closeMenu}
               >
                 相談する

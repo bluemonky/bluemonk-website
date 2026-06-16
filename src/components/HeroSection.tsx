@@ -31,6 +31,15 @@ export default function HeroSection() {
         />
         {/* 可読性確保: 中央（見出し帯）をやや濃く、明部でもテキストコントラストを担保する暗色オーバーレイ。 */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#030b1a]/55 via-[#030b1a]/35 to-[#030b1a]/60" />
+        {/* 差し色（暖色＝灯火）: 下部中央から立ちのぼる暖色のアンビエント。寒色基調に温度差を与え、
+            マスコットを背景から持ち上げて奥行きを出す（控えめ＝発光する禅の節度）。 */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[55%]"
+          style={{
+            background:
+              'radial-gradient(58% 62% at 50% 102%, rgba(255,122,40,0.16) 0%, rgba(255,122,40,0.05) 42%, transparent 72%)',
+          }}
+        />
       </div>
 
       {/* 主見出し（特大・明朝・白抜き）。明部でのコントラスト確保に暗色影を重ねる。

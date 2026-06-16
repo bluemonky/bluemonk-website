@@ -20,6 +20,11 @@
   --surface-2: #0f2546; /* さらに上の面（カード上辺・ハイライト側） */
   --elev-1: 0 10px 24px -10px rgba(0, 0, 0, 0.55);
   --elev-2: 0 22px 48px -16px rgba(0, 0, 0, 0.6);
+  /* 差し色（暖色＝灯火 ember）: 寒色シアンと対になる温度差で立体感を作る限定アクセント。
+     基調はあくまでシアン。ember は「主要CTA・第2光源・実績の一点」など焦点だけに灯す。 */
+  --ember: #ff8a3c;
+  --ember-deep: #ff6a1a;
+  --ember-soft: #ffab64;
   /* フォントスタック（runtime var として参照できるよう :root に実体定義する。
      @theme inline は :root へ変数を出力しないため、body / .serif-display 等の
      hand-written な var(--font-serif)/var(--font-sans) はここを解決先にする） */
@@ -49,23 +54,48 @@
 body {
   /* 立体感: 上方に柔らかなアンビエント光源（一点）を置き、下に向かって深い闇へ落とす。
      光源 + 縦の階調 + 闇側の沈み込みで「空間の奥行き」を作る（全面発光はしない・固定背景なし）。 */
+  /* 全体の縦の階調（上は藍が立ち、下へ深い闇へ沈む）。スポット光は固定の
+     .bm-ambient（二灯アンビエント）で全スクロール位置に届かせる。 */
   background-color: var(--background);
-  background-image:
-    radial-gradient(
-      120% 75% at 50% -8%,
-      rgba(0, 92, 150, 0.22) 0%,
-      rgba(0, 92, 150, 0.08) 32%,
-      transparent 60%
-    ),
-    linear-gradient(
-      180deg,
-      var(--ink-700) 0%,
-      var(--background) 40%,
-      var(--ink-900) 100%
-    );
+  background-image: linear-gradient(
+    180deg,
+    var(--ink-700) 0%,
+    var(--background) 38%,
+    var(--ink-900) 100%
+  );
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
+}
+
+/* =========================================================================
+ * 二灯アンビエント（画面固定の光源層）: 寒色シアン + 暖色オレンジ(差し色)を
+ *  ビューポートに固定で敷き、どこまでスクロールしても全セクションに温度差の
+ *  奥行きと差し色が届くようにする（平坦さ=のっぺりの解消）。常に控えめ＝光は一点。
+ *  本文 z-0 の背面に置く（-z-10）。HERO は自前の背景層で覆うため影響しない。
+ * ========================================================================= */
+.bm-ambient {
+  background-image:
+    /* 暖色（差し色）: 右上から差し込む灯火。寒色基調に温度差の焦点を作る。 */
+    radial-gradient(
+      58% 44% at 90% -4%,
+      rgba(255, 120, 38, 0.2) 0%,
+      rgba(255, 120, 38, 0.05) 36%,
+      transparent 60%
+    ),
+    /* 寒色（主光源）: 上方中央の柔らかな青光 */
+    radial-gradient(
+      95% 55% at 46% -8%,
+      rgba(0, 120, 185, 0.18) 0%,
+      rgba(0, 92, 150, 0.05) 38%,
+      transparent 64%
+    ),
+    /* 暖色（差し色）: 左下からわずかに立ちのぼる残り火（対角でバランス） */
+    radial-gradient(
+      52% 40% at 8% 112%,
+      rgba(255, 120, 38, 0.1) 0%,
+      transparent 58%
+    );
 }
 
 /* 大見出し（明朝） */
@@ -210,11 +240,57 @@ html {
   pointer-events: none;
 }
 
+/* 暖色の単点グロー（寒色 .glow-spot と対で「二灯」を作る差し色。温度差で奥行きを出す） */
+.glow-spot-warm {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 122, 40, 0.16) 0%,
+    rgba(255, 122, 40, 0.05) 38%,
+    transparent 70%
+  );
+  filter: blur(44px);
+  pointer-events: none;
+}
+
 /* 明朝見出しの白抜き + 控えめなシアングロー */
 .serif-display {
   font-family: var(--font-serif);
   color: #ffffff;
   text-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+}
+
+/* =========================================================================
+ * 主要CTA（差し色＝灯火 ember）: 寒色基調の中で一点だけ暖色に灯す焦点ボタン。
+ *  立体感の核 = 上辺の内側ハイライト + 暖色の落ち影。主導線（相談する/メール）だけに使う。
+ *  暗色テキスト on 暖色塗りで AA コントラストを確保。
+ * ========================================================================= */
+.btn-ember {
+  color: #2a1402;
+  background: linear-gradient(
+    180deg,
+    var(--ember-soft) 0%,
+    var(--ember) 52%,
+    var(--ember-deep) 100%
+  );
+  border: 1px solid rgba(255, 164, 92, 0.65);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    0 6px 18px -6px rgba(255, 106, 26, 0.5);
+  transition:
+    box-shadow 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+
+.btn-ember:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04) saturate(1.02);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.45),
+    0 0 26px rgba(255, 122, 40, 0.45),
+    0 10px 26px -8px rgba(255, 106, 26, 0.55);
 }
 
 /* =========================================================================
@@ -308,10 +384,10 @@ html {
   border-radius: inherit;
   background: linear-gradient(
     115deg,
-    transparent 30%,
-    rgba(0, 212, 255, 0.07) 48%,
-    rgba(0, 255, 204, 0.05) 52%,
-    transparent 70%
+    transparent 28%,
+    rgba(0, 212, 255, 0.07) 46%,
+    rgba(255, 138, 60, 0.1) 53%,
+    transparent 72%
   );
   transform: translateX(-120%);
   transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -323,9 +399,11 @@ html {
 .card-interactive:focus-visible {
   transform: translateY(-4px);
   border-color: rgba(0, 212, 255, 0.55);
+  /* 二灯: シアンの縁グロー + 暖色の下からの落ち込み光で、面の浮きを温度差で強める。 */
   box-shadow:
     0 0 24px rgba(0, 212, 255, 0.18),
-    0 14px 36px rgba(0, 0, 0, 0.35);
+    0 16px 32px -10px rgba(255, 106, 26, 0.18),
+    0 14px 36px rgba(0, 0, 0, 0.4);
 }
 
 .card-interactive:hover::after,

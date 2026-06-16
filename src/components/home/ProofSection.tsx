@@ -74,7 +74,7 @@ export default function ProofSection() {
                 title={fact.note}
               >
                 <span
-                  className="h-1.5 w-1.5 rounded-full bg-[#00ffcc]"
+                  className="h-1.5 w-1.5 rounded-full bg-[#ff8a3c] shadow-[0_0_8px_rgba(255,138,60,0.7)]"
                   aria-hidden="true"
                 />
                 {fact.label}

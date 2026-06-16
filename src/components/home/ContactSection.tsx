@@ -26,7 +26,7 @@ export default function ContactSection() {
           <a
             href={`mailto:${contact.email}`}
             aria-label={`メールで相談する（${contact.email}）`}
-            className="inline-flex items-center justify-center gap-2 text-sm sm:text-base text-[#00d4ff] border border-[#00d4ff]/40 rounded-full px-6 py-2.5 hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
+            className="btn-ember inline-flex items-center justify-center gap-2 text-sm sm:text-base font-semibold rounded-full px-6 py-2.5"
           >
             <svg
               className="w-4 h-4 flex-shrink-0"
