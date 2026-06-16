@@ -59,7 +59,8 @@
 - **ロゴ/OGP/favicon**: 透過ロゴ（ヘッダー用・円マーク）／OG画像は暫定（白背景フルロゴ）／favicon はデフォルトのまま
 
 ## 文章の編集（編集用ミラー）
-- **`docs/site-copy.md`** = サイト全文の**編集用ミラー**（keypath アンカー付き）。本文を直接編集 → 「site-copy.md を反映して」で `src/data/`・各 `page.tsx` の metadata へ正確に反映する（md→data は手動同期）。**サイト本体は md を直接参照しない**（runtime の正は `src/data/`）。
+- **`docs/site-copy.md`** = サイト全文の**編集用ミラー**（622項目・keypath アンカー付き）。本文を直接編集 → 「site-copy.md を反映して」で `src/data/`・各 `page.tsx` の metadata へ正確に反映する（md→data は手動同期）。**サイト本体は md を直接参照しない**（runtime の正は `src/data/`）。
+- ページ直書きだった文言（PageHero見出し・本文・導線ラベル・chatgpt各見出し）も **`src/data/pages.ts` / `training-chatgpt.ts` の `sections`** に集約済み（ミラーに反映）。
 - 再生成（データ→md）: `node scripts/gen-site-copy.mjs`（依存は typescript のみ）。**data を直接編集したら再生成**して md を最新化する。
 
 ## 運用ルール（詳細は AGENTS.md）

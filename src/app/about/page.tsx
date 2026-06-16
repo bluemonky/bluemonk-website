@@ -9,6 +9,7 @@ import {
   profile,
   philosophyLink,
 } from '@/data/about';
+import { aboutPage } from '@/data/pages';
 
 export const metadata: Metadata = {
   title: 'ABOUT | BLUE MONK CONSULTING',
@@ -56,8 +57,8 @@ export default function AboutPage() {
       <div className="relative">
         <PageHero
           eyebrow="ABOUT"
-          title="株式会社ブルーモンクコンサルティング"
-          subtitle="経営者 × ITエンジニア × MBA — 3つの経験が生み出す実行力で、企業のAI活用を支えます。"
+          title={aboutPage.heroTitle}
+          subtitle={aboutPage.heroSubtitle}
         />
 
         {/* ========================================================== */}

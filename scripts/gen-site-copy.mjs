@@ -24,6 +24,7 @@ const ROOT = resolve(__dirname, '..');
 // 取り込み順（= md 上の並び）と、ページ見出し。
 const FILES = [
   ['src/data/home.ts', 'トップページ', '/'],
+  ['src/data/pages.ts', '各ページの文言（PageHero見出し・本文・導線ラベル）', '各ページ'],
   ['src/data/services/index.ts', 'サービス共通カード（TOP / サービス一覧で使用）', '/services'],
   ['src/data/services/training-chatgpt.ts', 'ChatGPT研修ページ', '/services/training/chatgpt'],
   ['src/data/services/consulting.ts', 'コンサルティングページ', '/services/consulting'],
@@ -37,7 +38,7 @@ const FILES = [
 // 文章ではない設定/構造値（リンク先・種別・連番・ID・真偽値など）は出力しない。
 // ※日程の数値（durationHours / day / year / totalHours 等）は編集対象なので残す。
 const DENY_KEYS = new Set([
-  'href', 'slug', 'weight', 'comingSoon', 'level', 'number', 'lectureNumber', 'id',
+  'href', 'slug', 'weight', 'comingSoon', 'level', 'number', 'lectureNumber', 'id', 'status',
 ]);
 // 同一内容のエイリアス export（重複出力を避ける）。
 const SKIP_EXPORTS = new Set(['lectures', 'schedulePatterns']);

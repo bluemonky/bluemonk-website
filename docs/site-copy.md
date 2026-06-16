@@ -184,6 +184,119 @@
 
 ---
 
+## 各ページの文言（PageHero見出し・本文・導線ラベル）　`各ページ`
+
+<sub>反映先ファイル: `src/data/pages.ts`</sub>
+
+### aboutPage
+
+- **`aboutPage.heroTitle`**
+  株式会社ブルーモンクコンサルティング
+
+- **`aboutPage.heroSubtitle`**
+  経営者 × ITエンジニア × MBA — 3つの経験が生み出す実行力で、企業のAI活用を支えます。
+
+### servicesPage
+
+- **`servicesPage.heroTitle`**
+  3つのサービスで、AIと共に進化する
+
+- **`servicesPage.heroSubtitle`**
+  研修・コンサルティング・開発支援。経営判断から実装まで、Blue Monk Consulting は企業のAI活用を一気通貫で支えます。
+
+- **`servicesPage.closingNote`**
+  各サービスの実績・導入事例は、それぞれの詳細ページの中でご紹介しています。
+
+- **`servicesPage.closingPrompt`**
+  どのサービスが合うか迷ったら
+
+- **`servicesPage.closingHeadline`**
+  まずは Bluemonky に聞いてください。
+
+- **`servicesPage.closingCtaLabel`**
+  Bluemonky に聞いてみる
+
+### trainingPage
+
+- **`trainingPage.heroTitle`**
+  現場で使えるAIスキルを、体系的に。
+
+- **`trainingPage.heroSubtitle`**
+  研修は Blue Monk Consulting の主力サービス。経営判断から現場オペレーションまで、AIを使いこなす組織を育てます。
+
+- **`trainingPage.programsTitle`**
+  研修プログラム一覧
+
+- **`trainingPage.programs[0].eyebrow`**
+  FLAGSHIP PROGRAM
+
+- **`trainingPage.programs[0].title`**
+  ChatGPT活用研修
+
+- **`trainingPage.programs[0].description`**
+  中小企業のビジネスリーダー向け。生成AIの基礎から業務活用・チームマネジメントまで、9講義で実践的に学ぶフラッグシッププログラム。助成金活用可。
+
+- **`trainingPage.detailLabel`**
+  詳細を見る
+
+- **`trainingPage.placeholder.eyebrow`**
+  More Programs Coming
+
+- **`trainingPage.placeholder.body`**
+  今後、Claude活用研修・Copilot活用研修・生成AIリテラシー研修などを順次追加予定です。
+
+- **`trainingPage.closingLead`**
+  自社に合う進め方は、一緒に整理するところから始められます。
+
+- **`trainingPage.closingPrimary.label`**
+  相談する
+
+- **`trainingPage.closingSecondary.label`**
+  他のサービスを見る
+
+### insightsPage
+
+- **`insightsPage.heroTitle`**
+  AI時代の経営を、言葉で。
+
+- **`insightsPage.heroSubtitle`**
+  Blue Monk Consulting が発信する AI活用・DX・経営の視点。
+
+- **`insightsPage.comingSoonLabel`**
+  Coming Soon
+
+- **`insightsPage.topicsHeading`**
+  発信予定のテーマ（例）
+
+- **`insightsPage.onwardPrimary.label`**
+  思想を読む
+
+- **`insightsPage.onwardSecondary.label`**
+  提供できること
+
+- **`insightsPage.backLabel`**
+  トップに戻る
+
+### contactPage
+
+- **`contactPage.heroTitle`**
+  お問い合わせ
+
+- **`contactPage.heroSubtitle`**
+  研修・コンサルティング・開発支援に関するご相談はこちらから。
+
+- **`contactPage.emailLabel`**
+  Email
+
+- **`contactPage.mailtoLabel`**
+  メールで相談する
+
+- **`contactPage.note`**
+  お問い合わせフォームは現在準備中です。
+  当面は上記メールアドレスに直接ご連絡ください。
+
+---
+
 ## サービス共通カード（TOP / サービス一覧で使用）　`/services`
 
 <sub>反映先ファイル: `src/data/services/index.ts`</sub>
@@ -241,6 +354,35 @@
 
 - **`hero.cta`**
   無料相談はこちら
+
+### sections
+
+- **`sections.challengesTitle`**
+  こんな困りごと・課題はありませんか?
+
+- **`sections.curriculumTitle`**
+  カリキュラムと時間割
+
+- **`sections.curriculumLead`**
+  レベルを選んで、講義内容と時間割パターンをご確認いただけます。
+
+- **`sections.featuresTitle`**
+  Blue Monk Consulting の研修の特徴
+
+- **`sections.caseStudiesTitle`**
+  研修実績
+
+- **`sections.flowTitle`**
+  サービス導入の流れ
+
+- **`sections.instructorTitle`**
+  講師紹介
+
+- **`sections.beginnerLabel`**
+  初級編
+
+- **`sections.intermediateLabel`**
+  中級編
 
 ### closingCta
 

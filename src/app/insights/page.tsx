@@ -3,6 +3,7 @@ import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
 import { insightsComingSoon } from '@/data/legal';
+import { insightsPage } from '@/data/pages';
 
 export const metadata: Metadata = {
   title: 'INSIGHTS | BLUE MONK CONSULTING',
@@ -16,8 +17,8 @@ export default function InsightsPage() {
     <PageLayout>
       <PageHero
         eyebrow="INSIGHTS"
-        title="AI時代の経営を、言葉で。"
-        subtitle="Blue Monk Consulting が発信する AI活用・DX・経営の視点。"
+        title={insightsPage.heroTitle}
+        subtitle={insightsPage.heroSubtitle}
       />
 
       <section className="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
@@ -25,7 +26,7 @@ export default function InsightsPage() {
           {/* 趣旨 + Coming Soon バッジ */}
           <div className="text-center mb-12">
             <span className="inline-block mb-6 text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase border border-[#00d4ff]/50 rounded-full px-4 py-1.5">
-              Coming Soon
+              {insightsPage.comingSoonLabel}
             </span>
             <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
               {insightsComingSoon.lead}
@@ -35,7 +36,7 @@ export default function InsightsPage() {
           {/* 発信予定テーマの例（叩き台プレースホルダ） */}
           <div className="mb-12">
             <h2 className="text-xs font-medium tracking-[0.25em] text-gray-400 uppercase text-center mb-6">
-              発信予定のテーマ（例）
+              {insightsPage.topicsHeading}
             </h2>
             <div className="grid gap-4 sm:grid-cols-3">
               {insightsComingSoon.plannedTopics.map((topic) => (
@@ -75,16 +76,16 @@ export default function InsightsPage() {
             {/* 次の一歩（行き止まり回避） */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <Link
-                href="/philosophy"
+                href={insightsPage.onwardPrimary.href}
                 className="btn-ember inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
               >
-                思想を読む
+                {insightsPage.onwardPrimary.label}
               </Link>
               <Link
-                href="/services"
+                href={insightsPage.onwardSecondary.href}
                 className="btn-ember inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
               >
-                提供できること
+                {insightsPage.onwardSecondary.label}
               </Link>
             </div>
             <Link
@@ -99,7 +100,7 @@ export default function InsightsPage() {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              <span>トップに戻る</span>
+              <span>{insightsPage.backLabel}</span>
             </Link>
           </div>
         </div>

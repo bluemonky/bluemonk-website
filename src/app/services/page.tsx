@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import { Fragment } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
 import Link from 'next/link';
 import ServiceCard from '@/components/services/ServiceCard';
 import ScrollReveal from '@/components/home/ScrollReveal';
 import { services } from '@/data/services';
+import { servicesPage } from '@/data/pages';
 
 export const metadata: Metadata = {
   title: 'SERVICES | BLUE MONK CONSULTING',
@@ -18,8 +20,8 @@ export default function ServicesPage() {
     <PageLayout>
       <PageHero
         eyebrow="SERVICES"
-        title="3つのサービスで、AIと共に進化する"
-        subtitle="研修・コンサルティング・開発支援。経営判断から実装まで、Blue Monk Consulting は企業のAI活用を一気通貫で支えます。"
+        title={servicesPage.heroTitle}
+        subtitle={servicesPage.heroSubtitle}
       />
 
       <section className="px-4 sm:px-6 lg:px-8 pb-16 lg:pb-20">
@@ -41,19 +43,24 @@ export default function ServicesPage() {
 
         <ScrollReveal className="max-w-3xl mx-auto text-center mt-12 sm:mt-16" delay={120}>
           <p className="text-sm sm:text-base text-gray-400 mb-3">
-            各サービスの実績・導入事例は、それぞれの詳細ページの中でご紹介しています。
+            {servicesPage.closingNote}
           </p>
           <p className="text-sm sm:text-base text-gray-400 mb-4">
-            どのサービスが合うか迷ったら
+            {servicesPage.closingPrompt}
           </p>
           <p className="text-lg sm:text-xl text-gray-200 mb-6">
-            まずは <span className="text-[#00d4ff]">Bluemonky</span> に聞いてください。
+            {servicesPage.closingHeadline.split('Bluemonky').map((part, i, arr) => (
+              <Fragment key={i}>
+                {part}
+                {i < arr.length - 1 && <span className="text-[#00d4ff]">Bluemonky</span>}
+              </Fragment>
+            ))}
           </p>
           <Link
             href="/"
             className="btn-ember inline-flex items-center justify-center gap-2 text-sm sm:text-base font-semibold rounded-full px-6 py-2.5"
           >
-            Bluemonky に聞いてみる
+            {servicesPage.closingCtaLabel}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>

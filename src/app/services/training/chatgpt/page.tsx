@@ -4,6 +4,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import CurriculumByLevel from '@/components/services/chatgpt/CurriculumByLevel';
 import {
   hero,
+  sections,
   challenges,
   challengesTagline,
   about,
@@ -138,7 +139,7 @@ export default function ChatGPTTrainingPage() {
               Challenges
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              こんな困りごと・課題はありませんか?
+              {sections.challengesTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
@@ -231,24 +232,24 @@ export default function ChatGPTTrainingPage() {
               Curriculum
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              カリキュラムと時間割
+              {sections.curriculumTitle}
             </h2>
             <p className="text-sm sm:text-base text-slate-600 text-center max-w-2xl mx-auto mb-9">
-              レベルを選んで、講義内容と時間割パターンをご確認いただけます。
+              {sections.curriculumLead}
             </p>
 
             <CurriculumByLevel
               levels={[
                 {
                   level: 'beginner',
-                  label: '初級編',
+                  label: sections.beginnerLabel,
                   lectures: beginnerLectures,
                   schedulePatterns: beginnerSchedulePatterns,
                   patternCount: beginnerSchedulePatterns.length,
                 },
                 {
                   level: 'intermediate',
-                  label: '中級編',
+                  label: sections.intermediateLabel,
                   lectures: intermediateLectures,
                   schedulePatterns: intermediateSchedulePatterns,
                   patternCount: intermediateSchedulePatterns.length,
@@ -267,7 +268,7 @@ export default function ChatGPTTrainingPage() {
               Features
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              Blue Monk Consulting の研修の特徴
+              {sections.featuresTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
@@ -299,7 +300,7 @@ export default function ChatGPTTrainingPage() {
               Case Study
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              研修実績
+              {sections.caseStudiesTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
@@ -345,7 +346,7 @@ export default function ChatGPTTrainingPage() {
               Flow
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              サービス導入の流れ
+              {sections.flowTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
@@ -399,7 +400,7 @@ export default function ChatGPTTrainingPage() {
               Instructor
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-slate-900 mb-3 leading-snug">
-              講師紹介
+              {sections.instructorTitle}
             </h2>
             <div className="w-12 h-1 bg-[#00d4ff] mx-auto mb-9 rounded-full" />
 
