@@ -104,6 +104,8 @@ export default function RootLayout({
         {/* 二灯アンビエント（画面固定の光源層・装飾）: 寒色シアン＋暖色オレンジを
             全スクロール位置で本文背面に敷き、温度差で奥行きと差し色を全面へ届かせる。 */}
         <div aria-hidden className="bm-ambient pointer-events-none fixed inset-0 -z-10" />
+        {/* 極微グレイン（装飾）: 暗部のバンディングを散らし「闇に厚み」を出す。本文背面に固定。 */}
+        <div aria-hidden className="bm-grain pointer-events-none fixed inset-0 -z-10" />
         {/* 本文へスキップ（キーボード操作の a11y。#main の付与は本文側で行う前提） */}
         <a href="#main" className="skip-link">
           本文へスキップ

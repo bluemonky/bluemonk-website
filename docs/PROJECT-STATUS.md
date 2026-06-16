@@ -28,6 +28,8 @@
 
 14. **差し色の再設計＝静かなCTA＋構造の立体感(2026-06-16)**: フィードバック「ボタンは目立ちすぎ、他はほとんど変わらない」を受け、設計を反転（多方向案→批判パネル→統合のワークフローで決定）。**(a) CTAを静かに**: `.btn-ember` を全面オレンジ塗り→**無塗りゴースト＋細枠＋左端 inset の ember キーライン**へ（クラス名据置でcall site 3箇所無改修。文字#e6f6ffでAA余裕）。**(b) 立体感を本文全体へ**: `.section-plane`（背景より明るい床パネル）を PROOF/VOICE/CONTACT に交互適用し明→暗→明の段差リズム／主役カードを `.card-interactive.glass-card` にスコープして深い落ち影＋接地暗線＋hover -6px lift（bare .glass-card=ChatBubble/legal/about dl/Coming Soon は非汚染）。**(c) 差し色を構造線に分散**: カード上辺の **ember→シアン リムライト**（`.card-interactive.glass-card::before`・光の方向統一）／セクション区切り `.section-rule` 左端の短い ember の節（章の起点）／PROOFドット／hover時に矢印を ember 化。基調シアン維持・reduced-motion で lift 無効。**全セクション実画面検証・本番ビルドOK。** ※強度は `--ember`・`.section-plane` の rgba・`::before` リムの opacity で調整可。
 
+15. **立体感の深化＝“彫り込み”(2026-06-16)**: 「もう少し立体感を」への対応（上品さは後退させない方針／多方向案→批判パネル→統合のワークフローで決定）。彩度・グロー・動きを増やさず**距離の手がかりだけ**を足す: (a) **マスコット接地**=足元に接地影＋静止の寒色ペデスタル光（宙吊り解消・明滅なし）、(b) **極微グレイン `.bm-grain`**（彩度0・opacity .03・本文背面 -z-10）で暗部バンディングを均し闇に厚み、(c) **主役カード内部の地グラデ**（上明・下沈み＋内ハイライト青寄り／color-mix フォールバック付・`.card-interactive.glass-card` 限定）、(d) **HERO見出しの3層影**（HERO inline 限定・グロー総量据置）、(e) **chat-shell の前景化**（落ち影深化＋上辺inset）、(f) **section-plane の縦ビネット**（背景レイヤに畳み込み・端64pxのみ・中央可読域は無加工）。固定全面レイヤは ambient+grain の2枚に限定。reduced-motion 追記不要（全て静的）。**実画面検証・本番ビルドOK。**
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|

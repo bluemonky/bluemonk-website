@@ -163,11 +163,13 @@ body {
  *  .section-rule : 区切り線（極薄シアン）＋左端に短い ember の節（差し色＝章の起点）。
  * ========================================================================= */
 .section-plane {
-  background: linear-gradient(
-    180deg,
-    rgba(15, 37, 70, 0.55) 0%,
-    rgba(11, 27, 52, 0.3) 100%
-  );
+  /* 床地グラデに、上下端だけ奥へ沈む縦フェードを背景レイヤとして重ねる（疑似要素は使わず
+     本文の背面に確実に置く）。上下非対称（上0.16/下0.20）で既存 inset 沈み影と二重化させない。
+     端 64px のみ・中央の可読域には掛けない＝面が奥へ回り込む段差を出す。 */
+  background:
+    linear-gradient(180deg, rgba(2, 8, 15, 0.16) 0px, transparent 64px),
+    linear-gradient(0deg, rgba(2, 8, 15, 0.2) 0px, transparent 64px),
+    linear-gradient(180deg, rgba(15, 37, 70, 0.55) 0%, rgba(11, 27, 52, 0.3) 100%);
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.05), /* 上辺に光 */
     inset 0 -1px 0 0 rgba(0, 0, 0, 0.35); /* 下辺に沈み */
@@ -374,7 +376,8 @@ html {
   border: 1px solid rgba(0, 212, 255, 0.28);
   box-shadow:
     0 0 0 0 rgba(0, 212, 255, 0),
-    0 8px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.05), /* 上辺の薄い地明かり＝面の厚み */
+    0 10px 34px rgba(0, 0, 0, 0.42), /* 一段深い落ち影で手前に持ち上げ */
     inset 0 0 18px rgba(0, 212, 255, 0.04);
   transition:
     border-color 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
@@ -386,8 +389,9 @@ html {
   border-color: rgba(0, 212, 255, 0.7);
   box-shadow:
     0 0 26px rgba(0, 212, 255, 0.28),
-    0 8px 34px rgba(0, 0, 0, 0.4),
-    inset 0 0 22px rgba(0, 212, 255, 0.08);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06), /* focus でも発光総量は増やさない */
+    0 12px 40px rgba(0, 0, 0, 0.46),
+    inset 0 0 22px rgba(0, 212, 255, 0.06);
 }
 
 /* サジェストチップ（質問例）— 触れると枠が静かに灯る */
@@ -466,6 +470,24 @@ html {
  *  必ず overflow:hidden を持つためリムが角丸からはみ出さない）。--elev は上げない。
  * ========================================================================= */
 .card-interactive.glass-card {
+  /* フォールバック（color-mix 非対応環境）: 素の地グラデを先置き（後勝ちで厚み版へ）。 */
+  background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface-1) 100%);
+  /* 厚み版: 上からの淡い丸み（内ハイライト・青寄り）→ 上明・下沈みの地で面に厚みを出す。
+     色域は既存トークン内に固定し、白でなく青寄り #d6eeff で彩度を上げない。 */
+  background:
+    radial-gradient(
+      120% 70% at 50% -8%,
+      rgba(214, 238, 255, 0.06) 0%,
+      rgba(214, 238, 255, 0.02) 26%,
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-2) 92%, #d6eeff 8%) 0%,
+      var(--surface-2) 16%,
+      var(--surface-1) 74%,
+      color-mix(in srgb, var(--surface-1) 84%, var(--ink-900) 16%) 100%
+    );
   box-shadow:
     inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
     0 2px 6px -2px rgba(0, 0, 0, 0.5), /* 接地の暗線で板が剥がれて見える */
@@ -535,6 +557,19 @@ html {
     transparent
   );
   animation: scroll-cue 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+/* =========================================================================
+ * 極微グレイン（暗部のバンディング解消で「闇に厚み」）。
+ *  near-black の広い闇は階調段差が出やすい。彩度0・低不透明・静的 data-uri 1枚を
+ *  本文背面(-z-10)に敷き、段差を高周波ノイズで散らす（粒として知覚されない範囲）。
+ *  本文/カード/CTA/フォーカスリングには一切乗らない（背面固定）。mix-blend は使わない。
+ * ========================================================================= */
+.bm-grain {
+  opacity: 0.03; /* 上限 0.04。これ以上は「ザラつき」として見え始める */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
 }
 
 /* prefers-reduced-motion: 全アニメを無効/即時表示（アクセシビリティ必須対応） */

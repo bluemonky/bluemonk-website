@@ -59,16 +59,33 @@ export default function BlueMonkey({ size = 200, className = '' }: BlueMonkeyPro
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-6px); }
         }
-        @keyframes bm-glow {
-          0%, 100% { opacity: 0.25; transform: translateX(-50%) scaleX(1); }
-          50% { opacity: 0.4; transform: translateX(-50%) scaleX(1.15); }
-        }
       `}</style>
 
-      {/* 足元の単点グロー（発光する禅のアクセント）— ごく微細に明滅 */}
+      {/* 足元の接地表現（静止・宙吊り解消）。差し色は足元に持ち込まず寒色のみ。
+          (a) 接地影: 直下に潰した暗藍の楕円＝「床に座っている」一次手がかり。
+          (b) ペデスタル光: 影の上に薄い寒色の台座光（温度差・明滅させない＝焦点を奪わない）。 */}
       <div
-        className="absolute bottom-1 left-1/2 -translate-x-1/2 w-2/3 h-3 bg-[#00d4ff]/30 blur-xl rounded-full"
-        style={animate ? { animation: 'bm-glow 5.5s ease-in-out infinite' } : undefined}
+        className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{
+          bottom: '4%',
+          width: '52%',
+          height: '7%',
+          background:
+            'radial-gradient(closest-side, rgba(2,8,15,0.5) 0%, rgba(2,8,15,0.28) 48%, transparent 78%)',
+          filter: 'blur(7px)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{
+          bottom: '3%',
+          width: '58%',
+          height: '10%',
+          background:
+            'radial-gradient(closest-side, rgba(0,212,255,0.14) 0%, rgba(0,212,255,0.05) 46%, transparent 76%)',
+          filter: 'blur(13px)',
+        }}
         aria-hidden="true"
       />
       <Image

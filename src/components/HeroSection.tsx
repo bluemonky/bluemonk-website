@@ -48,7 +48,10 @@ export default function HeroSection() {
         <span
           className="serif-display hero-in block text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.28] tracking-[0.01em]"
           style={{
-            textShadow: '0 2px 24px rgba(3,11,26,0.8), 0 0 30px rgba(0,212,255,0.25)',
+            // 近・中・遠の3層影で「紙の厚み」を出す（グロー総量は増やさない）。
+            // (1)近接ドロップ=明部でも可読 / (2)中距離の沈み=厚みの主役(控えめ) / (3)遠いシアンのにじみ(既存以下)
+            textShadow:
+              '0 2px 10px rgba(3,11,26,0.85), 0 5px 18px rgba(3,11,26,0.48), 0 0 30px rgba(0,212,255,0.24)',
             ['--hero-delay' as string]: '80ms',
           }}
         >
