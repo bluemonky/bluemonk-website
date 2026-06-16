@@ -14,15 +14,16 @@ const siteUrl = "https://www.bluemonk.co.jp";
 const lastContentUpdate = new Date("2026-06-16");
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // /services/development は /fde へ恒久リダイレクトのため除外。
   const routes = [
     "/",
+    "/fde",
     "/about",
     "/philosophy",
     "/insights",
     "/contact",
     "/services",
     "/services/consulting",
-    "/services/development",
     "/services/training",
     "/services/training/chatgpt",
     "/legal/privacy",

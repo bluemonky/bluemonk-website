@@ -88,7 +88,8 @@ export const proof = {
 export const servicesSection = {
   eyebrow: 'SERVICES',
   title: '提供する3つの価値',
-  subtitle: '研修を軸に、コンサルティングと開発支援で経営判断から実装までを支えます。',
+  subtitle:
+    '現場に入り実装まで担うFDEを主役に、AXコンサルと研修で、AIを「動く成果」に変えます。',
   cta: { label: 'サービス詳細', href: '/services' },
   // 研修(primary) カード内の補助CTA。ハブ経由せず1クリックでフラッグシップ研修へ直行。
   trainingCta: { label: 'フラッグシップ研修を見る', href: '/services/training/chatgpt' },

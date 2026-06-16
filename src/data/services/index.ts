@@ -1,4 +1,6 @@
-export type ServiceCategory = 'training' | 'consulting' | 'development';
+// サービスは3本柱: FDE(主役) / AXコンサル / 研修。
+// 開発支援は FDE（現場常駐型の伴走実装）へ発展（/services/development は /fde へリダイレクト）。
+export type ServiceCategory = 'fde' | 'consulting' | 'training';
 
 export type ServiceSummary = {
   slug: ServiceCategory;
@@ -11,30 +13,30 @@ export type ServiceSummary = {
 
 export const services: ServiceSummary[] = [
   {
-    slug: 'training',
+    slug: 'fde',
     eyebrow: 'MAIN SERVICE',
-    title: '研修',
+    title: 'FDE（伴走型AIエンジニア）',
     description:
-      '生成AIを現場で使いこなすためのビジネスリーダー向け研修。ChatGPTを中心に、経営判断とチームマネジメントに使えるAI活用術を実践的に学びます。',
+      '現場に入り込み、実装して動くまで伴走するAIエンジニア（Forward Deployed Engineer）。AX/DXコンサルと開発・実装を一体で担い、提案で終わらせず「現場で使われ、成果が出る状態」まで責任を持ちます。',
     weight: 'primary',
-    href: '/services/training',
+    href: '/fde',
   },
   {
     slug: 'consulting',
-    eyebrow: 'CONSULTING',
-    title: 'AI活用DX・戦略伴走',
+    eyebrow: 'AX CONSULTING',
+    title: 'AXコンサル（AI活用DX・戦略伴走）',
     description:
-      '「AIをどこに使うべきか」の判断から、具体的な業務フローの設計・導入まで。経営課題に直結するDX戦略を伴走型でサポートします。',
+      '「AIをどこに・どう使えば事業が前に進むか」を経営課題から逆算して描く、AIトランスフォーメーションの戦略伴走。方針づくりから整理したい段階のご相談に。',
     weight: 'secondary',
     href: '/services/consulting',
   },
   {
-    slug: 'development',
-    eyebrow: 'DEVELOPMENT',
-    title: '開発支援',
+    slug: 'training',
+    eyebrow: 'TRAINING',
+    title: '研修（ChatGPT活用）',
     description:
-      'MCP・RAG・生成AIアプリケーションの実装支援。現場の課題に合わせた独自のAIソリューションを、アーキテクチャ設計から運用まで一気通貫で提供します。',
+      '生成AIを現場で使いこなすためのビジネスリーダー向け研修。経営判断とチームマネジメントに使えるAI活用術を実践的に学びます。助成金の活用が可能です。',
     weight: 'secondary',
-    href: '/services/development',
+    href: '/services/training',
   },
 ];

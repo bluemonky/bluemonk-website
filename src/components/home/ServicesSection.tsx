@@ -41,9 +41,9 @@ export default function ServicesSection() {
                 title={service.title}
                 description={service.description}
                 weight={service.weight}
-                // 研修(primary) のみ、ハブを経由せず1クリックでフラッグシップ研修へ直行する補助CTA。
+                // 研修カードのみ、ハブを経由せず1クリックでフラッグシップ研修へ直行する補助CTA。
                 secondaryCta={
-                  service.weight === 'primary' ? servicesSection.trainingCta : undefined
+                  service.slug === 'training' ? servicesSection.trainingCta : undefined
                 }
               />
             </ScrollReveal>

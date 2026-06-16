@@ -32,13 +32,16 @@
 
 16. **サブページ全体の整合パス(2026-06-16)**: TOP以外の全11ページを「発光する禅」の設計言語へ統一（多方向監査→統合のワークフローで決定）。**(a) 共通 PageHero 見出しに3層影 `.page-hero-title`**（globals共通 .serif-display は壊さず全サブに一括）。**(b) ベタ塗りCTAを廃し `.btn-ember` ゴーストに統一**（philosophy/consulting/development/chatgpt HERO・最終）。**(c) 区切りを `.section-rule`（ember節）に統一**（about/philosophy/consulting/development）。**(d) 主役カードを `.card-interactive.glass-card` 化**（philosophy MissionVision／consulting・development Challenges／insights テーマ／contact）＝上辺リム＋深い影。**(e) 行き止まり解消**（services/training/insights/contact に btn-ember 導線、contactメールもゴーストCTA化）。**(f) a11y**（legal最終改定日 gray-400・メールmailtoリンク化・draftNotice ember線・ul role、training placeholder可読化、chatgpt ライトタブのアクティブを深ティール #0e7490 でAA確保、philosophy KEYWORDS可読化）。**(g) services ハブのタイルも TOP と同じ均整化**。意図的差異（chatgpt本文ライトbookend／bareカードの静けさ／DRAFT）は維持。サブHEROへの暖色glow追加・床planeは過剰回避で見送り。**主要ページ実画面検証・本番ビルドOK。**
 
+17. **FDE主役化＝サービス3本柱(2026-06-16)**: 開発支援を **FDE（Forward Deployed Engineer／現場常駐型の伴走実装）** へ発展させ全面に。サービスを **FDE(主役)／AXコンサル／研修** の3本柱に再編（`src/data/services/index.ts`：slug `development`→`fde`、`consulting`→AX表記、`training`）。**`/fde` をトップ階層に新設**（`src/data/fde.ts`＋`src/app/fde/page.tsx`。ガッツリ: What is FDE／なぜ今／提供(AX/DX×実装一体)／違い(4類型)／価値／進め方／体制(経営×ITエンジニア×MBA)／対象／FAQ／実績(DRAFT)／CTA）。ナビに「FDE」追加。**`/services/development`→`/fde` 恒久リダイレクト**・sitemap更新（`/fde`追加・development除外）。コンサルは「**AXコンサル（AI活用DX・戦略伴走）**」へ表記変更＋FDEとの住み分け一文。呼称は「FDE（Forward Deployed Engineer）＋日本語補足」。**コピーは要確認(DRAFT)**＝固有実績/数値は非掲載（確定後に出典付き公開）。調査→多方向→批判→統合のワークフローで作成。site-copy.md 再生成(672項目)。**主要セクション実画面検証・本番ビルドOK。**
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|
-| `/`（トップ） | ✅ 発光する禅・6セクション（PROOFは実数字未確定で非表示） |
-| `/services`（ハブ） | ✅ 実装 |
+| `/`（トップ） | ✅ 発光する禅（SERVICESはFDE主役の3本柱） |
+| `/fde`（FDEフラッグシップ） | ✅ 新設（**たたき台DRAFT**・実績は準備中＝非掲載） |
+| `/services`（ハブ） | ✅ 3本柱（FDE/AXコンサル/研修） |
 | `/services/training` ・ `/services/training/chatgpt` | ✅ 実装（中級編・ダーク寄せ） |
-| `/services/consulting` ・ `/services/development` | ✅ 実装（**たたき台**コピー） |
+| `/services/consulting`（AXコンサル） ・ `/services/development`（↪︎`/fde`） | ✅ 実装（**たたき台**コピー） |
 | `/about` | ✅ 実装（代表経歴は実素材、会社の設立/所在地等は**要確認**） |
 | `/philosophy` | ✅ 実装（**たたき台**・由来は要確認） |
 | `/insights` | ✅ 予告体裁（記事は未作成） |
