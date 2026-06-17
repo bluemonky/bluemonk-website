@@ -14,15 +14,31 @@ const navItems = [
   { label: 'PHILOSOPHY', href: '/philosophy' },
 ];
 
-/** 現在地判定: 完全一致、または下層ページ（href 配下）を現在地とみなす。 */
-function isActivePath(pathname: string, href: string) {
+/** href が現在地にマッチするか（完全一致、または href 配下）。 */
+function pathMatches(pathname: string, href: string) {
   if (href === '/') return pathname === '/';
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/**
+ * 現在地のナビ href を1つだけ決める（最長一致が勝つ）。
+ * 例: /services/training/chatgpt では SERVICES(/services) と ChatGPT研修 の両方が
+ * マッチするが、より具体的な後者だけを現在地にする（親の二重下線を防ぐ）。
+ */
+function resolveActiveHref(pathname: string, hrefs: string[]) {
+  return hrefs
+    .filter((h) => pathMatches(pathname, h))
+    .sort((a, b) => b.length - a.length)[0];
 }
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname() ?? '';
+  // 現在地はナビ内で1つだけ（最長一致）。親(SERVICES)と子(ChatGPT研修)の二重下線を防ぐ。
+  const activeHref = resolveActiveHref(pathname, [
+    ...navItems.map((item) => item.href),
+    '/contact',
+  ]);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
@@ -69,7 +85,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6" aria-label="メインナビゲーション">
             {navItems.map((item) => {
-              const active = isActivePath(pathname, item.href);
+              const active = item.href === activeHref;
               return (
                 <Link
                   key={item.href}
@@ -90,7 +106,7 @@ export default function Header() {
             })}
             <Link
               href="/contact"
-              aria-current={isActivePath(pathname, '/contact') ? 'page' : undefined}
+              aria-current={activeHref === '/contact' ? 'page' : undefined}
               className="btn-ember text-sm font-semibold rounded-full px-5 py-1.5"
             >
               相談する
@@ -125,7 +141,7 @@ export default function Header() {
           >
             <div className="flex flex-col gap-4">
               {navItems.map((item, index) => {
-                const active = isActivePath(pathname, item.href);
+                const active = item.href === activeHref;
                 return (
                   <Link
                     key={item.href}
@@ -143,7 +159,7 @@ export default function Header() {
               })}
               <Link
                 href="/contact"
-                aria-current={isActivePath(pathname, '/contact') ? 'page' : undefined}
+                aria-current={activeHref === '/contact' ? 'page' : undefined}
                 className="btn-ember text-sm font-semibold rounded-full px-4 py-2 text-center mt-2"
                 onClick={closeMenu}
               >
