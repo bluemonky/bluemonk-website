@@ -34,6 +34,8 @@
 
 17. **FDE主役化＝サービス3本柱(2026-06-16)**: 開発支援を **FDE（Forward Deployed Engineer／現場常駐型の伴走実装）** へ発展させ全面に。サービスを **FDE(主役)／AXコンサル／研修** の3本柱に再編（`src/data/services/index.ts`：slug `development`→`fde`、`consulting`→AX表記、`training`）。**`/fde` をトップ階層に新設**（`src/data/fde.ts`＋`src/app/fde/page.tsx`。ガッツリ: What is FDE／なぜ今／提供(AX/DX×実装一体)／違い(4類型)／価値／進め方／体制(経営×ITエンジニア×MBA)／対象／FAQ／実績(DRAFT)／CTA）。ナビに「FDE」追加。**`/services/development`→`/fde` 恒久リダイレクト**・sitemap更新（`/fde`追加・development除外）。コンサルは「**AXコンサル（AI活用DX・戦略伴走）**」へ表記変更＋FDEとの住み分け一文。呼称は「FDE（Forward Deployed Engineer）＋日本語補足」。**コピーは要確認(DRAFT)**＝固有実績/数値は非掲載（確定後に出典付き公開）。調査→多方向→批判→統合のワークフローで作成。site-copy.md 再生成(672項目)。**主要セクション実画面検証・本番ビルドOK。**
 
+18. **知的・軽量化パス(2026-06-17)**: 「単調で重い→知的でスマート」へ。多方向→批判→（統合は手動）のワークフローで決定。**重カードの壁を軽い素材に置換**: `.quiet-card`（無塗り＋ヘアライン＋影なし）／`.hairline-list/.hairline-row`（箱なし行）／`.compare-row`（4類型を罫線比較表に）／`.step-rail`（手順を縦罫＋番号ノード、起点だけ ember）。タイポ洗練: `.label-fine`（細eyebrow）・`.section-index`（章番号01–）・`.prose-measure`（行長を締める）。**FDEページを全面刷新**: 中央見出し＋濃いカードの反復をやめ、左寄せ編集見出し＋章番号、テキスト=読み物／提供・体制=quiet-card／価値・対象・FAQ=ヘアライン行／違い=比較表／手順=ステップレール、とブロックごとに形を変えて単調を解消。深い立体カード（.card-interactive.glass-card）は各ページ主役1〜2点に温存（全フラット化しない）。**実画面検証・本番ビルドOK。** ※他サービスページ(consulting/development/insights)の重カード列も順次 quiet-card 化予定。
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|

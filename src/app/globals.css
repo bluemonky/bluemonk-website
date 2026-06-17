@@ -581,6 +581,214 @@ html {
   background-size: 160px 160px;
 }
 
+/* =========================================================================
+ * 知的・軽量レイアウト（「単調で重い」の解消）。
+ *  一覧・比較・手順は“塗り・影・縁”を引いた軽い素材へ。深い立体カード
+ *  (.card-interactive.glass-card) は各ページ主役1〜2点にだけ温存する。
+ *  彩度・グロー・動きは増やさず、罫線・余白・字間で語る（ホワイトペーパーの知性）。
+ * ========================================================================= */
+
+/* 細いラベル（eyebrow を主張させず「分類の声」に。低彩度シアン・細字・字間広め） */
+.label-fine {
+  font-weight: 400;
+  font-size: 0.6875rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(120, 200, 230, 0.82);
+}
+
+/* 章番号 01–（中央見出しの反復を編集的な縦リズムへ） */
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: rgba(120, 200, 230, 0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.section-index::after {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.45), transparent);
+}
+
+/* 読み物の行長（濃い段落の壁 → 知的に締まった段） */
+.prose-measure {
+  max-width: 36rem;
+}
+.prose-measure--wide {
+  max-width: 42rem;
+}
+
+/* 軽い面: 無塗りに近い極薄＋1pxヘアライン＋影なし。一覧/補足を重カードから降格する。 */
+.quiet-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 37, 70, 0.16) 0%,
+    rgba(11, 27, 52, 0.05) 100%
+  );
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background-color 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.quiet-card:hover,
+.quiet-card:focus-within {
+  border-color: rgba(0, 212, 255, 0.26);
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ヘアライン区切りの行リスト（箱を持たない一覧。紙面の罫リズム） */
+.hairline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+.hairline-row {
+  position: relative;
+  padding: 1.15rem 0.25rem;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  transition: background-color 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.hairline-row:hover {
+  background: rgba(0, 212, 255, 0.03);
+}
+.hairline-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--ember) 0%, rgba(255, 138, 60, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+.hairline-row:hover::before {
+  opacity: 0.8;
+}
+
+/* 比較行（4類型などを罫線だけで構造化。縦罫なし・横ヘアラインのみ） */
+.compare-table {
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+.compare-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(9rem, 15rem) 1fr;
+  column-gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: start;
+  padding: 1.3rem 0.25rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+.compare-row__name {
+  font-family: var(--font-serif);
+  color: #fff;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.compare-row__name small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(120, 200, 230, 0.55);
+  margin-top: 0.35rem;
+}
+.compare-row__body {
+  color: #c4cfdd;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.compare-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--ember), transparent);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+.compare-row:hover::before {
+  opacity: 0.7;
+}
+.compare-row[data-feature='true']::before {
+  opacity: 0.9; /* 主役の1類型だけ常時、起点に ember の節 */
+}
+
+/* ステップレール（手順を1本の縦罫＋番号ノードへ。カードを積まない） */
+.step-rail {
+  position: relative;
+  padding-left: clamp(2.6rem, 7vw, 3.25rem);
+}
+.step-rail::before {
+  content: '';
+  position: absolute;
+  left: 1.05rem;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.28) 12%,
+    rgba(0, 212, 255, 0.28) 88%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+.step-item {
+  position: relative;
+  padding: 0 0 clamp(1.8rem, 4vw, 2.4rem);
+}
+.step-item:last-child {
+  padding-bottom: 0;
+}
+.step-num {
+  position: absolute;
+  left: calc(-1 * clamp(2.6rem, 7vw, 3.25rem));
+  top: -0.1em;
+  width: clamp(2.6rem, 7vw, 3.25rem);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 212, 255, 0.85);
+  font-variant-numeric: tabular-nums;
+}
+.step-num::after {
+  content: '';
+  position: absolute;
+  right: -0.5px;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--primary);
+  box-shadow: 0 0 0 3px var(--background), 0 0 8px rgba(0, 212, 255, 0.4);
+  transform: translateX(50%);
+}
+.step-item:first-child .step-num {
+  color: var(--ember-soft);
+}
+.step-item:first-child .step-num::after {
+  background: var(--ember);
+  box-shadow: 0 0 0 3px var(--background), 0 0 8px rgba(255, 138, 60, 0.45);
+}
+
 /* prefers-reduced-motion: 全アニメを無効/即時表示（アクセシビリティ必須対応） */
 @media (prefers-reduced-motion: reduce) {
   html {
