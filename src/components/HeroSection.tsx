@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import ChatConsole from './home/ChatConsole';
+import MatrixRain from './home/MatrixRain';
 import { hero } from '@/data/home';
 
 /**
@@ -29,6 +30,10 @@ export default function HeroSection() {
           sizes="100vw"
           className="object-cover object-center"
         />
+        {/* マトリックスのデジタルレイン（緑の文字が降る背景）。モンキーの背後に流す装飾。 */}
+        <div className="absolute inset-0">
+          <MatrixRain />
+        </div>
         {/* 可読性確保: 中央（見出し帯）をやや濃く、明部でもテキストコントラストを担保する暗色オーバーレイ。 */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#030b1a]/55 via-[#030b1a]/35 to-[#030b1a]/60" />
         {/* 差し色（暖色＝灯火）: 下部中央から立ちのぼる暖色のアンビエント。寒色基調に温度差を与え、
