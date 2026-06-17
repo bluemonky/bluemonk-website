@@ -81,8 +81,8 @@ export default function ConsultingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-8">
               {challenges.map((c, i) => (
-                <div key={i} className="card-interactive glass-card p-5 sm:p-6">
-                  <div className="relative z-10 flex items-start gap-4">
+                <div key={i} className="quiet-card p-5 sm:p-6">
+                  <div className="flex items-start gap-4">
                     <span
                       className="shrink-0 w-8 h-8 rounded-full bg-[#00d4ff]/10 text-[#00d4ff] flex items-center justify-center text-sm font-bold border border-[#00d4ff]/30"
                       aria-hidden="true"
@@ -154,7 +154,7 @@ export default function ConsultingPage() {
 
             <ol className="space-y-4 sm:space-y-5">
               {processSteps.map((step) => (
-                <li key={step.number} className="glass-card p-6 sm:p-7 flex gap-5 sm:gap-6">
+                <li key={step.number} className="quiet-card p-6 sm:p-7 flex gap-5 sm:gap-6">
                   <div className="shrink-0 flex flex-col items-center">
                     <span className="text-[0.65rem] font-bold tracking-widest text-[#00d4ff]/70 uppercase mb-1">
                       Step
@@ -194,7 +194,7 @@ export default function ConsultingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {outputs.map((o, i) => (
-                <div key={i} className="glass-card p-6 flex items-start gap-4">
+                <div key={i} className="quiet-card p-6 flex items-start gap-4">
                   <svg
                     className="w-6 h-6 text-[#00ffcc] shrink-0 mt-0.5"
                     fill="none"
@@ -236,7 +236,7 @@ export default function ConsultingPage() {
 
             <ul className="space-y-3">
               {targets.map((t, i) => (
-                <li key={i} className="glass-card px-5 sm:px-6 py-4 flex items-start gap-3">
+                <li key={i} className="quiet-card px-5 sm:px-6 py-4 flex items-start gap-3">
                   <span className="shrink-0 mt-2 w-1.5 h-1.5 rounded-full bg-[#00d4ff]" aria-hidden="true" />
                   <p className="text-sm sm:text-base text-gray-200 leading-relaxed">{t.text}</p>
                 </li>

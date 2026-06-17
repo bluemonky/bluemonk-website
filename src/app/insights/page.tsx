@@ -40,8 +40,8 @@ export default function InsightsPage() {
             </h2>
             <div className="grid gap-4 sm:grid-cols-3">
               {insightsComingSoon.plannedTopics.map((topic) => (
-                <div key={topic.title} className="card-interactive glass-card p-6">
-                  <div className="relative z-10 flex flex-col h-full">
+                <div key={topic.title} className="quiet-card p-6">
+                  <div className="flex flex-col h-full">
                     <span className="text-[10px] font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-3">
                       {topic.tag}
                     </span>
