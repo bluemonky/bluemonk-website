@@ -62,6 +62,7 @@ export default function FdePage() {
 
       <div className="relative">
         <PageHero
+          eyebrowLarge
           eyebrow={fde.hero.eyebrow}
           title={fde.hero.headline}
           subtitle={fde.hero.sub}

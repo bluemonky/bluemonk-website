@@ -2,6 +2,8 @@ type Props = {
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  /** eyebrow を一段大きく見せる（FDE 等、ラベルを強調したいページ用）。 */
+  eyebrowLarge?: boolean;
 };
 
 /**
@@ -10,18 +12,28 @@ type Props = {
  * - eyebrow → 見出し → サブの順に静かに立ち上がる（短時間・上品なイージング）。
  * - prefers-reduced-motion は globals.css 側で `hero-in` を即時表示に上書き。
  */
-export default function PageHero({ eyebrow, title, subtitle }: Props) {
+export default function PageHero({ eyebrow, title, subtitle, eyebrowLarge = false }: Props) {
   return (
     <section className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
       <div className="max-w-5xl mx-auto text-center">
         {eyebrow && (
           <p
-            className="hero-in flex items-center justify-center gap-3 text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] mb-5 uppercase"
+            className={`hero-in flex items-center justify-center font-medium tracking-[0.3em] text-[#00d4ff] uppercase ${
+              eyebrowLarge
+                ? 'gap-4 text-sm sm:text-base md:text-lg mb-6'
+                : 'gap-3 text-xs sm:text-sm mb-5'
+            }`}
             style={{ '--hero-delay': '60ms' } as React.CSSProperties}
           >
-            <span className="w-6 h-px bg-[#00d4ff]/50" aria-hidden="true" />
+            <span
+              className={`h-px bg-[#00d4ff]/50 ${eyebrowLarge ? 'w-8 sm:w-10' : 'w-6'}`}
+              aria-hidden="true"
+            />
             {eyebrow}
-            <span className="w-6 h-px bg-[#00d4ff]/50" aria-hidden="true" />
+            <span
+              className={`h-px bg-[#00d4ff]/50 ${eyebrowLarge ? 'w-8 sm:w-10' : 'w-6'}`}
+              aria-hidden="true"
+            />
           </p>
         )}
         <h1
