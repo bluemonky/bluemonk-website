@@ -14,7 +14,9 @@ export const fde = {
   "hero": {
     "eyebrow": "FDE — FORWARD DEPLOYED ENGINEER",
     "headline": "人 と AI が織りなす\n新しい開発の形",
-    "sub": "FDE（Forward Deployed Engineer）＝現場に入り込み、実装はAIを使い倒して「動くまで」つくり切るエンジニア。コードはAIが書き、人は「何をつくるか」と「本当に使えるか」に集中する。それを担うのが、経営も技術も経営学も一人で併せ持つ 経営者 × ITエンジニア × MBA。だから、提案で終わらず、仕様書も待たず、速い。"
+    "subPre": "FDE（Forward Deployed Engineer）＝現場に入り込み、実装はAIを使い倒して「動くまで」つくり切るエンジニア。コードはAIが書き、人は「何をつくるか」と「本当に使えるか」に集中する。それを担うのが、経営も技術も経営学も一人で併せ持つ——",
+    "subEmphasis": "経営者 × ITエンジニア × MBA",
+    "subPost": "だから、提案で終わらず、仕様書も待たず、速い。"
   },
   "blocks": [
     {

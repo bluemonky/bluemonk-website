@@ -1,7 +1,7 @@
 type Props = {
   eyebrow?: string;
   title: string;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   /** eyebrow を一段大きく見せる（FDE 等、ラベルを強調したいページ用）。 */
   eyebrowLarge?: boolean;
 };

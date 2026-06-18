@@ -65,7 +65,15 @@ export default function FdePage() {
           eyebrowLarge
           eyebrow={fde.hero.eyebrow}
           title={fde.hero.headline}
-          subtitle={fde.hero.sub}
+          subtitle={
+            <>
+              {fde.hero.subPre}
+              <span className="block my-3 text-lg sm:text-xl font-medium text-[#cfeeff] tracking-wide">
+                {fde.hero.subEmphasis}
+              </span>
+              {fde.hero.subPost}
+            </>
+          }
         />
 
         {fde.blocks.map((block, i) => {
