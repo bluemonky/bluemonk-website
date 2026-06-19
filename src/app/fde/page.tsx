@@ -67,7 +67,7 @@ export default function FdePage() {
           title={fde.hero.headline}
           subtitle={
             <>
-              {fde.hero.subPre}
+              <span className="whitespace-pre-line">{fde.hero.subPre}</span>
               <span className="block my-3 text-lg sm:text-xl font-medium text-[#cfeeff] tracking-wide">
                 {/* 各要素は語の途中で折らず、必要なら「 × 」の位置でのみ改行する。 */}
                 {fde.hero.subEmphasis.split(' × ').map((seg, i, arr) => (
