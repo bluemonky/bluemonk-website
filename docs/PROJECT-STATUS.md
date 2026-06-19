@@ -36,6 +36,8 @@
 
 18. **知的・軽量化パス(2026-06-17)**: 「単調で重い→知的でスマート」へ。多方向→批判→（統合は手動）のワークフローで決定。**重カードの壁を軽い素材に置換**: `.quiet-card`（無塗り＋ヘアライン＋影なし）／`.hairline-list/.hairline-row`（箱なし行）／`.compare-row`（4類型を罫線比較表に）／`.step-rail`（手順を縦罫＋番号ノード、起点だけ ember）。タイポ洗練: `.label-fine`（細eyebrow）・`.section-index`（章番号01–）・`.prose-measure`（行長を締める）。**FDEページを全面刷新**: 中央見出し＋濃いカードの反復をやめ、左寄せ編集見出し＋章番号、テキスト=読み物／提供・体制=quiet-card／価値・対象・FAQ=ヘアライン行／違い=比較表／手順=ステップレール、とブロックごとに形を変えて単調を解消。深い立体カード（.card-interactive.glass-card）は各ページ主役1〜2点に温存（全フラット化しない）。**実画面検証・本番ビルドOK。** ※他サービスページ(consulting/development/insights)の重カード列も順次 quiet-card 化予定。
 
+19. **日本語の改行ポリシー(2026-06-19)**: 「改行が気になる」への対応。従来は本文の折り返し位置を無制御（コンテナ幅任せ・禁則なし）だった。globals の `body` に **`line-break: strict`（禁則：行頭に 。、）」等を出さない）＋ `word-break: auto-phrase`（日本語を文節で折る・対応ブラウザのみ、非対応は無視＝安全）＋ `text-wrap: pretty`（行末の孤立文字=widow回避）** を継承で適用。見出し `.serif-display` は **`text-wrap: balance`**（行長を均す）。見出しの意図的改行は従来どおり `\n`＋`whitespace-pre-line`。キーワードは語の途中で割らない（例: FDE hero の「経営者 × ITエンジニア × MBA」は ` × ` 位置でのみ改行＝各要素 `whitespace-nowrap`）。**実画面検証・本番ビルドOK。**
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|

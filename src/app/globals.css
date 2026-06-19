@@ -66,6 +66,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100vh;
+  /* 日本語の改行ポリシー（継承）:
+     - line-break: strict … 禁則処理（行頭に 。、）」 や小書き仮名を出さない）。
+     - word-break: auto-phrase … 日本語を文節で折る（対応ブラウザのみ。非対応は無視＝従来通り）。
+     - text-wrap: pretty … 行末の孤立文字(widow)を避け、自然な折り返しにする。
+     見出しは .serif-display 側で text-wrap: balance（行長を均す）に上書き。 */
+  line-break: strict;
+  word-break: auto-phrase;
+  text-wrap: pretty;
 }
 
 /* =========================================================================
@@ -294,6 +302,8 @@ html {
   font-family: var(--font-serif);
   color: #ffffff;
   text-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+  /* 見出しは行長を均し、孤立行を防ぐ（短い多行テキスト向けの balance）。 */
+  text-wrap: balance;
 }
 
 /* 下層ページの大見出し用の3層影（近/中/遠＝紙の厚み）。TOP HERO と同値。

@@ -69,7 +69,13 @@ export default function FdePage() {
             <>
               {fde.hero.subPre}
               <span className="block my-3 text-lg sm:text-xl font-medium text-[#cfeeff] tracking-wide">
-                {fde.hero.subEmphasis}
+                {/* 各要素は語の途中で折らず、必要なら「 × 」の位置でのみ改行する。 */}
+                {fde.hero.subEmphasis.split(' × ').map((seg, i, arr) => (
+                  <span key={i}>
+                    <span className="whitespace-nowrap">{seg}</span>
+                    {i < arr.length - 1 && ' × '}
+                  </span>
+                ))}
               </span>
               {fde.hero.subPost}
             </>
