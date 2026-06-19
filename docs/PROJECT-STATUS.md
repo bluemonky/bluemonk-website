@@ -2,8 +2,9 @@
 
 > 現在地ダッシュボード。**作業開始時に最初に読み、作業終了時に必ず更新してコミット**すること。
 > 詳細設計は [site-design.md](./site-design.md)、タスク台帳は [tasks.md](./tasks.md)、規約は [../AGENTS.md](../AGENTS.md)。
+> **フォルダ移動／環境引き継ぎは [HANDOFF.md](./HANDOFF.md) を参照。**
 
-- **最終更新日**: 2026-06-16
+- **最終更新日**: 2026-06-19
 - **フェーズ**: Phase 1 — **全ページ実装済み**（一部たたき台／要確認あり）。ダミーチャットは将来 Qwen3 連携。
 - **本番**: https://www.bluemonk.co.jp/ ／ https://bluemonk-website.vercel.app/
 
