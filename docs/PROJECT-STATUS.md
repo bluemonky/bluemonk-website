@@ -4,7 +4,7 @@
 > 詳細設計は [site-design.md](./site-design.md)、タスク台帳は [tasks.md](./tasks.md)、規約は [../AGENTS.md](../AGENTS.md)。
 > **フォルダ移動／環境引き継ぎは [HANDOFF.md](./HANDOFF.md) を参照。**
 
-- **最終更新日**: 2026-06-19
+- **最終更新日**: 2026-06-22
 - **フェーズ**: Phase 1 — **全ページ実装済み**（一部たたき台／要確認あり）。ダミーチャットは将来 Qwen3 連携。
 - **本番**: https://www.bluemonk.co.jp/ ／ https://bluemonk-website.vercel.app/
 
@@ -39,6 +39,12 @@
 
 19. **日本語の改行ポリシー(2026-06-19)**: 「改行が気になる」への対応。従来は本文の折り返し位置を無制御（コンテナ幅任せ・禁則なし）だった。globals の `body` に **`line-break: strict`（禁則：行頭に 。、）」等を出さない）＋ `word-break: auto-phrase`（日本語を文節で折る・対応ブラウザのみ、非対応は無視＝安全）＋ `text-wrap: pretty`（行末の孤立文字=widow回避）** を継承で適用。見出し `.serif-display` は **`text-wrap: balance`**（行長を均す）。見出しの意図的改行は従来どおり `\n`＋`whitespace-pre-line`。キーワードは語の途中で割らない（例: FDE hero の「経営者 × ITエンジニア × MBA」は ` × ` 位置でのみ改行＝各要素 `whitespace-nowrap`）。**実画面検証・本番ビルドOK。**
 
+20. **3CX（DX推進の3指針）追加(2026-06-22)**: 「企業 / 市場 / 業界 × 変革」＝ Corporate / Customer / Competitor Transformation（守り / 攻め / 関係のDX）の独自フレームを新規追加（多方向案→批判→統合のワークフローで方向C「構造マップ」を採用）。**AXコンサル**(`/services/consulting`)に詳説セクション（OVERVIEW直後。既存 `.compare-table` に載せ**新規CSSゼロ**・ember は Competitor 行のみ `data-feature` で一点点灯＝「光は一点」）。**思想**(`/philosophy`)に一言サマリー（KEYWORDS直後・**カード化せず**・既存3キーワードと役割分離＝世界観 vs DX実践の指針）を置き相互リンク。SSOT は `consulting.ts` の `threeCx`、`philosophy.ts` は要約 `threeCxSummary`。Customer の和名は原文どおり「市場の変革」。**コピーは全て DRAFT（要確認）**。名称「3CX」は通信製品 3CX(PBX) と文字列衝突するため初出で Corporate/Customer/Competitor をフル展開して定義（本人採用合意済み）。**実画面検証・本番ビルド/lint OK。** site-copy.md 再生成(715項目)。
+
+21. **3CX「背骨化」＋研修マルチツール(2026-06-23)**: 3CX を会社の DX ドクトリン＝サイトの背骨として前面化（多方向→批判→統合）。TOP 主役セクション＋**専用ページ `/3cx`**（HERO→DX再定義→上り階段(compare-table)→関係＝共創(山場)→サービスへの写像→CTA）＋ナビ追加＋相互リンクで4経路の発見性（新規CSSゼロ・ember は Competitor 一点・SSOT は consulting.ts threeCx）。アンカー着地は `HashScroll`（smooth取りこぼし回避）。AXコンサル hero を『AIを、世界を変える力に。』へ刷新。**研修をマルチツール化**: ChatGPT(主)/Claude/Gemini の3プログラム（`/services/training/{claude,gemini}` 新設・共有 `ToolTrainingProgram`・全研修ページ＋ハブにツール切替バンド・別アイコン＋ブランド色＋大きめ名で識別強化、公式ロゴ未使用＝`public/images/tools/` に置けば差し替え可）。**実画面検証・本番ビルド/lint OK。**
+
+22. **用件本位の導線へ全面転換＋ICP明確化(2026-06-23)**: 「送り手の独白」から訪問者起点へ反転（多方向→批判→統合）。**ICP＝売上10〜600億円・非IT系の中堅企業の経営者**、到達点＝**まずは無料相談**。TOP を HERO→PAIN→SOLUTION→SERVICES→TRUST→PROOF→DE-RISK→もっと知りたい人へ に再配列。一次ナビ 6→4（SERVICES/FDE/ChatGPT研修/ABOUT）、**思想・3CX を裏付け層へ退避**（フッター/各ページ末/最終章から到達・リダイレクトなし＝#20/#21 から方針転換）。HERO はキャッチ維持＋補強サブ。CTA を『無料相談（話すだけ）』へ統一・mailtoプリフィル、`/contact` リフレーム、フッター導線追加。AGENTS.md §3 を「ユーザーの問い→解決→信頼→行動」へ更新。**P1（TOP・ナビ・contact・footer・規約）実装済み・本番ビルド/lint OK。** P2（/fde・/consulting・/training・/about の用件本位な並べ替え）/P3（磨き・フォーム化U6）は順次。コピーは DRAFT（本人レビュー待ち・特に PAIN 6項目）。⚠️ 本作業中、Google Drive 同期で PROJECT-STATUS に外部編集(#20)が流入＝複数 Mac 並行編集に注意。
+
 ## 実装状況
 | ページ | 状態 |
 |---|---|
@@ -61,6 +67,7 @@
 - **PROOF実績数字**: 研修社数・受講者数・実務歴 → 確定で PROOF セクション復活（`src/data/home.ts`）
 - **研修DRAFT**: 困りごと4つ目・Features3・Flow3・中級編9講義の説明 → `src/data/services/training-chatgpt.ts`
 - **コンサル/開発**: 提供価値・進め方がたたき台 → `src/data/services/{consulting,development}.ts`
+- **3CX コピー(DRAFT)**: フレーム名・本文・見出しはたたき台。トーン最終確定待ち → `src/data/services/consulting.ts`（threeCx）, `src/data/philosophy.ts`（threeCxSummary）
 - **legal**: 雛形。所在地・解析ツール名・管轄裁判所・施行日 等 → `src/data/legal.ts`
 - **問い合わせ方式(U6)**: フォーム導入可否（Googleフォーム等）＋受信先
 - **TOPコピー**: PHILOSOPHY/VOICE/INSIGHTS文言・マスコット文言のトーン → `src/data/home.ts`

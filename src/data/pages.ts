@@ -43,12 +43,30 @@ export const trainingPage = {
         '中小企業のビジネスリーダー向け。生成AIの基礎から業務活用・チームマネジメントまで、9講義で実践的に学ぶフラッグシッププログラム。助成金活用可。',
       href: '/services/training/chatgpt',
     },
+    {
+      slug: 'claude',
+      status: 'available',
+      eyebrow: 'PROGRAM',
+      title: 'Claude活用研修',
+      description:
+        '長文読解・緻密な文章作成・安全性に強い Claude を、業務の実務に。ChatGPT研修と同等の実践カリキュラムを、Claude の特性に合わせて提供します。助成金活用可。',
+      href: '/services/training/claude',
+    },
+    {
+      slug: 'gemini',
+      status: 'available',
+      eyebrow: 'PROGRAM',
+      title: 'Gemini活用研修',
+      description:
+        'Google Workspace 連携・マルチモーダル・最新情報に強い Gemini を、日常業務に。同等の実践カリキュラムを、Gemini の特性に合わせて提供します。助成金活用可。',
+      href: '/services/training/gemini',
+    },
   ],
   detailLabel: '詳細を見る',
   placeholder: {
     eyebrow: 'More Programs Coming',
     body:
-      '今後、Claude活用研修・Copilot活用研修・生成AIリテラシー研修などを順次追加予定です。',
+      '今後、Microsoft Copilot 活用研修・生成AIリテラシー研修・業界別の実践研修などを順次追加予定です。',
   },
   closingLead: '自社に合う進め方は、一緒に整理するところから始められます。',
   closingPrimary: { label: '相談する', href: '/contact' },
@@ -68,9 +86,17 @@ export const insightsPage = {
 
 /* ============================== /contact ============================== */
 export const contactPage = {
-  heroTitle: 'お問い合わせ',
-  heroSubtitle: '研修・コンサルティング・開発支援に関するご相談はこちらから。',
+  // DRAFT: 要確認（たたき台）— 無料相談の着地点。事務語から「話すだけ」へリフレーム。
+  heroTitle: 'まずは、無料で話しましょう。',
+  heroSubtitle:
+    '「何から手をつけるべきか」の段階でも構いません。完璧な要件は、こちらで一緒に整えます。初回相談は無料です。',
+  topicsHeading: 'たとえば、こんなご相談から',
+  topics: [
+    '自社なら、AIをどこから始めるべきか',
+    '進行中のAI/DX投資の、判断・優先順位づけ',
+    'ベンダー提案の、技術的な妥当性の見極め',
+  ],
   emailLabel: 'Email',
-  mailtoLabel: 'メールで相談する',
-  note: 'お問い合わせフォームは現在準備中です。\n当面は上記メールアドレスに直接ご連絡ください。',
+  mailtoLabel: '無料相談のメールを書く',
+  note: 'お問い合わせフォームは現在準備中です。\n当面は上記メールアドレスへ直接ご連絡ください（件名・本文は自動で入ります）。',
 } as const;

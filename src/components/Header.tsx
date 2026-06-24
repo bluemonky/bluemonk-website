@@ -10,8 +10,6 @@ const navItems = [
   { label: 'FDE', href: '/fde' },
   { label: 'ChatGPT研修', href: '/services/training/chatgpt' },
   { label: 'ABOUT', href: '/about' },
-  { label: 'INSIGHTS', href: '/insights' },
-  { label: 'PHILOSOPHY', href: '/philosophy' },
 ];
 
 /** href が現在地にマッチするか（完全一致、または href 配下）。 */
@@ -109,7 +107,7 @@ export default function Header() {
               aria-current={activeHref === '/contact' ? 'page' : undefined}
               className="btn-ember text-sm font-semibold rounded-full px-5 py-1.5"
             >
-              相談する
+              無料相談
             </Link>
           </nav>
 
@@ -163,7 +161,7 @@ export default function Header() {
                 className="btn-ember text-sm font-semibold rounded-full px-4 py-2 text-center mt-2"
                 onClick={closeMenu}
               >
-                相談する
+                無料相談
               </Link>
             </div>
           </nav>

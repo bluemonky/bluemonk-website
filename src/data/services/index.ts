@@ -33,9 +33,9 @@ export const services: ServiceSummary[] = [
   {
     slug: 'training',
     eyebrow: 'TRAINING',
-    title: '研修（ChatGPT活用）',
+    title: '研修（生成AI活用）',
     description:
-      '生成AIを現場で使いこなすためのビジネスリーダー向け研修。経営判断とチームマネジメントに使えるAI活用術を実践的に学びます。助成金の活用が可能です。',
+      '生成AIを現場で使いこなすためのビジネスリーダー向け研修。ChatGPT を中心に Claude・Gemini にも対応し、経営判断とチームマネジメントに使えるAI活用術を実践的に学びます。助成金の活用が可能です。',
     weight: 'secondary',
     href: '/services/training',
   },

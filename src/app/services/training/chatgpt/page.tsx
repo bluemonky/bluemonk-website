@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
+import TrainingToolSwitch from '@/components/services/TrainingToolSwitch';
 import CurriculumByLevel from '@/components/services/chatgpt/CurriculumByLevel';
 import {
   hero,
@@ -490,6 +491,9 @@ export default function ChatGPTTrainingPage() {
           </div>
         </div>
       </section>
+
+      {/* 他ツールの研修への相互導線（ChatGPT ページ本体は温存し、末尾に追加のみ） */}
+      <TrainingToolSwitch current="chatgpt" />
     </PageLayout>
   );
 }

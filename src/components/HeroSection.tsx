@@ -66,13 +66,24 @@ export default function HeroSection() {
 
       {/* サブ（細字 + シアンの極薄アクセント。明部でも読めるよう影を付与） */}
       <p
-        className="hero-in relative font-serif text-sm sm:text-base md:text-lg font-normal tracking-[0.28em] text-[#aee9ff] text-center mb-12 sm:mb-16"
+        className="hero-in relative font-serif text-sm sm:text-base md:text-lg font-normal tracking-[0.28em] text-[#aee9ff] text-center mb-4 sm:mb-5"
         style={{
           textShadow: '0 1px 12px rgba(3,11,26,0.85)',
           ['--hero-delay' as string]: '320ms',
         }}
       >
         {hero.subhead}
+      </p>
+
+      {/* 補強サブ（用件本位の具体: 結果＋信頼）。キャッチの下に静かに一行。 */}
+      <p
+        className="hero-in relative text-sm sm:text-base text-gray-200 text-center max-w-2xl mx-auto leading-relaxed mb-12 sm:mb-16 px-2"
+        style={{
+          textShadow: '0 1px 12px rgba(3,11,26,0.85)',
+          ['--hero-delay' as string]: '440ms',
+        }}
+      >
+        {hero.support}
       </p>
 
       {/* 対話UI（マスコット・入力・チップ・状態）。'use client' に切り出し。 */}

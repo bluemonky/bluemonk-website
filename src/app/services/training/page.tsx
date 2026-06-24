@@ -2,12 +2,21 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
+import ToolMark from '@/components/services/ToolMark';
 import { trainingPage } from '@/data/pages';
+import { trainingTools } from '@/data/services/training-tools';
+
+// プログラム slug → ブランドアクセント色（マーク・タイトル強調用）。
+const accentBySlug: Record<string, string> = Object.fromEntries(
+  trainingTools.map((t) => [t.slug, t.accent]),
+);
+// タイトルの接尾辞（ツール名を大きく見せ、これは一段小さく＋前にスペース）。
+const TITLE_SUFFIX = '活用研修';
 
 export const metadata: Metadata = {
   title: '研修 | BLUE MONK CONSULTING',
   description:
-    'ビジネスリーダーのためのAI活用研修。ChatGPTを中心に、経営判断とチームマネジメントに使える実践的なカリキュラムを提供します。',
+    'ビジネスリーダーのためのAI活用研修。ChatGPT を中心に Claude・Gemini にも対応し、経営判断とチームマネジメントに使える実践的なカリキュラムを提供します。',
   alternates: { canonical: '/services/training' },
 };
 
@@ -36,10 +45,25 @@ export default function TrainingPage() {
               >
                 <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6 w-full">
                   <div className="flex-1">
-                    <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase mb-2">
-                      {p.eyebrow}
-                    </p>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{p.title}</h3>
+                    <div className="flex items-center gap-3 mb-2">
+                      <ToolMark slug={p.slug} className="w-10 h-10" />
+                      <p className="text-xs font-medium tracking-[0.2em] text-[#00d4ff] uppercase">
+                        {p.eyebrow}
+                      </p>
+                    </div>
+                    <h3 className="font-bold mb-3 leading-tight">
+                      <span
+                        className="text-3xl sm:text-4xl tracking-tight"
+                        style={{ color: accentBySlug[p.slug] }}
+                      >
+                        {p.title.replace(TITLE_SUFFIX, '')}
+                      </span>
+                      {p.title.includes(TITLE_SUFFIX) && (
+                        <span className="text-base sm:text-lg text-gray-200 ml-2.5">
+                          {TITLE_SUFFIX}
+                        </span>
+                      )}
+                    </h3>
                     <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                       {p.description}
                     </p>

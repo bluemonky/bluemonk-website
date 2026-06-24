@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // /services/development は /fde へ恒久リダイレクトのため除外。
   const routes = [
     "/",
+    "/3cx",
     "/fde",
     "/about",
     "/philosophy",
@@ -26,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/consulting",
     "/services/training",
     "/services/training/chatgpt",
+    "/services/training/claude",
+    "/services/training/gemini",
     "/legal/privacy",
     "/legal/terms",
   ];

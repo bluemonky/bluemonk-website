@@ -20,8 +20,165 @@
 - **`hero.subhead`**
   – 共創が生み出す変革と未来 –
 
+- **`hero.support`**
+  経営者 × ITエンジニア × MBA が、構想から実装・定着まで一人で伴走。FDEだから、動くまで作り切る。
+
 - **`hero.chatPlaceholder`**
   AI活用やDXの悩みを、Bluemonky に聞いてみる
+
+### painSection
+
+- **`painSection.eyebrow`**
+  YOUR SITUATION
+
+- **`painSection.title`**
+  こんな状況、ありませんか。
+
+- **`painSection.lead`**
+  非IT系の企業ほど、AI活用は「やった方がいいのは分かるが、何が正解か判断できない」で止まりがちです。
+
+- **`painSection.items[0]`**
+  AIを活用したいが、自社のどの業務から始めるべきか判断できない
+
+- **`painSection.items[1]`**
+  ツールやサービスは増えたのに、現場の成果につながっている実感がない
+
+- **`painSection.items[2]`**
+  投資対効果や優先順位を決められず、意思決定が前に進まない
+
+- **`painSection.items[3]`**
+  PoC（試験導入）は作れても、本番運用・社内定着まで持っていけない
+
+- **`painSection.items[4]`**
+  ベンダーの提案を鵜呑みにせず、技術的な妥当性を相談できる相手がいない
+
+- **`painSection.items[5]`**
+  AI・DXの方針を、経営の言葉と現場の言葉の両方で語れる人が社内にいない
+
+- **`painSection.ctaNote`**
+  1つでも当てはまれば、まず話すのが早道です。
+
+### solutionSection
+
+- **`solutionSection.eyebrow`**
+  HOW WE SOLVE
+
+- **`solutionSection.title`**
+  提案書ではなく、動くものが残ります。
+
+- **`solutionSection.lead`**
+  「どこに効くか」の見極めから、現場で動く実装・定着までを一気通貫で担います。絵に描いた戦略で終わらせません。
+
+- **`solutionSection.results[0].title`**
+  「作ったのに使われない」を防ぐ
+
+- **`solutionSection.results[0].description`**
+  現場の業務に合わせて設計し、定着まで伴走。導入して終わり、にしません。
+
+- **`solutionSection.results[1].title`**
+  曖昧なままでも、進められる
+
+- **`solutionSection.results[1].description`**
+  「何から手をつけるか」が未確定でも、一緒に課題を構造化し、優先順位を決めます。
+
+- **`solutionSection.results[2].title`**
+  小さく始めて、広げる
+
+- **`solutionSection.results[2].description`**
+  一番小さく動く単位から検証し、成果を確かめながら投資を広げます。
+
+- **`solutionSection.results[3].title`**
+  最後は、自走できる組織へ
+
+- **`solutionSection.results[3].description`**
+  属人化させず、社内に知見が残る形で定着。使うほど人もAIも賢くなる仕組みに。
+
+- **`solutionSection.servicesLeadIn`**
+  状況に応じて、3つの入口から始められます。
+
+### trustSection
+
+- **`trustSection.eyebrow`**
+  WHY US
+
+- **`trustSection.title`**
+  経営も、技術も、一人で翻訳できる相手に。
+
+- **`trustSection.lead`**
+  社内にIT/AIの専門人材がいなくても大丈夫。経営の言葉と技術の言葉を一人の中で翻訳できるから、ベンダー提案の妥当性も、経営者の目線で一緒に判断できます。
+
+- **`trustSection.points[0].term`**
+  経営者 × ITエンジニア × MBA
+
+- **`trustSection.points[0].body`**
+  意思決定の重さ・実装の現実・構造化の枠組み。三つが一人の中で重なるから、通訳が要らず判断が速い。
+
+- **`trustSection.points[1].term`**
+  考える人と、作る人を分けない
+
+- **`trustSection.points[1].body`**
+  FDE（現場常駐型のAIエンジニア）として、構想から実装・定着まで担い切る。"絵に描いた餅"を構造的に防ぎます。
+
+- **`trustSection.points[2].term`**
+  丸投げにしない、させない
+
+- **`trustSection.points[2].body`**
+  ブラックボックスにせず、なぜそうするかを経営の言葉で説明。任せきりでも中身が分かる関係を保ちます。
+
+- **`trustSection.cta.label`**
+  FDE（動くまで作り切る）の考え方を見る
+
+### deriskSection
+
+- **`deriskSection.eyebrow`**
+  LET'S TALK
+
+- **`deriskSection.title`**
+  大きく賭ける必要は、ありません。
+
+- **`deriskSection.points[0]`**
+  初回相談は無料。要件が固まっていなくてもOK
+
+- **`deriskSection.points[1]`**
+  「何から手をつけるべきか」の段階でも構いません
+
+- **`deriskSection.points[2]`**
+  一番小さく動く単位から、試せます
+
+- **`deriskSection.points[3]`**
+  研修なら、助成金の活用も可能です
+
+- **`deriskSection.reassurance`**
+  完璧な要件は、こちらで一緒に整えます。まずは話すところから。
+
+- **`deriskSection.email`**
+  aoki@bluemonk.co.jp
+
+- **`deriskSection.primaryLabel`**
+  まずは無料相談（話すだけ）
+
+- **`deriskSection.secondary.label`**
+  お問い合わせページへ
+
+### moreToKnow
+
+- **`moreToKnow.eyebrow`**
+  LEARN MORE
+
+- **`moreToKnow.title`**
+  もっと知りたい方へ。
+
+- **`moreToKnow.lead`**
+  私たちの考え方や、会社・代表について。判断の材料に。
+
+- **`moreToKnow.links[0].label`**
+  私たちの思想
+
+- **`moreToKnow.links[1].label`**
+  3CX — DXの捉え方
+
+- **`moreToKnow.links[2].label`**
+  会社・代表について
 
 ### philosophy
 
@@ -63,6 +220,32 @@
 
 - **`philosophy.cta.label`**
   思想を読む
+
+### threeCxHome
+
+- **`threeCxHome.eyebrow`**
+  3CX
+
+- **`threeCxHome.title`**
+  DXは、ひとつの変革ではない。
+
+- **`threeCxHome.lead`**
+  多くのDXは、社内を整える「守り」で止まります。私たちはそこから、市場を切り拓く「攻め」、業界の関係を変える「共創」へと、射程を一段ずつ上げていく。企業・市場・業界という三つの層を捉え直すこの考え方を、3CX と呼んでいます。
+
+- **`threeCxHome.stair`**
+  守り → 攻め → 関係 ／ 内 → 外 → 横断
+
+- **`threeCxHome.shorts[0]`**
+  業務を最適化し、本当に戦うべき市場へリソースを集める。
+
+- **`threeCxHome.shorts[1]`**
+  市場の未来を見極め、新たな市場の創造そのものをリードする。
+
+- **`threeCxHome.shorts[2]`**
+  競争を共創へ。業界そのものを大きくし、共に生き残る。
+
+- **`threeCxHome.cta.label`**
+  3CX を読む
 
 ### proof
 
@@ -236,6 +419,24 @@
 - **`trainingPage.programs[0].description`**
   中小企業のビジネスリーダー向け。生成AIの基礎から業務活用・チームマネジメントまで、9講義で実践的に学ぶフラッグシッププログラム。助成金活用可。
 
+- **`trainingPage.programs[1].eyebrow`**
+  PROGRAM
+
+- **`trainingPage.programs[1].title`**
+  Claude活用研修
+
+- **`trainingPage.programs[1].description`**
+  長文読解・緻密な文章作成・安全性に強い Claude を、業務の実務に。ChatGPT研修と同等の実践カリキュラムを、Claude の特性に合わせて提供します。助成金活用可。
+
+- **`trainingPage.programs[2].eyebrow`**
+  PROGRAM
+
+- **`trainingPage.programs[2].title`**
+  Gemini活用研修
+
+- **`trainingPage.programs[2].description`**
+  Google Workspace 連携・マルチモーダル・最新情報に強い Gemini を、日常業務に。同等の実践カリキュラムを、Gemini の特性に合わせて提供します。助成金活用可。
+
 - **`trainingPage.detailLabel`**
   詳細を見る
 
@@ -243,7 +444,7 @@
   More Programs Coming
 
 - **`trainingPage.placeholder.body`**
-  今後、Claude活用研修・Copilot活用研修・生成AIリテラシー研修などを順次追加予定です。
+  今後、Microsoft Copilot 活用研修・生成AIリテラシー研修・業界別の実践研修などを順次追加予定です。
 
 - **`trainingPage.closingLead`**
   自社に合う進め方は、一緒に整理するところから始められます。
@@ -280,20 +481,32 @@
 ### contactPage
 
 - **`contactPage.heroTitle`**
-  お問い合わせ
+  まずは、無料で話しましょう。
 
 - **`contactPage.heroSubtitle`**
-  研修・コンサルティング・開発支援に関するご相談はこちらから。
+  「何から手をつけるべきか」の段階でも構いません。完璧な要件は、こちらで一緒に整えます。初回相談は無料です。
+
+- **`contactPage.topicsHeading`**
+  たとえば、こんなご相談から
+
+- **`contactPage.topics[0]`**
+  自社なら、AIをどこから始めるべきか
+
+- **`contactPage.topics[1]`**
+  進行中のAI/DX投資の、判断・優先順位づけ
+
+- **`contactPage.topics[2]`**
+  ベンダー提案の、技術的な妥当性の見極め
 
 - **`contactPage.emailLabel`**
   Email
 
 - **`contactPage.mailtoLabel`**
-  メールで相談する
+  無料相談のメールを書く
 
 - **`contactPage.note`**
   お問い合わせフォームは現在準備中です。
-  当面は上記メールアドレスに直接ご連絡ください。
+  当面は上記メールアドレスへ直接ご連絡ください（件名・本文は自動で入ります）。
 
 ---
 
@@ -325,10 +538,10 @@
   TRAINING
 
 - **`services[2].title`**
-  研修（ChatGPT活用）
+  研修（生成AI活用）
 
 - **`services[2].description`**
-  生成AIを現場で使いこなすためのビジネスリーダー向け研修。経営判断とチームマネジメントに使えるAI活用術を実践的に学びます。助成金の活用が可能です。
+  生成AIを現場で使いこなすためのビジネスリーダー向け研修。ChatGPT を中心に Claude・Gemini にも対応し、経営判断とチームマネジメントに使えるAI活用術を実践的に学びます。助成金の活用が可能です。
 
 ---
 
@@ -1414,6 +1627,143 @@
 
 ---
 
+## Claude / Gemini 研修（ツール別）　`/services/training`
+
+<sub>反映先ファイル: `src/data/services/training-tools.ts`</sub>
+
+### claude
+
+- **`claude.eyebrow`**
+  CLAUDE TRAINING
+
+- **`claude.toolName`**
+  Claude
+
+- **`claude.hero.title`**
+  Claudeを使いこなす、
+  ビジネスリーダー研修
+
+- **`claude.hero.subtitle`**
+  長い文書の読み込みと要約、緻密な文章作成、安全性の高い業務利用に強い Claude。その特性を、現場の実務にどう活かすかを実践的に学びます。
+
+- **`claude.whyTitle`**
+  なぜ、Claude なのか。
+
+- **`claude.strengths[0].title`**
+  長い文書を、まるごと扱える
+
+- **`claude.strengths[0].description`**
+  大量の資料・契約書・議事録を一度に読み込み、要点抽出や横断的な比較ができる。情報量の多い実務に向きます。
+
+- **`claude.strengths[1].title`**
+  緻密で自然な文章作成
+
+- **`claude.strengths[1].description`**
+  提案書・社内文書・メールなど、トーンを整えた長文の作成と推敲に強い。文章の品質を重視する業務に。
+
+- **`claude.strengths[2].title`**
+  落ち着いた推論と安全性
+
+- **`claude.strengths[2].description`**
+  指示への忠実さと慎重な応答設計。業務で扱いやすく、社内展開時の安心感を重視する組織に向きます。
+
+- **`claude.curriculum.title`**
+  カリキュラムは、ChatGPT研修と同等。
+
+- **`claude.curriculum.body`**
+  プロンプト設計から業務活用・チームマネジメントまで、フラッグシップの ChatGPT 研修と同じ実践カリキュラムを、Claude の特性に合わせて提供します。講義構成・時間割の詳細は、ChatGPT 研修ページをご覧ください。
+
+- **`claude.curriculum.flagshipLabel`**
+  ChatGPT研修のカリキュラム・時間割を見る
+
+- **`claude.cta.title`**
+  Claude 研修について、相談する。
+
+- **`claude.cta.body`**
+  貴社の業務・体制に合わせて、Claude を使った研修の進め方をご提案します。助成金の活用も可能です。
+
+### gemini
+
+- **`gemini.eyebrow`**
+  GEMINI TRAINING
+
+- **`gemini.toolName`**
+  Gemini
+
+- **`gemini.hero.title`**
+  Geminiを使いこなす、
+  ビジネスリーダー研修
+
+- **`gemini.hero.subtitle`**
+  Google Workspace との連携、画像・音声まで扱うマルチモーダル、最新情報の参照に強い Gemini。Google 環境の日常業務に溶け込ませる使い方を、実践的に学びます。
+
+- **`gemini.whyTitle`**
+  なぜ、Gemini なのか。
+
+- **`gemini.strengths[0].title`**
+  Google Workspace と一体で使える
+
+- **`gemini.strengths[0].description`**
+  Gmail・ドキュメント・スプレッドシート・スライドなど、日常の Google 業務にそのまま組み込めます。
+
+- **`gemini.strengths[1].title`**
+  マルチモーダル（画像・音声も）
+
+- **`gemini.strengths[1].description`**
+  テキストだけでなく、画像や資料・音声を含む入力に対応。現場の多様な素材をそのまま扱えます。
+
+- **`gemini.strengths[2].title`**
+  最新情報に強い
+
+- **`gemini.strengths[2].description`**
+  Google の検索基盤を背景に、新しい情報を踏まえた回答を得やすい。調査・情報収集の実務に向きます。
+
+- **`gemini.curriculum.title`**
+  カリキュラムは、ChatGPT研修と同等。
+
+- **`gemini.curriculum.body`**
+  プロンプト設計から業務活用・チームマネジメントまで、フラッグシップの ChatGPT 研修と同じ実践カリキュラムを、Gemini の特性に合わせて提供します。講義構成・時間割の詳細は、ChatGPT 研修ページをご覧ください。
+
+- **`gemini.curriculum.flagshipLabel`**
+  ChatGPT研修のカリキュラム・時間割を見る
+
+- **`gemini.cta.title`**
+  Gemini 研修について、相談する。
+
+- **`gemini.cta.body`**
+  貴社の業務・体制に合わせて、Gemini を使った研修の進め方をご提案します。助成金の活用も可能です。
+
+### trainingTools
+
+- **`trainingTools[0].name`**
+  ChatGPT
+
+- **`trainingTools[0].tagline`**
+  生成AIの定番。基礎から業務活用まで体系的に。
+
+- **`trainingTools[0].accent`**
+  #10a37f
+
+- **`trainingTools[1].name`**
+  Claude
+
+- **`trainingTools[1].tagline`**
+  長文・緻密な文章作成・安全性に強い。
+
+- **`trainingTools[1].accent`**
+  #d97757
+
+- **`trainingTools[2].name`**
+  Gemini
+
+- **`trainingTools[2].tagline`**
+  Google Workspace 連携・マルチモーダル。
+
+- **`trainingTools[2].accent`**
+  #4285f4
+
+---
+
 ## AXコンサルページ　`/services/consulting`
 
 <sub>反映先ファイル: `src/data/services/consulting.ts`</sub>
@@ -1424,10 +1774,10 @@
   AX CONSULTING
 
 - **`hero.title`**
-  AIをどこに使うか、から考える。
+  AIを、世界を変える力に。
 
 - **`hero.subtitle`**
-  ツール導入が目的ではありません。経営課題から逆算し、「AIをどこに・どう使えば事業が前に進むか」を一緒に描き、実行まで伴走します。
+  道具として使いこなすだけでは、もったいない。AIを事業変革の起点に置き、経営課題から実行まで、変化を形にする道筋を一緒に描きます。
 
 ### intro
 
@@ -1443,6 +1793,68 @@
   Blue Monk Consulting は、経営者・ITエンジニア・MBA の3つの視点を一人の中に併せ持つ立場から、技術の可能性と経営のリアルの両方を翻訳します。絵に描いた戦略ではなく、現場で回る打ち手まで一緒に走ります。
   
   なお、本サービスは「どこに・どう使うか」の方針・戦略を描く段階のご相談に向いています。現場に入り込み、実装して動くまで担う伴走は FDE（Forward Deployed Engineer）が担当します。
+
+### threeCx
+
+- **`threeCx.eyebrow`**
+  3CX
+
+- **`threeCx.title`**
+  推進するDXの、3つの指針。
+
+- **`threeCx.lead`**
+  DXは、ひとつの変革ではありません。企業・市場・業界という三つの層を、それぞれ内へ・外へ・横断する向きで捉え直す。私たちはこれを3CXと呼んでいます。
+
+- **`threeCx.crosslinkOut`**
+  3つの指針を支える、私たちの考え方。
+
+- **`threeCx.crosslinkLink`**
+  思想を読む
+
+- **`threeCx.items[0].en`**
+  Corporate Transformation
+
+- **`threeCx.items[0].jaLabel`**
+  企業の変革
+
+- **`threeCx.items[0].dxType`**
+  守りのDX
+
+- **`threeCx.items[0].axis`**
+  内向き
+
+- **`threeCx.items[0].body`**
+  主力業務に集中するために、業務プロセスを最適化し、生産性を高める。組織全体で成果が最大になる仕組みをつくり、無駄を減らすことで、本当に戦うべき市場と顧客へリソースを集めます。
+
+- **`threeCx.items[1].en`**
+  Customer Transformation
+
+- **`threeCx.items[1].jaLabel`**
+  市場の変革
+
+- **`threeCx.items[1].dxType`**
+  攻めのDX
+
+- **`threeCx.items[1].axis`**
+  外向き
+
+- **`threeCx.items[1].body`**
+  市場の未来を見極め、勝ち残るための戦略を描く。AIとITを活かし、企業の本質的な価値に集中することで、変化に適応するだけでなく、新たな市場の創造そのものをリードします。
+
+- **`threeCx.items[2].en`**
+  Competitor Transformation
+
+- **`threeCx.items[2].jaLabel`**
+  業界の変革
+
+- **`threeCx.items[2].dxType`**
+  関係のDX
+
+- **`threeCx.items[2].axis`**
+  横断
+
+- **`threeCx.items[2].body`**
+  業界全体の在り方を捉え直し、共に生き残る道を考える。いま競うべき相手は、隣にいる同業他社ではありません。本当の脅威を見定め、業界内の不要な争いにリソースを割かず、市場の拡大と業界の発展を目指します。
 
 ### challengesTitle
 
@@ -1618,6 +2030,129 @@
 
 - **`closingCta.secondary.label`**
   サービス一覧に戻る
+
+---
+
+## 3CX（DXドクトリン・専用ページ）　`/3cx`
+
+<sub>反映先ファイル: `src/data/three-cx.ts`</sub>
+
+### pageHero
+
+- **`pageHero.eyebrow`**
+  3CX
+
+- **`pageHero.title`**
+  DXを、
+  定義し直す。
+
+- **`pageHero.subtitle`**
+  守りで止まるDXを、攻めへ、そして関係へ。企業・市場・業界という三つの層を、内へ・外へ・横断する向きで捉え直す。これが、Blue Monk Consulting の DX ドクトリンです。
+
+### redefinition
+
+- **`redefinition.eyebrow`**
+  WHY
+
+- **`redefinition.title`**
+  守りだけのDXは、出発点にすぎない。
+
+### redefinitionBody
+
+- **`redefinitionBody`**
+  世の中で語られるDXの多くは、業務を効率化し、生産性を高める「守り」で完結します。それは確かに必要なことですが、整えただけでは、未来は変わりません。業務最適化はゴールではなく、戦うべき場所へ力を集めるための出発点です。
+  
+  私たちは、ヒーローに掲げた「AIを、世界を変える力に」を、この一枚のドクトリンとして構造化しました。企業を整え、市場を切り拓き、業界の関係そのものを変える——射程を一段ずつ上げていく三つの変革。それが 3CX です。
+
+### ladder
+
+- **`ladder.eyebrow`**
+  THE LADDER
+
+- **`ladder.title`**
+  ひとつの変革では、足りない。
+
+- **`ladder.stair`**
+  守り → 攻め → 関係 ／ 内 → 外 → 横断
+
+### cooperation
+
+- **`cooperation.eyebrow`**
+  CO-CREATION
+
+- **`cooperation.title`**
+  競争を、共創へ。
+
+### cooperationBody
+
+- **`cooperationBody`**
+  3CX の頂点に置くのは、最も語られにくく、最も独自な一段——業界の変革、すなわち「関係のDX」です。
+  
+  問いはひとつ。あなたが本当に競うべき相手は、隣の同業他社でしょうか。同じ市場のわずかなシェアを奪い合い、値引きと消耗で互いをすり減らす——その争いは、勝っても市場そのものを痩せさせます。私たちは、その前提を疑います。本当の脅威は業界の外にあり、本当の機会は、業界そのものを大きくすることの中にある。
+  
+  だから私たちは、競争を共創へと置き換えます。これはゼロサムの発想ではありません。一社の勝ちが一社の負けになる椅子取りゲームから降り、市場の総量を広げ、業界ごと次の段階へ進化させる。誰かを蹴落とすのではなく、共に生き残る道を描く——それが、関係のDXです。
+  
+  この世界観は、ブランドの根に流れる「共創が生み出す変革」、そして「人とAIの共進化」と、同じ一本のDNAでつながっています。人とAIが役割を分け合って互いを高めるように、企業と企業も、競い合うのではなく高め合える。3CX が最後に問うのは、技術の使い方ではなく、関係のあり方そのものです。
+
+### cooperationLinks
+
+- **`cooperationLinks[0].label`**
+  人とAIの共進化（思想）を読む
+
+- **`cooperationLinks[1].label`**
+  考える人と作る人を分けない（FDE）
+
+### mapping
+
+- **`mapping.eyebrow`**
+  IN PRACTICE
+
+- **`mapping.title`**
+  それぞれの変革に、担い手がいる。
+
+- **`mapping.rows[0].transform`**
+  守りを整える
+
+- **`mapping.rows[0].dxType`**
+  企業の変革
+
+- **`mapping.rows[0].service`**
+  研修・FDE
+
+- **`mapping.rows[1].transform`**
+  攻めを描く
+
+- **`mapping.rows[1].dxType`**
+  市場の変革
+
+- **`mapping.rows[1].service`**
+  AXコンサル
+
+- **`mapping.rows[2].transform`**
+  関係を共創へ
+
+- **`mapping.rows[2].dxType`**
+  業界の変革
+
+- **`mapping.rows[2].service`**
+  伴走・思想
+
+### closing
+
+- **`closing.eyebrow`**
+  NEXT
+
+- **`closing.title`**
+  3CX は、思想ではなく、実装される。
+
+- **`closing.body`**
+  企業を整える「守り」は研修とFDEで、市場を切り拓く「攻め」はAXコンサルで、業界を変える「共創」は伴走そのもので。3CX は語るための言葉ではなく、現場で動かすための柱です。次は、それがサービスとしてどう届くのかをご覧ください。
+
+- **`closing.primary.label`**
+  サービスを見る
+
+- **`closing.secondary.label`**
+  思想を読む
 
 ---
 
@@ -1889,6 +2424,23 @@
 
 - **`keywords[2].body`**
   一度の導入で終わらせず、使うほどに人もAIも賢くなる仕組みへ。現場の学びをAIに還し、AIの示唆で人の判断を磨く。その循環を企業とともに育てます。
+
+### threeCxSummary
+
+- **`threeCxSummary.eyebrow`**
+  3CX
+
+- **`threeCxSummary.title`**
+  指針は、3つの変革に宿る。
+
+- **`threeCxSummary.body`**
+  私たちの世界観は、DXの現場では3つの指針になります。企業を整える「守り」、市場を切り拓く「攻め」、業界の関係を変える「関係」。この3つの変革を、3CX と呼んでいます。
+
+- **`threeCxSummary.triad`**
+  企業の変革 ・ 市場の変革 ・ 業界の変革
+
+- **`threeCxSummary.cta.label`**
+  3CXを読む
 
 ### nameOrigin
 
@@ -2216,7 +2768,7 @@
   人とAIと共に進化する企業へ
 
 - **`metadata.description`**
-  人とAIと共に進化する企業へ。共創が生み出す変革と未来。経営者×ITエンジニア×MBAの視点で、研修・コンサルティング・開発支援を通じて企業のAI活用を支えます。
+  人とAIと共に進化する企業へ。共創が生み出す変革と未来。経営者×ITエンジニア×MBAが、構想から実装・定着まで一人で伴走。非IT系の中堅企業のAI活用を、動く成果まで支えます。
 
 ### サービス一覧　`/services`
 
@@ -2236,7 +2788,7 @@
   研修 | BLUE MONK CONSULTING
 
 - **`metadata.description`**
-  ビジネスリーダーのためのAI活用研修。ChatGPTを中心に、経営判断とチームマネジメントに使える実践的なカリキュラムを提供します。
+  ビジネスリーダーのためのAI活用研修。ChatGPT を中心に Claude・Gemini にも対応し、経営判断とチームマネジメントに使える実践的なカリキュラムを提供します。
 
 ### ChatGPT研修　`/services/training/chatgpt`
 
@@ -2248,6 +2800,26 @@
 - **`metadata.description`**
   中小企業向け ビジネスリーダーのためのChatGPT活用セミナー。注目の生成系AI ChatGPTの研修を助成金を活用して実施します。経営者×ITエンジニア×MBAの講師が指導する実践的カリキュラム。
 
+### Claude研修　`/services/training/claude`
+
+<sub>反映先ファイル: `src/app/services/training/claude/page.tsx`</sub>
+
+- **`metadata.title`**
+  Claude活用研修 | BLUE MONK CONSULTING
+
+- **`metadata.description`**
+  長文読解・緻密な文章作成・安全性に強い Claude を、業務の実務に活かすビジネスリーダー向け研修。ChatGPT研修と同等の実践カリキュラムを Claude 向けに提供します。助成金活用可。
+
+### Gemini研修　`/services/training/gemini`
+
+<sub>反映先ファイル: `src/app/services/training/gemini/page.tsx`</sub>
+
+- **`metadata.title`**
+  Gemini活用研修 | BLUE MONK CONSULTING
+
+- **`metadata.description`**
+  Google Workspace 連携・マルチモーダル・最新情報に強い Gemini を、日常業務に活かすビジネスリーダー向け研修。ChatGPT研修と同等の実践カリキュラムを Gemini 向けに提供します。助成金活用可。
+
 ### コンサルティング　`/services/consulting`
 
 <sub>反映先ファイル: `src/app/services/consulting/page.tsx`</sub>
@@ -2256,7 +2828,17 @@
   コンサルティング | BLUE MONK CONSULTING
 
 - **`metadata.description`**
-  AI活用DX・戦略伴走コンサルティング。経営課題から逆算し、AIをどこにどう使うかを一緒に設計し、実行まで伴走します。
+  AI活用DX・戦略伴走コンサルティング。AIを事業変革の起点に、経営課題から実行まで、変化を形にする道筋を一緒に描きます。
+
+### 3CX（DXドクトリン）　`/3cx`
+
+<sub>反映先ファイル: `src/app/3cx/page.tsx`</sub>
+
+- **`metadata.title`**
+  3CX — DXを定義し直す | BLUE MONK CONSULTING
+
+- **`metadata.description`**
+  守りで止まるDXを、攻めへ、そして関係へ。企業・市場・業界の三層を内→外→横断で捉え直す Blue Monk Consulting の DX ドクトリン、3CX。
 
 ### 会社・代表　`/about`
 
@@ -2293,10 +2875,10 @@
 <sub>反映先ファイル: `src/app/contact/page.tsx`</sub>
 
 - **`metadata.title`**
-  CONTACT | BLUE MONK CONSULTING
+  無料相談 | BLUE MONK CONSULTING
 
 - **`metadata.description`**
-  BLUE MONK CONSULTING へのお問い合わせ。研修・コンサルティング・開発支援に関するご相談はこちらから。
+  まずは無料で話しましょう。「何から手をつけるべきか」の段階でも構いません。AI活用・DXのご相談を、経営と技術の両面からお受けします。初回相談は無料です。
 
 ### プライバシーポリシー　`/legal/privacy`
 

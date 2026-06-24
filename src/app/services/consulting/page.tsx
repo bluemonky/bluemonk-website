@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
+import HashScroll from '@/components/ui/HashScroll';
 import {
   hero,
   intro,
+  threeCx,
   challengesTitle,
   challengesTagline,
   challenges,
@@ -24,13 +26,14 @@ import {
 export const metadata: Metadata = {
   title: 'コンサルティング | BLUE MONK CONSULTING',
   description:
-    'AI活用DX・戦略伴走コンサルティング。経営課題から逆算し、AIをどこにどう使うかを一緒に設計し、実行まで伴走します。',
+    'AI活用DX・戦略伴走コンサルティング。AIを事業変革の起点に、経営課題から実行まで、変化を形にする道筋を一緒に描きます。',
   alternates: { canonical: '/services/consulting' },
 };
 
 export default function ConsultingPage() {
   return (
     <PageLayout>
+      <HashScroll />
       {/* 単点グロー（全面発光させない。HERO 背後に一点だけ） */}
       <div
         className="absolute inset-x-0 top-0 h-[520px] overflow-hidden pointer-events-none"
@@ -63,6 +66,66 @@ export default function ConsultingPage() {
                 </p>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* 3CX — 推進するDXの3指針（DX推進の指針フレームワーク・構造マップ）  */}
+        {/* ============================================================== */}
+        <section
+          id="3cx"
+          className="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule"
+        >
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xs font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3 text-center">
+              {threeCx.eyebrow}
+            </p>
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold text-center mb-3 leading-snug">
+              {threeCx.title}
+            </h2>
+            <div className="w-10 h-px bg-gradient-to-r from-[#ff8a3c] to-transparent mx-auto mb-6" />
+            <p className="text-sm sm:text-base text-gray-400 text-center max-w-2xl mx-auto mb-12 leading-relaxed">
+              {threeCx.lead}
+            </p>
+
+            <div className="compare-table">
+              {threeCx.items.map((it) => (
+                <div
+                  key={it.en}
+                  className="compare-row"
+                  data-feature={it.feature ? 'true' : undefined}
+                >
+                  <div className="compare-row__name">
+                    {it.jaLabel}
+                    <small>{it.en}</small>
+                  </div>
+                  <div className="compare-row__body">
+                    <span className="block text-[0.7rem] tracking-[0.14em] text-[#7cc8e6] mb-2">
+                      {it.dxType} ・ {it.axis}
+                    </span>
+                    {it.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-sm text-gray-400 text-center mt-10">
+              {threeCx.crosslinkOut}{' '}
+              <Link
+                href="/philosophy"
+                className="text-[#00d4ff]/90 hover:text-[#00d4ff] underline-offset-4 hover:underline transition-colors whitespace-nowrap"
+              >
+                {threeCx.crosslinkLink} →
+              </Link>
+            </p>
+            <p className="text-sm text-gray-400 text-center mt-3">
+              <Link
+                href="/3cx"
+                className="text-[#00d4ff]/90 hover:text-[#00d4ff] underline-offset-4 hover:underline transition-colors"
+              >
+                3CX を一本の柱として読む →
+              </Link>
+            </p>
           </div>
         </section>
 

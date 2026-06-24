@@ -3,11 +3,13 @@ import Link from 'next/link';
 import PageLayout from '@/components/layout/PageLayout';
 import PageHero from '@/components/ui/PageHero';
 import ScrollReveal from '@/components/home/ScrollReveal';
+import HashScroll from '@/components/ui/HashScroll';
 import {
   pageHero,
   lead,
   narrative,
   keywords,
+  threeCxSummary,
   nameOrigin,
   missionVision,
   closing,
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
 export default function PhilosophyPage() {
   return (
     <PageLayout>
+      <HashScroll />
       <PageHero
         eyebrow={pageHero.eyebrow}
         title={pageHero.title}
@@ -131,6 +134,54 @@ export default function PhilosophyPage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 3CX — DX実践の指針サマリー（世界観 → 実践の橋渡し。カード化しない）  */}
+      {/* ================================================================== */}
+      <section
+        id="3cx"
+        className="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-16 sm:py-20 section-rule"
+      >
+        <div className="max-w-3xl mx-auto text-center">
+          <ScrollReveal>
+            <p className="text-xs sm:text-sm font-medium tracking-[0.3em] text-[#00d4ff] uppercase mb-3">
+              {threeCxSummary.eyebrow}
+            </p>
+            <h2 className="serif-display text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug">
+              {threeCxSummary.title}
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-8" delay={120}>
+            <p className="text-base sm:text-lg text-gray-300 leading-loose max-w-2xl mx-auto">
+              {threeCxSummary.body}
+            </p>
+            <p className="mt-7 text-sm text-gray-400 tracking-wide">
+              {threeCxSummary.triad}
+            </p>
+            <Link
+              href={threeCxSummary.cta.href}
+              className="mt-9 inline-flex items-center gap-2 text-sm sm:text-base text-gray-200 font-medium px-6 py-3 rounded-full border border-[#00d4ff]/20 hover:border-[#00d4ff] hover:text-[#00d4ff] transition-all"
+            >
+              {threeCxSummary.cta.label}
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
 
